@@ -8,9 +8,9 @@ SEO Writer의 콘텐츠와 Architect의 기술 설계를 조립하여 최종 con
 
 ## 입력
 - slug: {{SLUG}}
-- 기술 설계: {{ARCHITECT_RESULT}}
-- SEO 콘텐츠: {{SEO_CONTENT}}
-- Logic 코드: {{LOGIC_CODE}}
+- 기술 설계: `.claude/pipeline/{{SLUG}}/03-architect.md`
+- SEO 콘텐츠: `.claude/pipeline/{{SLUG}}/04-seo-content.md`
+- Logic 코드: `.claude/pipeline/{{SLUG}}/05-logic-code.md`
 
 ## 읽어야 할 파일
 - `src/config/types.ts` — ToolConfig 타입 확인
@@ -91,6 +91,9 @@ Logic Engineer의 출력을 `src/tools/{{SLUG}}/logic.ts`로 그대로 저장
 
 다음 단계: Integrator Agent 실행
 ```
+
+## 파일 출력
+보고를 `.claude/pipeline/{{SLUG}}/06-assembly.md` 에 저장한다.
 
 ## 경계
 - SEO 콘텐츠를 새로 작성하지 않는다 (SEO Writer 결과를 그대로 사용)

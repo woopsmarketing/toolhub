@@ -194,9 +194,37 @@ if (fs.existsSync(logicPath)) {
     : fail("process 함수 export 없음", "export function process(...) 필요");
 }
 
-// ─── 6. TypeScript 검사 ────────────────────────────────────────────────────
+// ─── 6. 500 에러 방지 (아키텍처 검증) ──────────────────────────────────────
 
-section("6. TypeScript");
+section("6. 500 에러 방지");
+
+// registry.ts에 component import가 없는지 확인
+const registryCheck = fs.readFileSync(REGISTRY, "utf-8");
+!/from "\.\/[^"]+\/component"/.test(registryCheck)
+  ? ok("registry.ts에 component import 없음 (서버 안전)")
+  : fail("registry.ts에 component import 발견", "컴포넌트는 ToolLoader.tsx에서 dynamic import");
+
+// ToolLoader.tsx에 해당 slug이 등록되어 있는지
+const loaderPath = path.join(ROOT, "src/components/tools/ToolLoader.tsx");
+if (fs.existsSync(loaderPath)) {
+  const loader = fs.readFileSync(loaderPath, "utf-8");
+  loader.includes(`"${slug}"`)
+    ? ok("ToolLoader.tsx에 dynamic import 등록됨")
+    : fail("ToolLoader.tsx에 미등록", `"${slug}": dynamic(() => import(...)) 추가 필요`);
+} else {
+  fail("ToolLoader.tsx 없음", "npm run sync-loader 실행 필요");
+}
+
+// async 페이지에서 useTranslations 사용 금지 체크 (config.ts나 logic.ts는 해당 없음)
+if (fs.existsSync(componentPath)) {
+  const comp = fs.readFileSync(componentPath, "utf-8");
+  // component.tsx는 "use client"이므로 useTranslations 사용 가능 — 체크 불필요
+  ok("component.tsx는 'use client' — useTranslations 사용 가능");
+}
+
+// ─── 7. TypeScript 검사 ────────────────────────────────────────────────────
+
+section("7. TypeScript");
 
 try {
   execSync("npx tsc --noEmit", { cwd: ROOT, stdio: "pipe" });

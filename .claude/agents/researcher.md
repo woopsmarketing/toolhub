@@ -85,6 +85,9 @@ SEO Writer를 위한 방향성 메모:
 - 강조 포인트: [설명]
 ```
 
+## 파일 출력
+결과를 `.claude/pipeline/{{SLUG}}/01-research.md` 에 저장한다.
+
 ## 경계
 - SEO 콘텐츠를 직접 작성하지 않는다 (SEO Writer 담당)
 - 기술 구현을 논하지 않는다 (Architect 담당)

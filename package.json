@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "validate": "tsx scripts/validate-tool.ts",
-    "test-logic": "tsx scripts/test-logic.ts"
+    "test-logic": "tsx scripts/test-logic.ts",
+    "sync-loader": "tsx scripts/sync-loader.ts"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

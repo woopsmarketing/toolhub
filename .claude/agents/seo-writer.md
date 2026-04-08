@@ -9,8 +9,8 @@
 ## 입력
 - 툴 이름: {{TOOL_NAME}}
 - slug: {{SLUG}}
-- 리서치 결과: {{RESEARCH_RESULT}}
-- 기술 설계: {{ARCHITECT_RESULT}}
+- 리서치 결과: `.claude/pipeline/{{SLUG}}/01-research.md`
+- 기술 설계: `.claude/pipeline/{{SLUG}}/03-architect.md`
 
 ## 품질 기준 (반드시 충족)
 ```
@@ -114,6 +114,9 @@ const seoContent = {
   faq: { ko: [...], en: [...] },
 };
 ```
+
+## 파일 출력
+결과를 `.claude/pipeline/{{SLUG}}/04-seo-content.md` 에 저장한다.
 
 ## 경계
 - 파일을 생성하거나 수정하지 않는다

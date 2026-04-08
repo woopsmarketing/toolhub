@@ -8,8 +8,8 @@
 
 ## 입력
 - 툴 이름: {{TOOL_NAME}}
-- 인터뷰 결과: {{INTERVIEW_RESULT}}
-- 리서치 결과: {{RESEARCH_RESULT}}
+- 리서치 결과: `.claude/pipeline/{{SLUG}}/01-research.md` 를 읽어라
+- 인터뷰 결과: `.claude/pipeline/{{SLUG}}/02-interview.md` 를 읽어라
 
 ## 읽어야 할 파일
 - `src/config/types.ts` — ToolConfig 타입 정의
@@ -102,6 +102,9 @@ registry.ts에 실제 존재하는 slug 중 연관도 높은 것 2~4개
 ### Logic Engineer를 위한 계산 명세
 [계산 공식, 한국 기준, 엣지케이스 주의사항]
 ```
+
+## 파일 출력
+결과를 `.claude/pipeline/{{SLUG}}/03-architect.md` 에 저장한다.
 
 ## 경계
 - SEO 콘텐츠를 작성하지 않는다 (SEO Writer 담당)

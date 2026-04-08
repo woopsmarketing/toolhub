@@ -8,8 +8,8 @@ logic.ts의 process() 함수가 올바르게 계산하는지 단위 테스트로
 
 ## 입력
 - slug: {{SLUG}}
-- 기술 설계: {{ARCHITECT_RESULT}} (formFields, resultLabels, 계산 명세)
-- 인터뷰 결과: {{INTERVIEW_RESULT}} (계산 기준, 엣지케이스)
+- 기술 설계: `.claude/pipeline/{{SLUG}}/03-architect.md` (formFields, resultLabels, 계산 명세)
+- 인터뷰 결과: `.claude/pipeline/{{SLUG}}/02-interview.md` (계산 기준, 엣지케이스)
 
 ## 읽어야 할 파일
 - `src/tools/{{SLUG}}/logic.ts` — 테스트 대상 함수
@@ -114,6 +114,9 @@ npm run test-logic {{SLUG}}
 원인 분석: [간단한 추론]
 오케스트레이터에 에스컬레이션합니다.
 ```
+
+## 파일 출력
+결과를 `.claude/pipeline/{{SLUG}}/08-validation.md` 에 추가(append)한다.
 
 ## 경계
 - logic.ts를 직접 수정하지 않는다

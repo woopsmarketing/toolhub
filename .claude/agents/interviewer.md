@@ -8,7 +8,7 @@
 
 ## 입력
 - 툴 이름: {{TOOL_NAME}}
-- Researcher가 전달한 키워드/검색의도 요약: {{RESEARCH_SUMMARY}}
+- 리서치 결과: `.claude/pipeline/{{SLUG}}/01-research.md` 를 읽어라
 
 ## 수행 절차
 
@@ -64,6 +64,9 @@
 ```
 
 사용자 답변을 받으면 "확정된 요구사항"에 병합하고 Architect Agent에 전달한다.
+
+## 파일 출력
+결과를 `.claude/pipeline/{{SLUG}}/02-interview.md` 에 저장한다.
 
 ## 경계
 - 템플릿 종류를 결정하지 않는다 (Architect 담당)

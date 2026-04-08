@@ -8,8 +8,8 @@
 
 ## 입력
 - slug: {{SLUG}}
-- 기술 설계: {{ARCHITECT_RESULT}} (formFields, resultLabels, 계산 명세 포함)
-- 인터뷰 결과: {{INTERVIEW_RESULT}} (계산 기준, 한국 특수 조건)
+- 기술 설계: `.claude/pipeline/{{SLUG}}/03-architect.md` (formFields, resultLabels, 계산 명세 포함)
+- 인터뷰 결과: `.claude/pipeline/{{SLUG}}/02-interview.md` (계산 기준, 한국 특수 조건)
 
 ## 시그니처 규칙
 
@@ -90,6 +90,9 @@ export function process(
 ### 계산 근거 (한국 특수 기준이 있는 경우)
 - [기준명]: [출처/연도]
 ```
+
+## 파일 출력
+결과를 `.claude/pipeline/{{SLUG}}/05-logic-code.md` 에 저장한다.
 
 ## 경계
 - SEO 콘텐츠를 작성하지 않는다
