@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { categories, categoryOrder } from "@/config/categories";
 import { getToolsByCategory } from "@/tools/registry";
@@ -31,6 +31,7 @@ export default async function CategoryPage({
   params: Promise<{ locale: string; category: string }>;
 }) {
   const { locale, category } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale });
 
   if (!categories[category]) notFound();
