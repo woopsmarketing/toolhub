@@ -175,5 +175,5 @@ export const config: ToolConfig = {
     ],
   },
 
-  relatedTools: [],
+  relatedTools: ["case-converter", "duplicate-line-remover", "text-reverser", "slug-generator"],
 };
