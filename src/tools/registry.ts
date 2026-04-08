@@ -28,95 +28,59 @@ import { config as loremIpsumGeneratorConfig } from "./lorem-ipsum-generator/con
 import { config as passwordGeneratorConfig } from "./password-generator/config";
 import { config as uuidGeneratorConfig } from "./uuid-generator/config";
 
-// Component imports
-import WordCounterTool from "./word-counter/component";
-import CaseConverterTool from "./case-converter/component";
-import DuplicateLineRemoverTool from "./duplicate-line-remover/component";
-import TextReverserTool from "./text-reverser/component";
-import SlugGeneratorTool from "./slug-generator/component";
-import TextDiffTool from "./text-diff/component";
-import JsonFormatterTool from "./json-formatter/component";
-import Base64EncoderTool from "./base64-encoder/component";
-import UrlEncoderTool from "./url-encoder/component";
-import HtmlEntityConverterTool from "./html-entity-converter/component";
-import JwtDecoderTool from "./jwt-decoder/component";
-import UnicodeConverterTool from "./unicode-converter/component";
-import RegexTesterTool from "./regex-tester/component";
-import MarkdownPreviewTool from "./markdown-preview/component";
-import PercentageCalculatorTool from "./percentage-calculator/component";
-import DateCalculatorTool from "./date-calculator/component";
-import LoanCalculatorTool from "./loan-calculator/component";
-import BmiCalculatorTool from "./bmi-calculator/component";
-import AgeCalculatorTool from "./age-calculator/component";
-import DiscountCalculatorTool from "./discount-calculator/component";
-import SalaryCalculatorTool from "./salary-calculator/component";
-import UnitConverterTool from "./unit-converter/component";
-import ColorConverterTool from "./color-converter/component";
-import LoremIpsumGeneratorTool from "./lorem-ipsum-generator/component";
-import PasswordGeneratorTool from "./password-generator/component";
-import UuidGeneratorTool from "./uuid-generator/component";
-
-interface ToolEntry {
-  config: ToolConfig;
-  Component: React.ComponentType;
-}
-
-// Central tool registry — add new tools here only (one place, forever)
-const toolEntries: ToolEntry[] = [
+// Central tool registry — config only (server-safe)
+// Components are loaded dynamically in page.tsx via import(`@/tools/${slug}/component`)
+const tools: ToolConfig[] = [
   // Text
-  { config: wordCounterConfig, Component: WordCounterTool },
-  { config: caseConverterConfig, Component: CaseConverterTool },
-  { config: duplicateLineRemoverConfig, Component: DuplicateLineRemoverTool },
-  { config: textReverserConfig, Component: TextReverserTool },
-  { config: slugGeneratorConfig, Component: SlugGeneratorTool },
-  { config: textDiffConfig, Component: TextDiffTool },
+  wordCounterConfig,
+  caseConverterConfig,
+  duplicateLineRemoverConfig,
+  textReverserConfig,
+  slugGeneratorConfig,
+  textDiffConfig,
   // Developer
-  { config: jsonFormatterConfig, Component: JsonFormatterTool },
-  { config: base64EncoderConfig, Component: Base64EncoderTool },
-  { config: urlEncoderConfig, Component: UrlEncoderTool },
-  { config: htmlEntityConverterConfig, Component: HtmlEntityConverterTool },
-  { config: jwtDecoderConfig, Component: JwtDecoderTool },
-  { config: unicodeConverterConfig, Component: UnicodeConverterTool },
-  { config: regexTesterConfig, Component: RegexTesterTool },
-  { config: markdownPreviewConfig, Component: MarkdownPreviewTool },
+  jsonFormatterConfig,
+  base64EncoderConfig,
+  urlEncoderConfig,
+  htmlEntityConverterConfig,
+  jwtDecoderConfig,
+  unicodeConverterConfig,
+  regexTesterConfig,
+  markdownPreviewConfig,
   // Calculator
-  { config: percentageCalculatorConfig, Component: PercentageCalculatorTool },
-  { config: dateCalculatorConfig, Component: DateCalculatorTool },
-  { config: loanCalculatorConfig, Component: LoanCalculatorTool },
-  { config: bmiCalculatorConfig, Component: BmiCalculatorTool },
-  { config: ageCalculatorConfig, Component: AgeCalculatorTool },
-  { config: discountCalculatorConfig, Component: DiscountCalculatorTool },
-  { config: salaryCalculatorConfig, Component: SalaryCalculatorTool },
+  percentageCalculatorConfig,
+  dateCalculatorConfig,
+  loanCalculatorConfig,
+  bmiCalculatorConfig,
+  ageCalculatorConfig,
+  discountCalculatorConfig,
+  salaryCalculatorConfig,
   // Converter
-  { config: unitConverterConfig, Component: UnitConverterTool },
-  { config: colorConverterConfig, Component: ColorConverterTool },
+  unitConverterConfig,
+  colorConverterConfig,
   // Generator
-  { config: loremIpsumGeneratorConfig, Component: LoremIpsumGeneratorTool },
-  { config: passwordGeneratorConfig, Component: PasswordGeneratorTool },
-  { config: uuidGeneratorConfig, Component: UuidGeneratorTool },
+  loremIpsumGeneratorConfig,
+  passwordGeneratorConfig,
+  uuidGeneratorConfig,
 ];
 
 export function getAllTools(): ToolConfig[] {
-  return toolEntries.map((e) => e.config);
+  return tools;
 }
 
 export function getToolBySlug(slug: string): ToolConfig | undefined {
-  return toolEntries.find((e) => e.config.slug === slug)?.config;
-}
-
-export function getToolComponent(slug: string): React.ComponentType | undefined {
-  return toolEntries.find((e) => e.config.slug === slug)?.Component;
+  return tools.find((t) => t.slug === slug);
 }
 
 export function getToolsByCategory(category: string): ToolConfig[] {
-  return toolEntries.filter((e) => e.config.category === category).map((e) => e.config);
+  return tools.filter((t) => t.category === category);
 }
 
 export function getAvailableCategories(): string[] {
-  const cats = new Set(toolEntries.map((e) => e.config.category));
+  const cats = new Set(tools.map((t) => t.category));
   return Array.from(cats);
 }
 
 export function getToolCount(): number {
-  return toolEntries.length;
+  return tools.length;
 }

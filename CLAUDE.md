@@ -41,17 +41,17 @@ src/tools/<slug>/logic.ts
 src/tools/<slug>/component.tsx
 ```
 
-### 2. registry.ts 한 곳만 수정
+### 2. registry.ts에 config import 추가
 
 ```ts
 // config import 추가
 import { config as savingsCalculatorConfig } from "./savings-calculator/config";
-// component import 추가
-import SavingsCalculatorTool from "./savings-calculator/component";
 
-// toolEntries 배열에 추가
-{ config: savingsCalculatorConfig, Component: SavingsCalculatorTool },
+// tools 배열에 추가
+savingsCalculatorConfig,
 ```
+
+component는 page.tsx가 `import(`@/tools/${slug}/component`)` 로 자동 로드한다.
 
 **page.tsx는 절대 수정하지 않는다. 영원히.**
 

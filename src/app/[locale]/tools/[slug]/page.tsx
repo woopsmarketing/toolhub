@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getToolBySlug, getToolComponent, getAllTools } from "@/tools/registry";
+import { getToolBySlug, getAllTools } from "@/tools/registry";
 import { generateToolMetadata, generateFaqJsonLd, generateWebAppJsonLd, generateBreadcrumbJsonLd } from "@/lib/seo";
 import ToolPageLayout from "@/components/tools/ToolPageLayout";
 
@@ -27,8 +27,15 @@ export default async function ToolPage({
   const tool = getToolBySlug(slug);
   if (!tool) notFound();
 
-  const ToolComponent = getToolComponent(slug);
-  if (!ToolComponent) notFound();
+  // Dynamic import: loads the "use client" component at render time
+  // This avoids importing client components in the server module graph
+  let ToolComponent: React.ComponentType;
+  try {
+    const mod = await import(`@/tools/${slug}/component`);
+    ToolComponent = mod.default;
+  } catch {
+    notFound();
+  }
 
   const faqJsonLd = generateFaqJsonLd(tool, locale);
   const webAppJsonLd = generateWebAppJsonLd(tool, locale);
