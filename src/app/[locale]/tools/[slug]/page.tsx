@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import { getToolBySlug, getAllTools } from "@/tools/registry";
-import ToolPageLayout from "@/components/tools/ToolPageLayout";
 import ToolLoader from "@/components/tools/ToolLoader";
 
 export async function generateStaticParams() {
@@ -16,9 +15,14 @@ export default async function ToolPage({
   const tool = getToolBySlug(slug);
   if (!tool) notFound();
 
+  const seo = tool.seo[locale] || tool.seo["ko"];
+
   return (
-    <ToolPageLayout tool={tool}>
+    <div style={{ padding: "40px" }}>
+      <h1>{seo.title}</h1>
+      <p>{seo.description}</p>
+      <hr />
       <ToolLoader slug={slug} />
-    </ToolPageLayout>
+    </div>
   );
 }
