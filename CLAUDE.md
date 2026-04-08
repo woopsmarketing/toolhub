@@ -41,19 +41,21 @@ src/tools/<slug>/logic.ts
 src/tools/<slug>/component.tsx
 ```
 
-### 2. registry.ts에 config import 추가
+### 2. registry.ts에 config 등록
 
 ```ts
-// config import 추가
 import { config as savingsCalculatorConfig } from "./savings-calculator/config";
-
 // tools 배열에 추가
 savingsCalculatorConfig,
 ```
 
-component는 page.tsx가 `import(`@/tools/${slug}/component`)` 로 자동 로드한다.
+### 3. ToolLoader.tsx에 dynamic import 추가
 
-**page.tsx는 절대 수정하지 않는다. 영원히.**
+```ts
+"savings-calculator": dynamic(() => import("@/tools/savings-calculator/component")),
+```
+
+**page.tsx는 절대 수정하지 않는다.**
 
 ---
 

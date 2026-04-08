@@ -13,7 +13,8 @@ component.tsx를 생성하고 registry.ts에 툴을 등록한다.
 
 ## 읽어야 할 파일
 - `CLAUDE.md` — 등록 규칙 확인
-- `src/tools/registry.ts` — 현재 구조 파악 (어디에 삽입할지)
+- `src/tools/registry.ts` — config 등록 위치 파악
+- `src/components/tools/ToolLoader.tsx` — dynamic import 추가 위치 파악
 
 ## 수행 절차
 
@@ -64,34 +65,34 @@ export default function {{PascalCaseSlug}}Tool() {
 
 PascalCase 변환 규칙: `salary-calculator` → `SalaryCalculator`
 
-### 2단계: registry.ts 수정
+### 2단계: registry.ts 수정 (config 전용)
 
-`src/tools/registry.ts`를 읽고, 해당 category 섹션을 찾아 3곳에 추가:
+`src/tools/registry.ts`를 읽고, 2곳에 추가:
 
 **위치 1 — Config imports (category 주석 그룹 하단):**
 ```typescript
 import { config as {{camelCaseSlug}}Config } from "./{{slug}}/config";
 ```
 
-**위치 2 — Component imports:**
+**위치 2 — tools 배열 (category 그룹 하단):**
 ```typescript
-import {{PascalCaseSlug}}Tool from "./{{slug}}/component";
-```
-
-**위치 3 — toolEntries 배열 (category 그룹 하단):**
-```typescript
-{ config: {{camelCaseSlug}}Config, Component: {{PascalCaseSlug}}Tool },
+{{camelCaseSlug}}Config,
 ```
 
 camelCase 변환 규칙: `salary-calculator` → `salaryCalculator`
 
-### 3단계: 검증
-수정 후 registry.ts를 다시 읽어 확인:
+### 3단계: ToolLoader.tsx 수정
+
+`src/components/tools/ToolLoader.tsx`의 `toolComponents` 맵에 추가:
+```typescript
+"{{slug}}": dynamic(() => import("@/tools/{{slug}}/component")),
 ```
-[ ] config import 존재하는가
-[ ] component import 존재하는가
-[ ] toolEntries에 entry 존재하는가
-[ ] page.tsx가 수정되지 않았는가 (page.tsx를 열어보지도 않는다)
+
+### 4단계: 검증
+```
+[ ] registry.ts config import + 배열 등록
+[ ] ToolLoader.tsx dynamic import 등록
+[ ] page.tsx 수정 없음
 ```
 
 ## 출력
@@ -103,10 +104,8 @@ camelCase 변환 규칙: `salary-calculator` → `salaryCalculator`
   ✔ src/tools/{{SLUG}}/component.tsx
 
 수정된 파일:
-  ✔ src/tools/registry.ts
-    - config import 추가: {{camelCaseSlug}}Config
-    - component import 추가: {{PascalCaseSlug}}Tool
-    - toolEntries 등록 완료
+  ✔ src/tools/registry.ts — config 등록
+  ✔ src/components/tools/ToolLoader.tsx — dynamic import 등록
 
 page.tsx: 수정 없음 ✔
 
