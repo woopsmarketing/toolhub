@@ -1,15 +1,61 @@
+import { notFound } from "next/navigation";
+import { getToolBySlug, getAllTools } from "@/tools/registry";
+import { generateToolMetadata, generateFaqJsonLd, generateWebAppJsonLd, generateBreadcrumbJsonLd } from "@/lib/seo";
+import ToolPageLayout from "@/components/tools/ToolPageLayout";
+import ToolLoader from "@/components/tools/ToolLoader";
+
+export async function generateStaticParams() {
+  return getAllTools().map((tool) => ({ slug: tool.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}) {
+  const { locale, slug } = await params;
+  const tool = getToolBySlug(slug);
+  if (!tool) return {};
+  return generateToolMetadata(tool, locale);
+}
+
 export default async function ToolPage({
   params,
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
+  const tool = getToolBySlug(slug);
+  if (!tool) notFound();
+
+  const faqJsonLd = generateFaqJsonLd(tool, locale);
+  const webAppJsonLd = generateWebAppJsonLd(tool, locale);
+  const seo = tool.seo[locale] || tool.seo["ko"];
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd([
+    { name: "Home", url: `/${locale}` },
+    { name: tool.category, url: `/${locale}/categories/${tool.category}` },
+    { name: seo.title, url: `/${locale}/tools/${tool.slug}` },
+  ]);
 
   return (
-    <div>
-      <h1>DEBUG TEST</h1>
-      <p>Slug: {slug}</p>
-      <p>Locale: {locale}</p>
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
+      <ToolPageLayout tool={tool}>
+        <ToolLoader slug={slug} />
+      </ToolPageLayout>
+    </>
   );
 }

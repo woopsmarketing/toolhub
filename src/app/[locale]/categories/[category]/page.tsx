@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { categories, categoryOrder } from "@/config/categories";
@@ -31,8 +30,8 @@ export default async function CategoryPage({
 }: {
   params: Promise<{ locale: string; category: string }>;
 }) {
-  const { category } = await params;
-  const t = useTranslations();
+  const { locale, category } = await params;
+  const t = await getTranslations({ locale });
 
   if (!categories[category]) notFound();
 
@@ -82,7 +81,7 @@ export default async function CategoryPage({
       {tools.length > 0 ? (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {tools.map((tool) => {
-            const seo = tool.seo["ko"];
+            const seo = tool.seo[locale] || tool.seo["ko"];
             return (
               <Link
                 key={tool.slug}
