@@ -10,14 +10,10 @@
 //
 // 만약 빌드 시 import 오류 발생하면 아래 "대안 import" 주석 참고.
 
-import md5 from "js-md5";
-// 대안: import { md5 } from "js-md5";
-import sha1 from "js-sha1";
-// 대안: import { sha1 } from "js-sha1";
+import { md5 } from "js-md5";
+import { sha1 } from "js-sha1";
 import { sha256 } from "js-sha256";
-// 대안: import sha256 from "js-sha256";
 import { sha384, sha512 } from "js-sha512";
-// 대안: import sha512Default from "js-sha512"; const { sha384, sha512 } = sha512Default;
 
 export function process(input: string): Record<string, string | number> {
   if (!input) {
