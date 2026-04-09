@@ -2,28 +2,26 @@
 
 type Row = string[];
 
-const OUTPUT_KEY = "변환 결과";
-
-export function process(input: string): Record<string, string | number> {
-  if (input == null) return { [OUTPUT_KEY]: "" };
+export function process(input: string): string {
+  if (input == null) return "";
 
   // BOM 제거
   const stripped = input.replace(/^\uFEFF/, "");
   const trimmed = stripped.trim();
 
   if (trimmed === "") {
-    return { [OUTPUT_KEY]: "" };
+    return "";
   }
 
   const first = trimmed[0];
   try {
     if (first === "[" || first === "{") {
-      return { [OUTPUT_KEY]: jsonToCsv(trimmed) };
+      return jsonToCsv(trimmed);
     }
-    return { [OUTPUT_KEY]: csvToJson(stripped) };
+    return csvToJson(stripped);
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
-    return { [OUTPUT_KEY]: `// 오류: ${msg}` };
+    return `// 오류: ${msg}`;
   }
 }
 

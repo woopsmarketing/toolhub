@@ -15,9 +15,9 @@ import { sha1 } from "js-sha1";
 import { sha256 } from "js-sha256";
 import { sha384, sha512 } from "js-sha512";
 
-export function process(input: string): Record<string, string | number> {
+export function process(input: string): string {
   if (!input) {
-    return { "해시 결과": "" };
+    return "";
   }
 
   const lines = [
@@ -37,5 +37,5 @@ export function process(input: string): Record<string, string | number> {
     sha512(input),
   ];
 
-  return { "해시 결과": lines.join("\n") };
+  return lines.join("\n");
 }
