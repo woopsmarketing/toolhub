@@ -12,6 +12,7 @@ const toolComponents: Record<string, React.ComponentType> = {
   "text-reverser": dynamic(() => import("@/tools/text-reverser/component")),
   "slug-generator": dynamic(() => import("@/tools/slug-generator/component")),
   "text-diff": dynamic(() => import("@/tools/text-diff/component")),
+  "korean-typing-converter": dynamic(() => import("@/tools/korean-typing-converter/component")),
   // Developer
   "json-formatter": dynamic(() => import("@/tools/json-formatter/component")),
   "base64-encoder": dynamic(() => import("@/tools/base64-encoder/component")),
@@ -21,6 +22,7 @@ const toolComponents: Record<string, React.ComponentType> = {
   "unicode-converter": dynamic(() => import("@/tools/unicode-converter/component")),
   "regex-tester": dynamic(() => import("@/tools/regex-tester/component")),
   "markdown-preview": dynamic(() => import("@/tools/markdown-preview/component")),
+  "csv-json-converter": dynamic(() => import("@/tools/csv-json-converter/component")),
   // Calculator
   "percentage-calculator": dynamic(() => import("@/tools/percentage-calculator/component")),
   "date-calculator": dynamic(() => import("@/tools/date-calculator/component")),
@@ -36,6 +38,7 @@ const toolComponents: Record<string, React.ComponentType> = {
   "lorem-ipsum-generator": dynamic(() => import("@/tools/lorem-ipsum-generator/component")),
   "password-generator": dynamic(() => import("@/tools/password-generator/component")),
   "uuid-generator": dynamic(() => import("@/tools/uuid-generator/component")),
+  "hash-generator": dynamic(() => import("@/tools/hash-generator/component")),
 };
 
 export default function ToolLoader({ slug }: { slug: string }) {
