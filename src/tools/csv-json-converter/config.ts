@@ -18,7 +18,7 @@ export const config: ToolConfig = {
 
   seo: {
     ko: {
-      title: "CSV ↔ JSON 변환기",
+      title: "CSV JSON 변환기 - 온라인 양방향 자동 변환",
       description:
         "CSV와 JSON을 양방향으로 자동 감지해 변환하는 무료 온라인 도구입니다. 붙여넣기만 하면 즉시 변환되며, 모든 데이터는 브라우저에서만 처리되어 서버로 전송되지 않습니다. 한글과 UTF-8, RFC 4180 따옴표 이스케이프, 중첩 JSON 평면화까지 지원합니다.",
       keywords: [
@@ -32,7 +32,7 @@ export const config: ToolConfig = {
       ],
     },
     en: {
-      title: "CSV ↔ JSON Converter",
+      title: "CSV to JSON Converter - Free Online Bidirectional Tool",
       description:
         "Convert between CSV and JSON instantly with automatic direction detection. Free online tool that runs entirely in your browser — no uploads, no tracking. Supports RFC 4180 quoting, nested JSON flattening, and UTF-8 (including Korean) input.",
       keywords: [
