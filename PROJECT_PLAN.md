@@ -454,7 +454,7 @@ export function trackToolEvent(params: {
 
 > ⚠️ **Supabase 통합 PR 제거됨.** 다른 프로젝트와 DB 공유 충돌 회피. Phase 4.5 (전용 DB 분리) 이후 별도 PR로 추가 예정.
 
-### Phase 2 — 하네스/슬래시커맨드/서브에이전트 (2~3주) — **2.1~2.5 완료, 2.6~2.7 대기**
+### Phase 2 — 하네스/슬래시커맨드/서브에이전트 (2~3주) — **2.1~2.6 완료, 2.7 대기**
 
 | # | Task | 상태 |
 |---|------|------|
@@ -463,8 +463,18 @@ export function trackToolEvent(params: {
 | 2.3 | 6개 슬래시커맨드 정의 (`.claude/commands/*.md`) | ✅ (local-only, .gitignore) |
 | 2.4 | 파이프라인 흐름 문서화 | ✅ |
 | 2.5 | 첫 시범 툴 1개를 파이프라인으로 양산 (**whitespace-remover** 완료, commit `325b4a1`) | ✅ |
-| 2.6 | 파이프라인 피드백 → 에이전트 프롬프트 개선 | ⏳ 대기 (다음 시범 진행 후 회고 시) |
+| 2.6 | 파이프라인 피드백 → 에이전트 프롬프트 개선 (5개 작업 완료) | ✅ |
 | 2.7 | 시범 툴 3~5개 추가 양산 (다른 템플릿 검증 권장) | ⏳ 대기 |
+
+#### Phase 2.6 산출물 (2026-05-10)
+
+| 작업 | 산출물 | 효과 |
+|------|--------|------|
+| GATE 1 자동 통과 | `.claude/commands/new-tool.md` (`--review` 옵션 유지) | 양산 속도 ↑ — 파이프라인 신뢰 |
+| JSON-LD 자동 검증 | `scripts/audit-jsonld.ts` + npm script + CI 통합 | 사용자가 view-source 안 봐도 됨 |
+| OG image 빌드 시 prerender | `opengraph-image.tsx` `generateStaticParams` | 동적 → SSG, 매 요청 캐시 미스 X |
+| GATE 2 가이드 보강 | `.claude/agents/{report-writer,seo-auditor}.md` | "Enter 키 줄바꿈" 명시, JSON-LD 자동 검증 인용 |
+| `/draft-tool` 슬래시커맨드 | `.claude/commands/draft-tool.md` | 한 줄 설명 → YAML 초안 자동 생성 |
 
 > Phase 2 산출물 (`.claude/`)은 사용자 결정에 따라 **로컬 전용**으로 유지 — repo에 포함 X.
 

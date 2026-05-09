@@ -13,6 +13,7 @@
     "test:watch": "vitest",
     "validate": "tsx scripts/validate-tool.ts",
     "validate-tools": "tsx scripts/validate-tools.ts",
+    "audit:jsonld": "tsx scripts/audit-jsonld.ts",
     "test-logic": "tsx scripts/test-logic.ts",
     "sync-loader": "tsx scripts/sync-loader.ts",
     "generate:llms-txt": "tsx scripts/generate-llms-txt.ts"

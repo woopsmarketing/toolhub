@@ -1,12 +1,32 @@
 import { ImageResponse } from "next/og";
-import { getToolBySlug } from "@/tools/registry";
+import { getAllTools, getToolBySlug } from "@/tools/registry";
 import { categories } from "@/config/categories";
+import { routing } from "@/i18n/routing";
 import type { Locale } from "@/config/types";
 
 export const runtime = "nodejs";
 export const contentType = "image/png";
 export const size = { width: 1200, height: 630 };
 export const alt = "Toolhub";
+
+/**
+ * Build-time prerender for all tools × locales.
+ * 30 tools × 2 locales = 60 OG images. 매 요청 생성하지 않고 빌드 시 1회만 생성.
+ *
+ * 단점: 새 툴 추가 시 빌드 필요 (revalidate 필요시 추가).
+ */
+export function generateStaticParams() {
+  const tools = getAllTools().filter(
+    (t) => (t.status ?? "published") === "published",
+  );
+  return tools.flatMap((tool) =>
+    routing.locales.map((locale) => ({
+      locale,
+      category: tool.category,
+      slug: tool.slug,
+    })),
+  );
+}
 
 /**
  * Per-tool dynamic Open Graph image.
@@ -17,9 +37,9 @@ export const alt = "Toolhub";
 export default async function ToolOgImage({
   params,
 }: {
-  params: { locale: string; category: string; slug: string };
+  params: Promise<{ locale: string; category: string; slug: string }>;
 }) {
-  const { locale, slug, category } = params;
+  const { locale, slug, category } = await params;
   const tool = getToolBySlug(slug);
   const localeKey: Locale = locale === "en" ? "en" : "ko";
   const seo =

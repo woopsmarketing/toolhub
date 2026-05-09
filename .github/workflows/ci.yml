@@ -27,6 +27,9 @@ jobs:
       - name: Validate tools
         run: npm run validate-tools
 
+      - name: Audit JSON-LD
+        run: npm run audit:jsonld
+
       - name: Typecheck
         run: npm run typecheck
 

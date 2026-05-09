@@ -25,18 +25,21 @@ H1/meta/OG/canonical/robots/hreflang/JSON-LD 항목을 체크리스트 기반으
 ## 절차
 1. config 콘텐츠 품질 (CLAUDE.md §4 하한선) 재확인
 2. meta / OG / Twitter 태그 시뮬레이션 (lib/seo.ts 호출)
-3. JSON-LD 4종 생성 시뮬레이션 (lib/jsonld.ts 호출 — locale ko/en 양쪽)
+3. **`npm run audit:jsonld` 실행** — JSON-LD 5종 (per-tool) + 2종 (site-wide) 자동 검증.
+   PASS 이면 JSON-LD 섹션 통과 처리. FAIL 이면 출력 그대로 보고서에 첨부.
 4. canonical / hreflang / sitemap entry / robots.ts 정합성 확인
 5. 보고서 작성 후 `docs/reviews/<slug>-seo-<date>.md` 저장
 
 ## 검증 체크리스트
 - [ ] H1 1개만 (ToolHeader 가 H1 단일 출력)
 - [ ] meta description ko/en 130~160자
-- [ ] OG image 정의됨 (기본 fallback 또는 툴별)
+- [ ] OG image 정의됨 (per-slug `opengraph-image.tsx` 자동 생성, 빌드 시 정적 prerender)
 - [ ] canonical URL 이 신규 패턴 `/[locale]/tools/[category]/[slug]`
-- [ ] robots.ts 가 신규 URL 인덱싱 허용
+- [ ] robots.ts 가 신규 URL 인덱싱 허용 + AI bot 명시 allow 14개 포함
 - [ ] hreflang ko ↔ en 쌍 존재
-- [ ] JSON-LD 4종 (WebApp/Breadcrumb/FAQ/HowTo) 모두 직렬화 성공
+- [ ] **`npm run audit:jsonld` PASS** — JSON-LD 5종 (WebApp/Breadcrumb/FAQ+speakable/HowTo/TechArticle) + Organization/WebSite 자동 검증
+- [ ] llms.txt + llms-full.txt 에 신규 슬러그 포함 (prebuild 훅 자동 갱신)
+- [ ] /tools.json 카탈로그에 신규 슬러그 포함
 
 ## 출력 형식
 docs/AGENT_WORKFLOW.md §8 긴 결과 형식 (외부 보고서 파일 + 짧은 요약 메시지).
