@@ -3,7 +3,7 @@ import { type ToolConfig } from "@/config/types";
 export const config: ToolConfig = {
   slug: "base64-encoder",
   category: "developer",
-  template: "TextToText",
+  template: "text-to-text",
   processingType: "client",
   icon: "Binary",
 
@@ -163,6 +163,10 @@ export const config: ToolConfig = {
       {
         q: "What does the '=' sign at the end of Base64 mean?",
         a: "Base64 processes data in 3-byte groups. If the input length is not a multiple of 3, padding '=' characters are added to fill the gap. You may see 1 or 2 '=' signs at the end.",
+      },
+      {
+        q: "Can I encode Korean, Japanese, or emoji with this tool?",
+        a: "Yes. The tool uses UTF-8, so any Unicode characters — Korean, Japanese, Chinese, emoji — encode and decode correctly without data loss.",
       },
     ],
   },

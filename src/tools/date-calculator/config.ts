@@ -3,7 +3,7 @@ import { type ToolConfig } from "@/config/types";
 export const config: ToolConfig = {
   slug: "date-calculator",
   category: "calculator",
-  template: "FormToResult",
+  template: "form-to-result",
   processingType: "client",
   icon: "Calendar",
 
@@ -172,6 +172,10 @@ export const config: ToolConfig = {
       {
         q: "Are leap years handled correctly?",
         a: "Yes, leap years (February 29) are accurately accounted for in all calculations.",
+      },
+      {
+        q: "Can I enter the end date before the start date?",
+        a: "Yes. The result is shown as an absolute value, so you'll get the same day count regardless of which date comes first.",
       },
     ],
   },

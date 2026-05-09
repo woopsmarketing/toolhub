@@ -3,7 +3,7 @@ import { type ToolConfig } from "@/config/types";
 export const config: ToolConfig = {
   slug: "url-encoder",
   category: "developer",
-  template: "TextToText",
+  template: "text-to-text",
   processingType: "client",
   icon: "Link",
 
@@ -165,6 +165,10 @@ export const config: ToolConfig = {
       {
         q: "Is a space encoded as '%20' or '+'?",
         a: "encodeURIComponent encodes spaces as '%20'. Some older systems encode spaces as '+' in HTML form submissions. The modern web standard recommends '%20'.",
+      },
+      {
+        q: "Why does my Korean text turn into long '%XX' sequences?",
+        a: "Each non-ASCII character is converted to its UTF-8 bytes, and each byte becomes '%XX'. A Korean character takes 3 bytes, so it produces 9 characters like '%EA%B0%80'. This is normal and expected.",
       },
     ],
   },

@@ -3,7 +3,7 @@ import type { ToolConfig } from "@/config/types";
 export const config: ToolConfig = {
   slug: "salary-calculator",
   category: "calculator",
-  template: "FormToResult",
+  template: "form-to-result",
   processingType: "client",
   icon: "Wallet",
 

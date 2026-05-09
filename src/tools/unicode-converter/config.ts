@@ -3,7 +3,7 @@ import { type ToolConfig } from "@/config/types";
 export const config: ToolConfig = {
   slug: "unicode-converter",
   category: "developer",
-  template: "TextToText",
+  template: "text-to-text",
   processingType: "client",
   icon: "Globe",
 
@@ -165,6 +165,10 @@ export const config: ToolConfig = {
       {
         q: "Can emoji be converted to Unicode escapes?",
         a: "Yes. Emoji are supplementary characters above U+1F600. In JavaScript they are represented as surrogate pairs (two \\uXXXX sequences). For example, 😀 is \\uD83D\\uDE00.",
+      },
+      {
+        q: "Which programming languages accept \\uXXXX escapes?",
+        a: "Most modern languages support them, including Java, JavaScript, TypeScript, C#, Python, Go, and Swift. The exact syntax varies slightly between languages.",
       },
     ],
   },

@@ -15,6 +15,7 @@ import {
   Sparkles,
   Image,
   FileText,
+  Clock,
 } from "lucide-react";
 import { categories, categoryOrder } from "@/config/categories";
 import { getAllTools, getToolsByCategory, getToolCount } from "@/tools/registry";
@@ -24,9 +25,12 @@ const categoryIcons: Record<string, React.ReactNode> = {
   developer: <Code className="h-5 w-5" />,
   calculator: <Calculator className="h-5 w-5" />,
   converter: <ArrowLeftRight className="h-5 w-5" />,
-  generator: <Sparkles className="h-5 w-5" />,
   image: <Image className="h-5 w-5" />,
   pdf: <FileText className="h-5 w-5" />,
+  seo: <Search className="h-5 w-5" />,
+  security: <Shield className="h-5 w-5" />,
+  productivity: <Clock className="h-5 w-5" />,
+  ai: <Sparkles className="h-5 w-5" />,
 };
 
 export async function generateMetadata({
@@ -130,7 +134,7 @@ export default function HomePage() {
                     return (
                       <Link
                         key={tool.slug}
-                        href={`/tools/${tool.slug}`}
+                        href={`/tools/${tool.category}/${tool.slug}`}
                         className="group rounded-xl border border-border bg-card p-4 transition-all hover:border-primary/30 hover:shadow-md hover:shadow-primary/5"
                       >
                         <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">

@@ -3,7 +3,7 @@ import { type ToolConfig } from "@/config/types";
 export const config: ToolConfig = {
   slug: "slug-generator",
   category: "text",
-  template: "TextToText",
+  template: "text-to-text",
   processingType: "client",
   icon: "Link",
 

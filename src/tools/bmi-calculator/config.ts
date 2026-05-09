@@ -3,7 +3,7 @@ import { type ToolConfig } from "@/config/types";
 export const config: ToolConfig = {
   slug: "bmi-calculator",
   category: "calculator",
-  template: "FormToResult",
+  template: "form-to-result",
   processingType: "client",
   icon: "Heart",
 
@@ -174,6 +174,10 @@ export const config: ToolConfig = {
       {
         q: "Are BMI standards different for Asians?",
         a: "Some research suggests Asians face higher risks of diabetes and cardiovascular disease at lower BMI values. The Korean Society for the Study of Obesity defines overweight as BMI ≥23 and obese as BMI ≥25.",
+      },
+      {
+        q: "Is BMI accurate for children and teenagers?",
+        a: "No. The adult BMI ranges apply only to ages 18 and over. For children and adolescents, use age- and sex-specific BMI percentile charts instead.",
       },
     ],
   },

@@ -18,7 +18,7 @@ if (!slug) {
 const ROOT = path.resolve(import.meta.dirname, "..");
 const TOOL_DIR = path.join(ROOT, "src/tools", slug);
 const REGISTRY = path.join(ROOT, "src/tools/registry.ts");
-const PAGE = path.join(ROOT, "src/app/[locale]/tools/[slug]/page.tsx");
+const PAGE = path.join(ROOT, "src/app/[locale]/tools/[category]/[slug]/page.tsx");
 
 // ─── Output helpers ────────────────────────────────────────────────────────
 
@@ -150,11 +150,11 @@ if (config) {
   }
 }
 
-// ─── 4. 템플릿 계약 일치 (FormToResult) ────────────────────────────────────
+// ─── 4. 템플릿 계약 일치 (form-to-result) ────────────────────────────────
 
 section("4. 템플릿 계약");
 
-if (config?.template === "FormToResult") {
+if (config?.template === "form-to-result") {
   const logicContent = fs.readFileSync(logicPath, "utf-8");
   const fieldNames = (config.formFields ?? []).map((f) => f.name);
   const resultKeys = (config.resultLabels ?? []).map((r) => r.key);

@@ -2,8 +2,8 @@ import { type ToolConfig } from "@/config/types";
 
 export const config: ToolConfig = {
   slug: "hash-generator",
-  category: "generator",
-  template: "TextToText",
+  category: "security",
+  template: "text-to-text",
   processingType: "client",
   icon: "Hash",
 

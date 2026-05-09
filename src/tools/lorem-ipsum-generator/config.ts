@@ -3,7 +3,7 @@ import { type ToolConfig } from "@/config/types";
 export const config: ToolConfig = {
   slug: "lorem-ipsum-generator",
   category: "text",
-  template: "FormToResult",
+  template: "form-to-result",
   processingType: "client",
   icon: "FileText",
 

@@ -3,7 +3,7 @@ import { type ToolConfig } from "@/config/types";
 export const config: ToolConfig = {
   slug: "color-converter",
   category: "converter",
-  template: "TextToText",
+  template: "text-to-text",
   processingType: "client",
   icon: "Palette",
 

@@ -3,7 +3,7 @@ import { type ToolConfig } from "@/config/types";
 export const config: ToolConfig = {
   slug: "html-entity-converter",
   category: "developer",
-  template: "TextToText",
+  template: "text-to-text",
   processingType: "client",
   icon: "Code",
 
@@ -165,6 +165,10 @@ export const config: ToolConfig = {
       {
         q: "Do React or Vue need HTML entity escaping?",
         a: "React and Vue automatically escape output during rendering by default. However, when using dangerouslySetInnerHTML (React) or v-html (Vue), you must escape manually.",
+      },
+      {
+        q: "What is the difference between &amp; and &#38;?",
+        a: "&amp; is the named entity for '&', while &#38; is the numeric entity for the same character. Both render identically in HTML — use whichever your codebase prefers.",
       },
     ],
   },

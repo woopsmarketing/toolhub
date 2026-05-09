@@ -3,7 +3,7 @@ import { type ToolConfig } from "@/config/types";
 export const config: ToolConfig = {
   slug: "csv-json-converter",
   category: "developer",
-  template: "TextToText",
+  template: "text-to-text",
   processingType: "client",
   icon: "ArrowLeftRight",
 

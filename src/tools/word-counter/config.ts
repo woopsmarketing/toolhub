@@ -3,7 +3,7 @@ import { type ToolConfig } from "@/config/types";
 export const config: ToolConfig = {
   slug: "word-counter",
   category: "text",
-  template: "TextToText",
+  template: "text-to-text",
   processingType: "client",
   icon: "Type",
 
@@ -171,6 +171,14 @@ export const config: ToolConfig = {
       {
         q: "How is reading time calculated?",
         a: "We estimate based on an average reading speed of 200-250 words per minute. Actual reading speed may vary depending on content complexity.",
+      },
+      {
+        q: "Does it count Korean, Japanese, and Chinese characters?",
+        a: "Yes. CJK characters, emoji, and other Unicode text are counted accurately alongside Latin letters.",
+      },
+      {
+        q: "Is my text uploaded to your servers?",
+        a: "No. All counting happens locally in your browser. Nothing is sent over the network or stored anywhere.",
       },
     ],
   },

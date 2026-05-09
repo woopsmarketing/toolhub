@@ -3,7 +3,7 @@ import type { ToolConfig } from "@/config/types";
 export const config: ToolConfig = {
   slug: "korean-typing-converter",
   category: "text",
-  template: "TextToText",
+  template: "text-to-text",
   processingType: "client",
   icon: "Languages",
 

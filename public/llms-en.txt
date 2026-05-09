@@ -1,0 +1,49 @@
+# Toolhub — Free Online Tools
+
+> Free online tools for text, code, calculation, conversion, image, and PDF processing. All tools run entirely in your browser; your data is never sent to any server.
+
+## Tools
+
+### Text & Document
+
+- [Case Converter - Online Text Case Changer](https://toolhub.example/en/tools/text/case-converter): Convert text to uppercase, lowercase, title case, camelCase, snake_case, and kebab-case instantly. Free online case converter tool.
+- [Duplicate Line Remover - Online Duplicate Text Cleaner](https://toolhub.example/en/tools/text/duplicate-line-remover): Remove duplicate lines from text instantly. Free online tool to clean up lists, code, and data by eliminating repeated entries.
+- [Korean English Typing Converter | QWERTY to Hangul Fixer](https://toolhub.example/en/tools/text/korean-typing-converter): Free online Korean-English typing converter. Instantly fix typos like dksdud to 안녕 or 소둇.ㅜㄷㅅ to hello.net. Bidirectional conversion, one-click copy, no install required.
+- [Lorem Ipsum Generator - Online Placeholder Text Tool](https://toolhub.example/en/tools/text/lorem-ipsum-generator): Generate Lorem Ipsum placeholder text with any number of paragraphs instantly. Free online tool for web design, UI mockups, and print layout work.
+- [Online Word Counter](https://toolhub.example/en/tools/text/word-counter): Count characters, words, sentences, and bytes in real time. Free online character counter with reading time estimation.
+- [Text Diff Tool - Online Text Comparison](https://toolhub.example/en/tools/text/text-diff): Compare two texts line by line. Instantly see added (+) and removed (-) lines. Free online text diff checker.
+- [Text Reverser - Online String Reversal Tool](https://toolhub.example/en/tools/text/text-reverser): Reverse any text instantly. Free online tool to flip text backwards, reverse character order, or reverse line order.
+- [URL Slug Generator - Online Slug Creator Tool](https://toolhub.example/en/tools/text/slug-generator): Convert any text to a URL-friendly slug instantly. Automatically replaces spaces with hyphens, removes special characters, and lowercases text. Free online slug generator.
+
+### Developer
+
+- [Base64 Encoder & Decoder](https://toolhub.example/en/tools/developer/base64-encoder): Encode text to Base64 or decode Base64 back to plain text. Automatically detects Base64 input and shows both encode and decode results. Free online tool.
+- [CSV to JSON Converter - Free Online Bidirectional Tool](https://toolhub.example/en/tools/developer/csv-json-converter): Convert between CSV and JSON instantly with automatic direction detection. Free online tool that runs entirely in your browser — no uploads, no tracking. Supports RFC 4180 quoting, nested JSON flattening, and UTF-8 (including Korean) input.
+- [HTML Entity Converter](https://toolhub.example/en/tools/developer/html-entity-converter): Convert HTML special characters to entities (&amp;, &lt;, &gt;, etc.) or decode HTML entities back to plain text. Essential for XSS prevention and HTML content creation.
+- [JSON Formatter & Validator](https://toolhub.example/en/tools/developer/json-formatter): Format and validate JSON instantly. Pretty-print JSON with proper indentation and catch syntax errors in real time. Free online JSON formatter.
+- [JWT Decoder - Parse JWT Tokens](https://toolhub.example/en/tools/developer/jwt-decoder): Instantly decode and inspect the header and payload of any JWT (JSON Web Token). Check expiration time, user info, and claims from login tokens. Free online JWT decoder.
+- [Markdown Preview - Online Markdown to HTML Converter](https://toolhub.example/en/tools/developer/markdown-preview): Convert Markdown to HTML instantly. Supports headings, bold, italic, lists, code blocks, links, and more. Free online Markdown converter.
+- [Regex Tester - Online Regular Expression Tool](https://toolhub.example/en/tools/developer/regex-tester): Test regular expression patterns in real time. Find all matches with positions instantly. Free online regex tester.
+- [Unicode Converter - Text ↔ Unicode Escape Sequences](https://toolhub.example/en/tools/developer/unicode-converter): Convert text to Unicode escape sequences (\uXXXX) or decode Unicode escapes back to readable text. Find Unicode code points for Korean, emoji, and special characters. Free online tool.
+- [URL Encoder & Decoder](https://toolhub.example/en/tools/developer/url-encoder): Encode URLs with percent-encoding (%XX) or decode encoded URLs back to plain text. Safely use Korean, special characters, and spaces in URLs. Free online tool.
+
+### Calculator
+
+- [Age Calculator - Calculate Your Exact Age](https://toolhub.example/en/tools/calculator/age-calculator): Enter your birth date to instantly calculate your exact age, Korean age, days lived, and days until your next birthday. Free online age calculator.
+- [BMI Calculator - Body Mass Index Online](https://toolhub.example/en/tools/calculator/bmi-calculator): Enter your height and weight to instantly calculate your BMI. Check if you are underweight, normal, overweight, or obese with our free online BMI calculator.
+- [Date Calculator - Days Between Two Dates](https://toolhub.example/en/tools/calculator/date-calculator): Calculate the number of days, weeks, and months between two dates instantly. Free online date difference calculator for deadlines, anniversaries, and countdowns.
+- [Discount Calculator - Instant Sale Price Calculator](https://toolhub.example/en/tools/calculator/discount-calculator): Enter the original price and discount rate to instantly calculate the discount amount and final price. Free online discount calculator for shopping.
+- [Korea Salary Calculator - Take-Home Pay After Tax & Insurance](https://toolhub.example/en/tools/calculator/salary-calculator): Calculate your actual take-home pay in South Korea based on 2026 tax rates and social insurance premiums. See detailed deductions for National Pension, Health Insurance, Employment Insurance, and income tax, instantly and with no sign-up required.
+- [Loan Calculator - Monthly Payment & Total Interest](https://toolhub.example/en/tools/calculator/loan-calculator): Enter loan amount, interest rate, and term to instantly calculate monthly payments and total interest. Perfect for mortgages, personal loans, and auto loans.
+- [Percentage Calculator - Calculate Percent Online](https://toolhub.example/en/tools/calculator/percentage-calculator): Calculate percentages instantly. Find the percentage of a value, increase, or decrease. Free online percentage calculator for discounts, taxes, and growth rates.
+
+### Converter
+
+- [Color Code Converter - HEX, RGB, HSL](https://toolhub.example/en/tools/converter/color-converter): Instantly convert between HEX, RGB, and HSL color codes. Free online color converter for web designers and developers.
+- [Unit Converter - Length Unit Conversion Online](https://toolhub.example/en/tools/converter/unit-converter): Convert between kilometers, meters, centimeters, millimeters, miles, feet, and inches instantly. Free online length unit converter.
+
+### Security
+
+- [Hash Generator - MD5, SHA-1, SHA-256, SHA-384, SHA-512 Online](https://toolhub.example/en/tools/security/hash-generator): Free online hash generator that converts text into MD5, SHA-1, SHA-256, SHA-384, and SHA-512 hashes at once. All processing runs locally in your browser with no server upload — ideal for file checksums, API signatures, and blockchain hash verification.
+- [Password Generator - Create Strong Random Passwords](https://toolhub.example/en/tools/security/password-generator): Generate secure random passwords with uppercase letters, numbers, and symbols instantly. Customize length and character types with our free online password generator.
+- [UUID Generator - Online UUID v4 Generator](https://toolhub.example/en/tools/security/uuid-generator): Generate UUID v4 instantly. Create up to 50 UUIDs at once. Free online UUID generator tool.

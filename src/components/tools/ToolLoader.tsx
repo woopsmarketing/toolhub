@@ -2,6 +2,35 @@
 
 import dynamic from "next/dynamic";
 
+/**
+ * 템플릿 dynamic import 맵 (PR-4 의 9 템플릿).
+ *
+ * 현재 ToolLoader 는 slug → component 직매핑(`toolComponents`) 으로 동작하지만,
+ * Phase 2 이후 config-driven 라우팅으로 전환될 때 이 맵이 사용된다.
+ * 새 템플릿이 PR-4 에서 추가되면 본 맵도 함께 갱신해야 한다.
+ *
+ * Phase 2 직전(또는 시범 툴 도입 시) 본 맵을 기반으로 toolComponents 를 자동 생성하고,
+ * 각 툴의 component.tsx 가 단순히 템플릿 이름만 지정하도록 마이그레이션한다.
+ */
+// 각 템플릿은 서로 다른 props 시그니처(일부는 generic)를 가지므로,
+// 본 맵에서는 통합 타입을 강제하지 않는다. 호출부에서 적절히 typing 한다.
+// (Phase 2 config-driven 라우팅 시점에 ToolConfig.template 으로 dispatch 됨.)
+type TemplateComponent = React.ComponentType<Record<string, unknown>>;
+
+export const templateMap = {
+  "text-to-text": dynamic(() => import("@/tools/templates/TextToText")) as unknown as TemplateComponent,
+  "form-to-result": dynamic(() => import("@/tools/templates/FormToResult")) as unknown as TemplateComponent,
+  "live-preview": dynamic(() => import("@/tools/templates/LivePreview")) as unknown as TemplateComponent,
+  "multi-input": dynamic(() => import("@/tools/templates/MultiInput")) as unknown as TemplateComponent,
+  "form-to-visual": dynamic(() => import("@/tools/templates/FormToVisual")) as unknown as TemplateComponent,
+  realtime: dynamic(() => import("@/tools/templates/Realtime")) as unknown as TemplateComponent,
+  workspace: dynamic(() => import("@/tools/templates/Workspace")) as unknown as TemplateComponent,
+  "file-processor": dynamic(() => import("@/tools/templates/FileProcessor")) as unknown as TemplateComponent,
+  "image-editor": dynamic(() => import("@/tools/templates/ImageEditor")) as unknown as TemplateComponent,
+} satisfies Record<string, TemplateComponent>;
+
+export type TemplateName = keyof typeof templateMap;
+
 // Static map: slug → lazy-loaded component
 // New tool 추가 시 이 파일에 한 줄 추가
 const toolComponents: Record<string, React.ComponentType> = {

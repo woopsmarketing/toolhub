@@ -2,8 +2,8 @@ import { type ToolConfig } from "@/config/types";
 
 export const config: ToolConfig = {
   slug: "uuid-generator",
-  category: "generator",
-  template: "FormToResult",
+  category: "security",
+  template: "form-to-result",
   processingType: "client",
   icon: "Fingerprint",
 

@@ -2,8 +2,8 @@ import { type ToolConfig } from "@/config/types";
 
 export const config: ToolConfig = {
   slug: "password-generator",
-  category: "generator",
-  template: "FormToResult",
+  category: "security",
+  template: "form-to-result",
   processingType: "client",
   icon: "Lock",
 
@@ -196,6 +196,10 @@ export const config: ToolConfig = {
       {
         q: "How often should I change my password?",
         a: "Security experts now recommend that if you use strong, unique passwords, you don't need to change them regularly. However, change immediately if you suspect a data breach.",
+      },
+      {
+        q: "Is a password without symbols still secure?",
+        a: "It can be, if it's long enough. A 20-character password using only letters and numbers is very strong, but adding symbols increases the possible combinations and makes brute-force attacks even harder.",
       },
     ],
   },

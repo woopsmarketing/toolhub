@@ -3,7 +3,7 @@ import { type ToolConfig } from "@/config/types";
 export const config: ToolConfig = {
   slug: "age-calculator",
   category: "calculator",
-  template: "FormToResult",
+  template: "form-to-result",
   processingType: "client",
   icon: "Cake",
 
@@ -166,6 +166,10 @@ export const config: ToolConfig = {
       {
         q: "How is the next birthday countdown calculated?",
         a: "If your birthday has already passed this year, the count shows days until next year's birthday. If it hasn't passed yet, it shows days until this year's birthday.",
+      },
+      {
+        q: "Does it work for people born on February 29?",
+        a: "Yes. Leap-day birthdays are handled correctly — in non-leap years, the next birthday is treated as March 1 for countdown purposes.",
       },
     ],
   },

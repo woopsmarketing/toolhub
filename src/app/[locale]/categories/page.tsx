@@ -11,6 +11,9 @@ import {
   Sparkles,
   Image,
   FileText,
+  Search,
+  Shield,
+  Clock,
 } from "lucide-react";
 
 const categoryIcons: Record<string, React.ReactNode> = {
@@ -18,9 +21,12 @@ const categoryIcons: Record<string, React.ReactNode> = {
   developer: <Code className="h-6 w-6" />,
   calculator: <Calculator className="h-6 w-6" />,
   converter: <ArrowLeftRight className="h-6 w-6" />,
-  generator: <Sparkles className="h-6 w-6" />,
   image: <Image className="h-6 w-6" />,
   pdf: <FileText className="h-6 w-6" />,
+  seo: <Search className="h-6 w-6" />,
+  security: <Shield className="h-6 w-6" />,
+  productivity: <Clock className="h-6 w-6" />,
+  ai: <Sparkles className="h-6 w-6" />,
 };
 
 export async function generateMetadata({

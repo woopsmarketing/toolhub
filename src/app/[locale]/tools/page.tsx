@@ -61,7 +61,7 @@ export default function AllToolsPage() {
                   return (
                     <Link
                       key={tool.slug}
-                      href={`/tools/${tool.slug}`}
+                      href={`/tools/${tool.category}/${tool.slug}`}
                       className="group rounded-xl border border-border bg-card p-4 transition-all hover:border-primary/30 hover:shadow-md"
                     >
                       <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">

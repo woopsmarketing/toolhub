@@ -13,7 +13,7 @@ const unitOptions = [
 export const config: ToolConfig = {
   slug: "unit-converter",
   category: "converter",
-  template: "FormToResult",
+  template: "form-to-result",
   processingType: "client",
   icon: "ArrowLeftRight",
 
@@ -187,6 +187,10 @@ export const config: ToolConfig = {
       {
         q: "How many centimeters is 1 foot?",
         a: "1 foot is exactly 30.48 centimeters.",
+      },
+      {
+        q: "Are weight, temperature, or area units supported?",
+        a: "Not yet. This converter currently handles length units only. Other unit categories will be added in future updates.",
       },
     ],
   },

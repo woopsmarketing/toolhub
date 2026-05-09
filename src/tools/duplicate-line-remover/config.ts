@@ -3,7 +3,7 @@ import { type ToolConfig } from "@/config/types";
 export const config: ToolConfig = {
   slug: "duplicate-line-remover",
   category: "text",
-  template: "TextToText",
+  template: "text-to-text",
   processingType: "client",
   icon: "ListFilter",
 

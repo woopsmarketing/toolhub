@@ -16,16 +16,16 @@ export function generateToolMetadata(
     description,
     keywords: seo.keywords,
     alternates: {
-      canonical: `${BASE_URL}/${locale}/tools/${tool.slug}`,
+      canonical: `${BASE_URL}/${locale}/tools/${tool.category}/${tool.slug}`,
       languages: {
-        ko: `${BASE_URL}/ko/tools/${tool.slug}`,
-        en: `${BASE_URL}/en/tools/${tool.slug}`,
+        ko: `${BASE_URL}/ko/tools/${tool.category}/${tool.slug}`,
+        en: `${BASE_URL}/en/tools/${tool.category}/${tool.slug}`,
       },
     },
     openGraph: {
       title,
       description,
-      url: `${BASE_URL}/${locale}/tools/${tool.slug}`,
+      url: `${BASE_URL}/${locale}/tools/${tool.category}/${tool.slug}`,
       siteName: "Toolhub",
       type: "website",
       locale: locale === "ko" ? "ko_KR" : "en_US",
@@ -70,7 +70,7 @@ export function generateWebAppJsonLd(
     "@type": "WebApplication",
     name: seo.title,
     description: seo.description,
-    url: `${BASE_URL}/${locale}/tools/${tool.slug}`,
+    url: `${BASE_URL}/${locale}/tools/${tool.category}/${tool.slug}`,
     applicationCategory: "UtilityApplication",
     operatingSystem: "All",
     offers: {

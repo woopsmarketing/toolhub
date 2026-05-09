@@ -3,7 +3,7 @@ import { type ToolConfig } from "@/config/types";
 export const config: ToolConfig = {
   slug: "percentage-calculator",
   category: "calculator",
-  template: "FormToResult",
+  template: "form-to-result",
   processingType: "client",
   icon: "Percent",
 
@@ -173,6 +173,10 @@ export const config: ToolConfig = {
       {
         q: "Can I calculate percentages with decimals?",
         a: "Yes, decimal percentages are calculated accurately. You can enter values like 3.5% or 12.75%.",
+      },
+      {
+        q: "Can I enter values greater than 100%?",
+        a: "Yes. Percentages above 100% are valid — for example, entering 150% returns 1.5× the base value, which is useful for growth and markup calculations.",
       },
     ],
   },

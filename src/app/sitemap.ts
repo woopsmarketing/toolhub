@@ -33,11 +33,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // Tool pages
+  // Tool pages (Phase 1 PR-12: 신규 URL 만 노출)
   tools.forEach((tool) => {
     locales.forEach((locale) => {
       entries.push({
-        url: `${BASE_URL}/${locale}/tools/${tool.slug}`,
+        url: `${BASE_URL}/${locale}/tools/${tool.category}/${tool.slug}`,
         lastModified: new Date(),
         changeFrequency: "monthly",
         priority: 0.9,

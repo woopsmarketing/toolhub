@@ -3,7 +3,7 @@ import { type ToolConfig } from "@/config/types";
 export const config: ToolConfig = {
   slug: "loan-calculator",
   category: "calculator",
-  template: "FormToResult",
+  template: "form-to-result",
   processingType: "client",
   icon: "Banknote",
 
@@ -183,6 +183,10 @@ export const config: ToolConfig = {
       {
         q: "Are fees and insurance included?",
         a: "This calculator only computes principal and interest. Origination fees, mortgage insurance, and other costs are not included. Consult your lender for full cost estimates.",
+      },
+      {
+        q: "Does this work for variable-rate loans?",
+        a: "No. The calculator assumes a fixed rate for the entire term. For adjustable-rate loans, recalculate at each rate change using the new rate and remaining balance.",
       },
     ],
   },

@@ -66,9 +66,12 @@ export default async function CategoryPage({
             {category === "developer" && "💻"}
             {category === "calculator" && "🔢"}
             {category === "converter" && "🔄"}
-            {category === "generator" && "✨"}
             {category === "image" && "🖼️"}
             {category === "pdf" && "📄"}
+            {category === "seo" && "🔍"}
+            {category === "security" && "🔒"}
+            {category === "productivity" && "⏱️"}
+            {category === "ai" && "✨"}
           </span>
         </div>
         <h1 className="text-3xl font-bold text-foreground">
@@ -86,7 +89,7 @@ export default async function CategoryPage({
             return (
               <Link
                 key={tool.slug}
-                href={`/tools/${tool.slug}`}
+                href={`/tools/${tool.category}/${tool.slug}`}
                 className="group rounded-xl border border-border bg-card p-5 transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
               >
                 <h2 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
