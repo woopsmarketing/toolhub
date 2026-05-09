@@ -19,6 +19,18 @@
     "shareTooltip": "Share this tool",
     "favoriteTooltip": "Add to favorites",
     "unfavoriteTooltip": "Remove from favorites",
+    "history": "History",
+    "aiUpgrade": "AI",
+    "aiComingSoon": "AI features coming soon",
+    "feedback": "Feedback",
+    "historyTitle": "Recent activity",
+    "historyEmpty": "No history yet",
+    "restore": "Restore",
+    "feedbackTitle": "How was this tool?",
+    "feedbackComment": "Additional comments (optional)",
+    "feedbackThanks": "Thanks for your feedback!",
+    "submit": "Submit",
+    "cancel": "Cancel",
     "download": "Download",
     "clear": "Clear",
     "process": "Process",
@@ -35,7 +47,22 @@
     "tools": "Tools",
     "categories": "Categories",
     "calculate": "Calculate",
-    "result": "Result"
+    "result": "Result",
+    "skipToContent": "Skip to main content",
+    "breadcrumbLabel": "Breadcrumb",
+    "primaryNavLabel": "Primary navigation",
+    "mobileNavLabel": "Mobile navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "siteFooter": "Site footer",
+    "languageSwitcher": "Language switcher",
+    "loading": "Loading...",
+    "loadingTool": "Loading tool...",
+    "errorTitle": "Something went wrong while running this tool",
+    "errorSubtitle": "Please try again in a moment. If the problem persists, share the error ID below for support.",
+    "errorRetry": "Retry",
+    "errorBackToTools": "Back to tools",
+    "errorReportId": "Error ID"
   },
   "categories": {
     "text": "Text & Document",
@@ -85,5 +112,11 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "copyright": "© {year} Toolhub. All rights reserved."
+  },
+  "themeToggle": {
+    "label": "Toggle theme",
+    "light": "Light mode",
+    "dark": "Dark mode",
+    "system": "System"
   }
 }

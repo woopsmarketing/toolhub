@@ -17,16 +17,16 @@ import {
 } from "lucide-react";
 
 const categoryIcons: Record<string, React.ReactNode> = {
-  text: <Type className="h-6 w-6" />,
-  developer: <Code className="h-6 w-6" />,
-  calculator: <Calculator className="h-6 w-6" />,
-  converter: <ArrowLeftRight className="h-6 w-6" />,
-  image: <Image className="h-6 w-6" />,
-  pdf: <FileText className="h-6 w-6" />,
-  seo: <Search className="h-6 w-6" />,
-  security: <Shield className="h-6 w-6" />,
-  productivity: <Clock className="h-6 w-6" />,
-  ai: <Sparkles className="h-6 w-6" />,
+  text: <Type className="h-6 w-6" aria-hidden="true" />,
+  developer: <Code className="h-6 w-6" aria-hidden="true" />,
+  calculator: <Calculator className="h-6 w-6" aria-hidden="true" />,
+  converter: <ArrowLeftRight className="h-6 w-6" aria-hidden="true" />,
+  image: <Image className="h-6 w-6" aria-hidden="true" />,
+  pdf: <FileText className="h-6 w-6" aria-hidden="true" />,
+  seo: <Search className="h-6 w-6" aria-hidden="true" />,
+  security: <Shield className="h-6 w-6" aria-hidden="true" />,
+  productivity: <Clock className="h-6 w-6" aria-hidden="true" />,
+  ai: <Sparkles className="h-6 w-6" aria-hidden="true" />,
 };
 
 export async function generateMetadata({

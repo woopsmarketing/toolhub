@@ -42,24 +42,43 @@ export default async function CategoryPage({
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       {/* Breadcrumb */}
-      <nav className="mb-6 flex items-center gap-1.5 text-sm text-muted-foreground">
-        <Link href="/" className="hover:text-primary transition-colors">
-          {t("common.home")}
-        </Link>
-        <ChevronRight className="h-3.5 w-3.5" />
-        <Link href="/categories" className="hover:text-primary transition-colors">
-          {t("common.categories")}
-        </Link>
-        <ChevronRight className="h-3.5 w-3.5" />
-        <span className="font-medium text-foreground">
-          {t(`categories.${category}`)}
-        </span>
+      <nav
+        aria-label={t("common.breadcrumbLabel")}
+        className="mb-6 text-sm text-muted-foreground"
+      >
+        <ol className="flex items-center gap-1.5">
+          <li className="flex items-center">
+            <Link href="/" className="hover:text-primary transition-colors">
+              {t("common.home")}
+            </Link>
+          </li>
+          <li aria-hidden="true" className="flex items-center">
+            <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
+          </li>
+          <li className="flex items-center">
+            <Link
+              href="/categories"
+              className="hover:text-primary transition-colors"
+            >
+              {t("common.categories")}
+            </Link>
+          </li>
+          <li aria-hidden="true" className="flex items-center">
+            <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
+          </li>
+          <li className="flex items-center">
+            <span aria-current="page" className="font-medium text-foreground">
+              {t(`categories.${category}`)}
+            </span>
+          </li>
+        </ol>
       </nav>
 
-      <div className="mb-8">
+      <header className="mb-8">
         <div
           className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl"
           style={{ backgroundColor: `${cat.color}15`, color: cat.color }}
+          aria-hidden="true"
         >
           <span className="text-xl">
             {category === "text" && "📝"}
@@ -80,7 +99,7 @@ export default async function CategoryPage({
         <p className="mt-2 text-lg text-muted-foreground">
           {t(`categories.${category}Desc`)}
         </p>
-      </div>
+      </header>
 
       {tools.length > 0 ? (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">

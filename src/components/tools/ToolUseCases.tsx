@@ -16,11 +16,16 @@ export default function ToolUseCases({ useCases, title }: ToolUseCasesProps) {
   if (!useCases || useCases.length === 0) return null;
 
   return (
-    <section className="mb-14">
-      <h2 className="mb-5 text-xl font-bold text-foreground">{title}</h2>
-      <div className="grid gap-4 sm:grid-cols-2">
+    <section aria-labelledby="tool-usecases-heading" className="mb-14">
+      <h2
+        id="tool-usecases-heading"
+        className="mb-5 text-xl font-bold text-foreground"
+      >
+        {title}
+      </h2>
+      <ul className="grid gap-4 sm:grid-cols-2 list-none p-0">
         {useCases.map((uc, i) => (
-          <div
+          <li
             key={i}
             className="rounded-xl border border-border bg-card p-5 transition-all hover:shadow-md"
           >
@@ -42,9 +47,9 @@ export default function ToolUseCases({ useCases, title }: ToolUseCasesProps) {
                 </div>
               </div>
             )}
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

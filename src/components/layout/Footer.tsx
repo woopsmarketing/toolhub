@@ -9,14 +9,17 @@ export default function Footer() {
   const t = useTranslations();
 
   return (
-    <footer className="border-t border-border bg-muted/50">
+    <footer
+      aria-label={t("common.siteFooter")}
+      className="border-t border-border bg-muted/50"
+    >
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="col-span-1 sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5">
+            <Link href="/" className="flex items-center gap-2.5" aria-label="Toolhub - 홈">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                <Wrench className="h-4 w-4 text-white" />
+                <Wrench className="h-4 w-4 text-white" aria-hidden="true" />
               </div>
               <span className="text-lg font-bold text-foreground">
                 Tool<span className="text-primary">hub</span>

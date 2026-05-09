@@ -1,66 +1,96 @@
 "use client";
 
 /**
- * ToolActions — 툴 페이지 액션 툴바.
+ * ToolActions — 툴 페이지 액션 툴바 (Phase 3.1, 7 버튼).
  *
- * Phase 1 PR-7b 실 구현. PR-3 의 stub 을 대체한다.
- *
- * 현재 노출 버튼 (3종):
- *  - Copy: `resultText` prop 이 주어졌을 때만 노출 (useClipboard)
- *  - Share: 항상 노출 (useShare → Web Share API + URL 폴백)
- *  - Favorite: 항상 노출 (useFavorite → LocalStorage 토글)
- *
- * 각 핸들러는 대응 hook 내부에서 trackToolEvent() 를 발화하므로
- * 본 컴포넌트는 별도 analytics 호출을 하지 않는다 (단일 진입점 원칙, CLAUDE.md §1.2).
- *
- * History/Download/AI/Feedback 는 템플릿 내부 또는 슬롯 컴포넌트가 담당하며,
- * 향후 Phase 3 에서 이 컴포넌트에 추가될 수 있다.
+ * Copy / Download / Share / Favorite / History / AI / Feedback.
+ * 모든 추적은 hook 또는 useToolEvent 단일 진입점으로 발화 (CLAUDE.md §1.2).
  */
 
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Copy, Check, Heart, Share2 } from "lucide-react";
+import {
+  Check, Copy, Download, Heart, History as HistoryIcon,
+  MessageSquare, Share2, Sparkles,
+} from "lucide-react";
 import { useClipboard } from "@/hooks/useClipboard";
 import { useShare } from "@/hooks/useShare";
 import { useFavorite } from "@/hooks/useFavorite";
+import { useDownload } from "@/hooks/useDownload";
+import { useToolHistory } from "@/hooks/useToolHistory";
+import { useToolEvent } from "@/hooks/useToolEvent";
+import { TOOL_EVENTS } from "@/lib/analytics";
+import ToolHistoryDrawer from "./ToolHistoryDrawer";
+import ToolFeedbackModal from "./ToolFeedbackModal";
 import { cn } from "@/lib/utils";
 
-export interface ToolActionsProps {
-  /** Tool slug — 즐겨찾기/공유/이벤트 스코프에 사용. */
-  toolSlug: string;
-  /**
-   * 현재 결과 텍스트. 주어지면 Copy 버튼이 노출된다.
-   * 템플릿 내부에서 별도 CopyButton 을 이미 노출하는 경우 생략 가능.
-   */
-  resultText?: string;
-  /** 렌더 위치. inline(기본)=툴 본문 옆, floating=화면 우하단 떠있음. */
-  variant?: "inline" | "floating";
+export interface ToolActionsDownloadable {
+  mime: string;
+  data: Blob | string;
+  filename: string;
 }
 
-const ICON_CLS = "h-3.5 w-3.5";
-const BTN_BASE =
-  "inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 disabled:cursor-not-allowed disabled:opacity-60";
-const BTN_IDLE =
-  "bg-white text-muted-foreground hover:bg-muted hover:text-foreground dark:bg-card";
+export interface ToolActionsProps {
+  toolSlug: string;
+  resultText?: string;
+  downloadable?: ToolActionsDownloadable;
+  variant?: "inline" | "floating";
+  enableHistory?: boolean;
+  /** AI 업그레이드 버튼 강제 표시 (env flag 와 OR). */
+  showAi?: boolean;
+}
+
+const ICON = "h-3.5 w-3.5";
+const BTN =
+  "inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 disabled:cursor-not-allowed disabled:opacity-60";
+const IDLE = "bg-card text-muted-foreground hover:bg-muted hover:text-foreground";
+const ACTIVE = "bg-primary text-primary-foreground hover:opacity-90";
 
 export default function ToolActions({
   toolSlug,
   resultText,
+  downloadable,
   variant = "inline",
+  enableHistory = false,
+  showAi,
 }: ToolActionsProps) {
   const t = useTranslations("common");
   const { copy, copied } = useClipboard();
   const { share } = useShare(toolSlug);
   const { isFavorite, toggle: toggleFavorite } = useFavorite(toolSlug);
+  const { download } = useDownload();
+  const { track } = useToolEvent(toolSlug);
+  const { history } = useToolHistory<unknown>(toolSlug);
 
-  const hasCopy = typeof resultText === "string" && resultText.length > 0;
+  const [historyOpen, setHistoryOpen] = useState(false);
+  const [feedbackOpen, setFeedbackOpen] = useState(false);
+  const [aiToast, setAiToast] = useState(false);
 
-  const handleCopy = async () => {
-    if (!hasCopy) return;
-    await copy(resultText as string, toolSlug);
+  useEffect(() => {
+    if (!aiToast) return;
+    const id = window.setTimeout(() => setAiToast(false), 1800);
+    return () => window.clearTimeout(id);
+  }, [aiToast]);
+
+  const hasResult = typeof resultText === "string" && resultText.length > 0;
+  const hasDownload = downloadable !== undefined || hasResult;
+  const aiEnabled =
+    showAi === true || process.env.NEXT_PUBLIC_FEATURE_AI_UPGRADE === "1";
+
+  const handleDownload = () => {
+    if (downloadable) {
+      const data = typeof downloadable.data === "string"
+        ? new Blob([downloadable.data], { type: downloadable.mime })
+        : downloadable.data;
+      download(data, downloadable.filename, toolSlug);
+    } else if (hasResult) {
+      download(resultText as string, `${toolSlug}.txt`, toolSlug);
+    }
   };
 
-  const handleShare = async () => {
-    await share();
+  const handleAi = () => {
+    track(TOOL_EVENTS.aiClicked, { cta_position: "toolbar" });
+    setAiToast(true);
   };
 
   const containerCls = cn(
@@ -71,63 +101,81 @@ export default function ToolActions({
   );
 
   return (
-    <div className={containerCls} role="toolbar" aria-label={t("siteName")}>
-      {hasCopy && (
-        <button
-          type="button"
-          onClick={handleCopy}
-          aria-label={t("copy")}
-          className={cn(
-            BTN_BASE,
-            copied
-              ? "border-green-300 bg-green-50 text-green-700"
-              : BTN_IDLE
-          )}
-        >
-          {copied ? (
-            <>
-              <Check className={ICON_CLS} aria-hidden="true" />
-              {t("copied")}
-            </>
-          ) : (
-            <>
-              <Copy className={ICON_CLS} aria-hidden="true" />
-              {t("copy")}
-            </>
-          )}
+    <>
+      <div className={containerCls} role="toolbar" aria-label={t("siteName")}>
+        {hasResult && (
+          <button type="button" onClick={() => copy(resultText as string, toolSlug)}
+            aria-label={t("copy")} className={cn(BTN, copied ? ACTIVE : IDLE)}>
+            {copied
+              ? <Check className={ICON} aria-hidden="true" />
+              : <Copy className={ICON} aria-hidden="true" />}
+            {copied ? t("copied") : t("copy")}
+          </button>
+        )}
+
+        {hasDownload && (
+          <button type="button" onClick={handleDownload}
+            aria-label={t("download")} className={cn(BTN, IDLE)}>
+            <Download className={ICON} aria-hidden="true" />
+            {t("download")}
+          </button>
+        )}
+
+        <button type="button" onClick={() => share()}
+          aria-label={t("shareTooltip")} title={t("shareTooltip")}
+          className={cn(BTN, IDLE)}>
+          <Share2 className={ICON} aria-hidden="true" />
+          {t("share")}
         </button>
+
+        <button type="button" onClick={toggleFavorite} aria-pressed={isFavorite}
+          aria-label={isFavorite ? t("unfavoriteTooltip") : t("favoriteTooltip")}
+          title={isFavorite ? t("unfavoriteTooltip") : t("favoriteTooltip")}
+          className={cn(BTN, isFavorite ? ACTIVE : IDLE)}>
+          <Heart className={cn(ICON, isFavorite && "fill-current")} aria-hidden="true" />
+          {isFavorite ? t("favorited") : t("favorite")}
+        </button>
+
+        {enableHistory && (
+          <button type="button" onClick={() => setHistoryOpen(true)}
+            aria-label={t("history")} aria-haspopup="dialog" className={cn(BTN, IDLE)}>
+            <HistoryIcon className={ICON} aria-hidden="true" />
+            {t("history")}
+            {history.length > 0 && (
+              <span className="ml-0.5 rounded-full bg-primary/10 px-1.5 py-0.5 text-[10px] font-semibold text-primary">
+                {history.length}
+              </span>
+            )}
+          </button>
+        )}
+
+        {aiEnabled && (
+          <button type="button" onClick={handleAi}
+            aria-label={t("aiUpgrade")} className={cn(BTN, IDLE)}>
+            <Sparkles className={ICON} aria-hidden="true" />
+            {t("aiUpgrade")}
+          </button>
+        )}
+
+        <button type="button" onClick={() => setFeedbackOpen(true)}
+          aria-label={t("feedback")} aria-haspopup="dialog" className={cn(BTN, IDLE)}>
+          <MessageSquare className={ICON} aria-hidden="true" />
+          {t("feedback")}
+        </button>
+      </div>
+
+      {aiToast && (
+        <div role="status" aria-live="polite"
+          className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-lg border border-border bg-card px-4 py-2 text-sm text-foreground shadow-lg">
+          {t("aiComingSoon")}
+        </div>
       )}
 
-      <button
-        type="button"
-        onClick={handleShare}
-        aria-label={t("shareTooltip")}
-        title={t("shareTooltip")}
-        className={cn(BTN_BASE, BTN_IDLE)}
-      >
-        <Share2 className={ICON_CLS} aria-hidden="true" />
-        {t("share")}
-      </button>
+      {enableHistory && (
+        <ToolHistoryDrawer open={historyOpen} onClose={() => setHistoryOpen(false)} toolSlug={toolSlug} />
+      )}
 
-      <button
-        type="button"
-        onClick={toggleFavorite}
-        aria-pressed={isFavorite}
-        aria-label={isFavorite ? t("unfavoriteTooltip") : t("favoriteTooltip")}
-        title={isFavorite ? t("unfavoriteTooltip") : t("favoriteTooltip")}
-        className={cn(
-          BTN_BASE,
-          isFavorite
-            ? "border-rose-300 bg-rose-50 text-rose-700"
-            : BTN_IDLE
-        )}
-      >
-        <Heart
-          className={cn(ICON_CLS, isFavorite && "fill-current")}
-          aria-hidden="true"
-        />
-        {isFavorite ? t("favorited") : t("favorite")}
-      </button>
-    </div>
+      <ToolFeedbackModal open={feedbackOpen} onClose={() => setFeedbackOpen(false)} toolSlug={toolSlug} />
+    </>
   );
 }

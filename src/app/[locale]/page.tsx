@@ -21,16 +21,16 @@ import { categories, categoryOrder } from "@/config/categories";
 import { getAllTools, getToolsByCategory, getToolCount } from "@/tools/registry";
 
 const categoryIcons: Record<string, React.ReactNode> = {
-  text: <Type className="h-5 w-5" />,
-  developer: <Code className="h-5 w-5" />,
-  calculator: <Calculator className="h-5 w-5" />,
-  converter: <ArrowLeftRight className="h-5 w-5" />,
-  image: <Image className="h-5 w-5" />,
-  pdf: <FileText className="h-5 w-5" />,
-  seo: <Search className="h-5 w-5" />,
-  security: <Shield className="h-5 w-5" />,
-  productivity: <Clock className="h-5 w-5" />,
-  ai: <Sparkles className="h-5 w-5" />,
+  text: <Type className="h-5 w-5" aria-hidden="true" />,
+  developer: <Code className="h-5 w-5" aria-hidden="true" />,
+  calculator: <Calculator className="h-5 w-5" aria-hidden="true" />,
+  converter: <ArrowLeftRight className="h-5 w-5" aria-hidden="true" />,
+  image: <Image className="h-5 w-5" aria-hidden="true" />,
+  pdf: <FileText className="h-5 w-5" aria-hidden="true" />,
+  seo: <Search className="h-5 w-5" aria-hidden="true" />,
+  security: <Shield className="h-5 w-5" aria-hidden="true" />,
+  productivity: <Clock className="h-5 w-5" aria-hidden="true" />,
+  ai: <Sparkles className="h-5 w-5" aria-hidden="true" />,
 };
 
 export async function generateMetadata({
@@ -77,9 +77,16 @@ export default function HomePage() {
           {/* Search */}
           <div className="mx-auto mt-10 max-w-xl">
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+              <label htmlFor="home-search" className="sr-only">
+                {t("common.search")}
+              </label>
+              <Search
+                className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground"
+                aria-hidden="true"
+              />
               <input
-                type="text"
+                id="home-search"
+                type="search"
                 placeholder={t("common.search")}
                 className="w-full rounded-2xl border border-border bg-white px-12 py-4 text-base shadow-lg shadow-primary/5 transition-all focus:border-primary focus:outline-none focus:shadow-primary/10"
               />
@@ -124,7 +131,7 @@ export default function HomePage() {
                     className="flex items-center gap-1 text-sm font-medium text-primary hover:underline"
                   >
                     {t("home.viewAll")}
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </div>
 
@@ -170,25 +177,25 @@ export default function HomePage() {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                icon: <DollarSign className="h-6 w-6" />,
+                icon: <DollarSign className="h-6 w-6" aria-hidden="true" />,
                 title: t("home.whyFree"),
                 desc: t("home.whyFreeDesc"),
                 color: "#10B981",
               },
               {
-                icon: <UserX className="h-6 w-6" />,
+                icon: <UserX className="h-6 w-6" aria-hidden="true" />,
                 title: t("home.whyNoSignup"),
                 desc: t("home.whyNoSignupDesc"),
                 color: "#8B5CF6",
               },
               {
-                icon: <Zap className="h-6 w-6" />,
+                icon: <Zap className="h-6 w-6" aria-hidden="true" />,
                 title: t("home.whyFast"),
                 desc: t("home.whyFastDesc"),
                 color: "#F59E0B",
               },
               {
-                icon: <Shield className="h-6 w-6" />,
+                icon: <Shield className="h-6 w-6" aria-hidden="true" />,
                 title: t("home.whySecure"),
                 desc: t("home.whySecureDesc"),
                 color: "#3B82F6",

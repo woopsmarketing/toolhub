@@ -63,32 +63,46 @@ export default function ToolPageLayout({ tool, children }: ToolPageLayoutProps) 
   const monetization = tool.monetization;
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
-      <ToolBreadcrumb
-        homeLabel={t("common.home")}
-        categoryLabel={t(`categories.${tool.category}`)}
-        category={tool.category}
-        toolTitle={seo.title}
-      />
-      <ToolHeader title={seo.title} description={seo.description} />
-      <ToolAdSlot enabled={monetization?.ads} placement="top" />
-      <ToolShell>
-        <ToolErrorBoundary toolSlug={tool.slug} locale={locale}>
-          {children}
-        </ToolErrorBoundary>
-        <ToolActions toolSlug={tool.slug} />
-      </ToolShell>
-      <ToolHowTo steps={howToUse} title={t("common.howToUse")} />
-      <ToolUseCases useCases={useCases} title={t("common.useCases")} />
-      <ToolFeatures features={features} title={t("common.features")} />
-      <ToolAffiliateCTA enabled={monetization?.affiliate} toolSlug={tool.slug} />
-      <ToolGuide guide={guide} />
-      <ToolFAQ items={faq} title={t("common.faq")} />
-      <ToolAiUpgradeSlot enabled={monetization?.aiCredits} toolSlug={tool.slug} />
-      <ToolProCTA enabled={monetization?.proCta} toolSlug={tool.slug} />
-      <ToolFeedback toolSlug={tool.slug} />
-      <RelatedTools items={relatedItems} title={t("common.relatedTools")} />
-      <ToolAdSlot enabled={monetization?.ads} placement="bottom" />
-    </div>
+    <>
+      {/* Skip-to-content link: visually hidden until focused. */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground focus:shadow-lg"
+      >
+        {t("common.skipToContent")}
+      </a>
+      <div
+        id="main-content"
+        tabIndex={-1}
+        className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8 focus:outline-none"
+      >
+        <ToolBreadcrumb
+          homeLabel={t("common.home")}
+          categoryLabel={t(`categories.${tool.category}`)}
+          category={tool.category}
+          toolTitle={seo.title}
+          ariaLabel={t("common.breadcrumbLabel")}
+        />
+        <ToolHeader title={seo.title} description={seo.description} />
+        <ToolAdSlot enabled={monetization?.ads} placement="top" />
+        <ToolShell>
+          <ToolErrorBoundary toolSlug={tool.slug} locale={locale}>
+            {children}
+          </ToolErrorBoundary>
+          <ToolActions toolSlug={tool.slug} />
+        </ToolShell>
+        <ToolHowTo steps={howToUse} title={t("common.howToUse")} />
+        <ToolUseCases useCases={useCases} title={t("common.useCases")} />
+        <ToolFeatures features={features} title={t("common.features")} />
+        <ToolAffiliateCTA enabled={monetization?.affiliate} toolSlug={tool.slug} />
+        <ToolGuide guide={guide} />
+        <ToolFAQ items={faq} title={t("common.faq")} />
+        <ToolAiUpgradeSlot enabled={monetization?.aiCredits} toolSlug={tool.slug} />
+        <ToolProCTA enabled={monetization?.proCta} toolSlug={tool.slug} />
+        <ToolFeedback toolSlug={tool.slug} />
+        <RelatedTools items={relatedItems} title={t("common.relatedTools")} />
+        <ToolAdSlot enabled={monetization?.ads} placement="bottom" />
+      </div>
+    </>
   );
 }

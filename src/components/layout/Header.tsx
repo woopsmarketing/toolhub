@@ -7,6 +7,7 @@ import { useLocale } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { Search, Menu, X, Globe, Wrench } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "./ThemeToggle";
 
 export default function Header() {
   const t = useTranslations("common");
@@ -21,13 +22,16 @@ export default function Header() {
     router.replace(pathname, { locale: next });
   };
 
+  const desktopSearchId = "header-search-desktop";
+  const mobileSearchId = "header-search-mobile";
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-white/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5">
+        <Link href="/" className="flex items-center gap-2.5" aria-label="Toolhub - 홈">
           <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary">
-            <Wrench className="h-5 w-5 text-white" />
+            <Wrench className="h-5 w-5 text-white" aria-hidden="true" />
           </div>
           <span className="text-xl font-bold text-foreground">
             Tool<span className="text-primary">hub</span>
@@ -37,9 +41,16 @@ export default function Header() {
         {/* Search - Desktop */}
         <div className="hidden flex-1 max-w-md mx-8 md:block">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <label htmlFor={desktopSearchId} className="sr-only">
+              {t("search")}
+            </label>
+            <Search
+              className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+              aria-hidden="true"
+            />
             <input
-              type="text"
+              id={desktopSearchId}
+              type="search"
               placeholder={t("search")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -49,7 +60,10 @@ export default function Header() {
         </div>
 
         {/* Nav */}
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav
+          aria-label={t("primaryNavLabel")}
+          className="hidden items-center gap-1 md:flex"
+        >
           <Link
             href="/tools"
             className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
@@ -63,35 +77,61 @@ export default function Header() {
             {t("categories")}
           </Link>
           <button
+            type="button"
             onClick={switchLocale}
+            aria-label={t("languageSwitcher")}
             className="ml-2 flex items-center gap-1.5 rounded-lg border border-border px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
           >
-            <Globe className="h-4 w-4" />
-            {locale === "ko" ? "EN" : "KO"}
+            <Globe className="h-4 w-4" aria-hidden="true" />
+            <span aria-hidden="true">{locale === "ko" ? "EN" : "KO"}</span>
           </button>
+          <div className="ml-2">
+            <ThemeToggle />
+          </div>
         </nav>
 
         {/* Mobile menu button */}
         <button
+          type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label={mobileMenuOpen ? t("closeMenu") : t("openMenu")}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-nav"
           className="md:hidden rounded-lg p-2 text-muted-foreground hover:bg-muted"
         >
-          {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {mobileMenuOpen ? (
+            <X className="h-5 w-5" aria-hidden="true" />
+          ) : (
+            <Menu className="h-5 w-5" aria-hidden="true" />
+          )}
         </button>
       </div>
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="border-t border-border bg-white px-4 py-4 md:hidden">
+        <div
+          id="mobile-nav"
+          className="border-t border-border bg-white px-4 py-4 md:hidden"
+        >
           <div className="relative mb-4">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <label htmlFor={mobileSearchId} className="sr-only">
+              {t("search")}
+            </label>
+            <Search
+              className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+              aria-hidden="true"
+            />
             <input
-              type="text"
+              id={mobileSearchId}
+              type="search"
               placeholder={t("search")}
               className="w-full rounded-xl border border-border bg-muted py-2.5 pl-10 pr-4 text-sm"
             />
           </div>
-          <div className="flex flex-col gap-1">
+          <nav
+            aria-label={t("mobileNavLabel")}
+            className="flex flex-col gap-1"
+          >
             <Link
               href="/tools"
               className="rounded-lg px-3 py-2.5 text-sm font-medium text-foreground hover:bg-muted"
@@ -107,13 +147,18 @@ export default function Header() {
               {t("categories")}
             </Link>
             <button
+              type="button"
               onClick={switchLocale}
+              aria-label={t("languageSwitcher")}
               className="flex items-center gap-1.5 rounded-lg px-3 py-2.5 text-sm font-medium text-foreground hover:bg-muted"
             >
-              <Globe className="h-4 w-4" />
-              {locale === "ko" ? "English" : "한국어"}
+              <Globe className="h-4 w-4" aria-hidden="true" />
+              <span>{locale === "ko" ? "English" : "한국어"}</span>
             </button>
-          </div>
+            <div className="px-3 py-2.5">
+              <ThemeToggle />
+            </div>
+          </nav>
         </div>
       )}
     </header>

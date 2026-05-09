@@ -35,7 +35,34 @@
     "favorited": "즐겨찾기됨",
     "shareTooltip": "이 도구 공유하기",
     "favoriteTooltip": "즐겨찾기에 추가",
-    "unfavoriteTooltip": "즐겨찾기에서 제거"
+    "unfavoriteTooltip": "즐겨찾기에서 제거",
+    "history": "히스토리",
+    "aiUpgrade": "AI 기능",
+    "aiComingSoon": "AI 기능 곧 출시",
+    "feedback": "피드백",
+    "historyTitle": "사용 기록",
+    "historyEmpty": "아직 기록이 없습니다",
+    "restore": "복원",
+    "feedbackTitle": "이 툴은 어땠나요?",
+    "feedbackComment": "추가 의견 (선택)",
+    "feedbackThanks": "소중한 의견 감사합니다!",
+    "submit": "제출",
+    "cancel": "취소",
+    "skipToContent": "본문 바로가기",
+    "breadcrumbLabel": "페이지 위치",
+    "primaryNavLabel": "주요 메뉴",
+    "mobileNavLabel": "모바일 메뉴",
+    "openMenu": "메뉴 열기",
+    "closeMenu": "메뉴 닫기",
+    "siteFooter": "사이트 푸터",
+    "languageSwitcher": "언어 전환",
+    "loading": "처리 중...",
+    "loadingTool": "툴을 불러오는 중...",
+    "errorTitle": "툴 실행 중 오류가 발생했습니다",
+    "errorSubtitle": "잠시 후 다시 시도해 주세요. 문제가 지속되면 오류 ID를 함께 알려주시면 도움이 됩니다.",
+    "errorRetry": "재시도",
+    "errorBackToTools": "툴 목록으로",
+    "errorReportId": "오류 ID"
   },
   "categories": {
     "text": "텍스트/문서",
@@ -85,5 +112,11 @@
     "privacy": "개인정보처리방침",
     "terms": "이용약관",
     "copyright": "© {year} Toolhub. All rights reserved."
+  },
+  "themeToggle": {
+    "label": "테마 전환",
+    "light": "라이트 모드",
+    "dark": "다크 모드",
+    "system": "시스템 설정"
   }
 }
