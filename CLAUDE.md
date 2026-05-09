@@ -5,17 +5,19 @@
 
 ---
 
-## 0. 현재 진행 상태
+## 0. 현재 진행 상태 (2026-05-10 갱신)
 
 | 항목 | 상태 |
 |------|------|
-| 운영 중인 툴 | 29개 (`/tools/[slug]` URL) |
-| 카테고리 | 7개 (text/developer/calculator/converter/generator/image/pdf) |
-| 인프라 | 단일 ToolPageLayout, 3개 템플릿 |
-| **진행 중** | Phase 0~3 인프라 리팩터링 (PROJECT_PLAN.md 참조) |
+| 운영 중인 툴 | 29개 (`/[locale]/tools/[category]/[slug]` URL · 구 URL → 308 자동 리다이렉트) |
+| 카테고리 | **10개** (text/developer/calculator/converter/image/pdf/seo/security/productivity/ai) |
+| 인프라 | ToolPageLayout 15컴포넌트 분리, **9개 템플릿** (5 실구현 + 4 스켈레톤), 6 hooks, GA4 분석 |
+| **완료** | Phase 0 ✅ · Phase 1 (12 PR) ✅ · Phase 2.1~2.4 ✅ (`.claude/` 로컬) · Phase 3 ✅ |
+| **다음 단계** | Phase 2.5~2.7 — 시범 툴 양산 (`/new-tool <slug>.yaml`) |
+| 다크모드 | 자체 `ThemeProvider` + FOUC 방지 inline script · `data-theme` 토큰 |
+| 분석 | **GA4 전용** (`trackToolEvent` + 14 표준 이벤트) ✅ |
 | Supabase | **현재 미사용.** Phase 4.5 (전용 DB 분리) 후 도입 |
 | 인증 | **미도입.** Phase 5 |
-| 분석 | **GA4 전용** (Phase 1 PR-7에서 도입 예정) |
 
 > ⚠️ 매 작업 시작 시 `PROJECT_PLAN.md` §9를 읽어 현재 어느 Phase / PR인지 확인할 것.
 

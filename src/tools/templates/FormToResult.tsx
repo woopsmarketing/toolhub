@@ -46,7 +46,7 @@ export default function FormToResult({ tool, process }: FormToResultProps) {
               <select
                 value={values[field.name]}
                 onChange={(e) => handleChange(field.name, e.target.value)}
-                className="w-full rounded-xl border border-border bg-muted/30 px-4 py-2.5 text-sm transition-colors focus:border-primary focus:bg-white focus:outline-none"
+                className="w-full rounded-xl border border-border bg-card px-4 py-2.5 text-sm text-foreground transition-colors focus:border-primary focus:outline-none"
               >
                 {field.options?.map((opt) => (
                   <option key={opt.value} value={opt.value}>
@@ -59,7 +59,7 @@ export default function FormToResult({ tool, process }: FormToResultProps) {
                 value={values[field.name]}
                 onChange={(e) => handleChange(field.name, e.target.value)}
                 placeholder={field.placeholder}
-                className="h-32 w-full resize-none rounded-xl border border-border bg-muted/30 p-4 text-sm transition-colors focus:border-primary focus:bg-white focus:outline-none"
+                className="h-32 w-full resize-none rounded-xl border border-border bg-card p-4 text-sm text-foreground transition-colors focus:border-primary focus:outline-none"
               />
             ) : (
               <div className="relative">
@@ -78,7 +78,7 @@ export default function FormToResult({ tool, process }: FormToResultProps) {
                   min={field.min}
                   max={field.max}
                   step={field.step}
-                  className="w-full rounded-xl border border-border bg-muted/30 px-4 py-2.5 text-sm transition-colors focus:border-primary focus:bg-white focus:outline-none"
+                  className="w-full rounded-xl border border-border bg-card px-4 py-2.5 text-sm text-foreground transition-colors focus:border-primary focus:outline-none"
                 />
                 {field.suffix && (
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">

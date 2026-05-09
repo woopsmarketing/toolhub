@@ -41,7 +41,7 @@ export default function TextToText({ tool, process }: TextToTextProps) {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={tool.inputConfig?.placeholder || ""}
-            className="h-64 w-full resize-none rounded-xl border border-border bg-muted/30 p-4 text-sm leading-relaxed transition-colors focus:border-primary focus:bg-white focus:outline-none font-mono"
+            className="h-64 w-full resize-none rounded-xl border border-border bg-card p-4 text-sm leading-relaxed text-foreground transition-colors focus:border-primary focus:outline-none font-mono"
           />
         </div>
 
@@ -72,7 +72,7 @@ export default function TextToText({ tool, process }: TextToTextProps) {
               readOnly
               value={typeof result === "string" ? result : ""}
               placeholder={t("output")}
-              className="h-64 w-full resize-none rounded-xl border border-border bg-muted/30 p-4 text-sm leading-relaxed font-mono"
+              className="h-64 w-full resize-none rounded-xl border border-border bg-card p-4 text-sm leading-relaxed text-foreground font-mono"
             />
           </div>
         )}

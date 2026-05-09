@@ -45,7 +45,7 @@ export default function LivePreview({
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={tool.inputConfig?.placeholder || ""}
-            className="h-80 w-full resize-none rounded-xl border border-border bg-muted/30 p-4 text-sm leading-relaxed transition-colors focus:border-primary focus:bg-white focus:outline-none font-mono"
+            className="h-80 w-full resize-none rounded-xl border border-border bg-card p-4 text-sm leading-relaxed text-foreground transition-colors focus:border-primary focus:outline-none font-mono"
           />
         </div>
 
@@ -58,7 +58,7 @@ export default function LivePreview({
             {result && <CopyButton text={result} />}
           </div>
           {renderPreview ? (
-            <div className="h-80 overflow-auto rounded-xl border border-border bg-white p-4">
+            <div className="h-80 overflow-auto rounded-xl border border-border bg-card p-4 text-foreground">
               {renderPreview(input)}
             </div>
           ) : (
@@ -66,7 +66,7 @@ export default function LivePreview({
               readOnly
               value={result}
               placeholder={t("output")}
-              className="h-80 w-full resize-none rounded-xl border border-border bg-muted/30 p-4 text-sm leading-relaxed font-mono"
+              className="h-80 w-full resize-none rounded-xl border border-border bg-card p-4 text-sm leading-relaxed text-foreground font-mono"
             />
           )}
         </div>

@@ -26,8 +26,8 @@ export default function CopyButton({ text, className }: CopyButtonProps) {
       className={cn(
         "inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium transition-all",
         copied
-          ? "border-green-300 bg-green-50 text-green-700"
-          : "bg-white text-muted-foreground hover:bg-muted hover:text-foreground",
+          ? "border-green-500/40 bg-green-500/10 text-green-700 dark:text-green-400"
+          : "bg-card text-muted-foreground hover:bg-muted hover:text-foreground",
         className
       )}
     >

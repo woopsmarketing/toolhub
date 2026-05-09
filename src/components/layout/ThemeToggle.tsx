@@ -1,14 +1,14 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { useTheme } from "next-themes";
+import { useTheme } from "@/components/theme/ThemeProvider";
 import { useTranslations } from "next-intl";
 import { Sun, Moon, Monitor } from "lucide-react";
 
 type ThemeValue = "light" | "dark" | "system";
 
 // SSR/CSR 동기화: 서버에서는 false, 클라이언트에서는 true 반환
-// → next-themes 마운트 후에만 실제 토글 UI 노출 (FOUC + hydration mismatch 방지)
+// → mount 후에만 실제 토글 UI 노출 (FOUC + hydration mismatch 방지)
 function subscribe() {
   return () => {};
 }

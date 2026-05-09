@@ -277,7 +277,7 @@ export default function FormToVisual({ tool, process }: FormToVisualProps) {
             <a
               href={downloadUrl}
               download={result.downloadable.filename}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-white px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             >
               <Download className="h-3.5 w-3.5" />
               {t("download") /* falls back to key if missing */}
@@ -285,7 +285,7 @@ export default function FormToVisual({ tool, process }: FormToVisualProps) {
           )}
         </div>
 
-        <div className="flex min-h-[20rem] items-center justify-center rounded-xl border border-border bg-white p-4">
+        <div className="flex min-h-[20rem] items-center justify-center rounded-xl border border-border bg-card p-4 text-foreground">
           {result?.svg ? (
             <div
               className="flex h-full w-full items-center justify-center"

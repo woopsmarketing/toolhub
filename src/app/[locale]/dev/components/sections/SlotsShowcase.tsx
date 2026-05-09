@@ -36,7 +36,7 @@ function SlotCard({ name, envFlag, description, children }: SlotCardProps) {
         <p className="mb-2 text-xs font-medium text-muted-foreground">
           실제 컴포넌트 출력 (env 가 꺼져 있으면 빈 결과):
         </p>
-        <div className="rounded bg-white p-3 ring-1 ring-border">
+        <div className="rounded bg-card p-3 ring-1 ring-border">
           {children}
           <div className="text-center text-xs text-muted-foreground">
             (위 영역이 비어 있으면 env flag 가 꺼져 있다는 뜻 — 정상 동작)

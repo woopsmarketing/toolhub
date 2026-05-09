@@ -26,7 +26,7 @@ export default function Header() {
   const mobileSearchId = "header-search-mobile";
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-white/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5" aria-label="Toolhub - 홈">
@@ -54,7 +54,7 @@ export default function Header() {
               placeholder={t("search")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full rounded-xl border border-border bg-muted py-2.5 pl-10 pr-4 text-sm transition-colors focus:border-primary focus:bg-white focus:outline-none"
+              className="w-full rounded-xl border border-border bg-muted py-2.5 pl-10 pr-4 text-sm text-foreground transition-colors focus:border-primary focus:bg-card focus:outline-none"
             />
           </div>
         </div>
@@ -111,7 +111,7 @@ export default function Header() {
       {mobileMenuOpen && (
         <div
           id="mobile-nav"
-          className="border-t border-border bg-white px-4 py-4 md:hidden"
+          className="border-t border-border bg-background px-4 py-4 md:hidden"
         >
           <div className="relative mb-4">
             <label htmlFor={mobileSearchId} className="sr-only">
@@ -125,7 +125,7 @@ export default function Header() {
               id={mobileSearchId}
               type="search"
               placeholder={t("search")}
-              className="w-full rounded-xl border border-border bg-muted py-2.5 pl-10 pr-4 text-sm"
+              className="w-full rounded-xl border border-border bg-muted py-2.5 pl-10 pr-4 text-sm text-foreground"
             />
           </div>
           <nav

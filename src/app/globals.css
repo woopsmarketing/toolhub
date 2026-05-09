@@ -66,3 +66,18 @@ html {
   background: var(--primary);
   color: var(--primary-foreground);
 }
+
+/* Form element defaults — ensure dark-mode legibility on textarea/input/select.
+   Templates may still override `bg-*` / `text-*` per-context. */
+textarea,
+input,
+select {
+  color: var(--foreground);
+  caret-color: var(--primary);
+}
+
+textarea::placeholder,
+input::placeholder {
+  color: var(--muted-foreground);
+  opacity: 0.85;
+}

@@ -1,8 +1,8 @@
 # Toolhub — 통합 개발 계획서
 
 > 90개 툴 양산을 위한 인프라 설계 + 하네스 + 서브에이전트 파이프라인
-> **작성일:** 2026-05-09
-> **현재 상태:** 29개 툴 라이브, 인프라 리팩터링 시작 직전
+> **작성일:** 2026-05-09 / **마지막 갱신:** 2026-05-10
+> **현재 상태:** 29개 툴 라이브 · **Phase 0~3 완료** · Phase 2.5~2.7 (시범 양산) 대기 중
 
 ---
 
@@ -422,57 +422,60 @@ export function trackToolEvent(params: {
 
 ## 9. Phase / Task 전체 로드맵
 
-### Phase 0 — 초기 설계 확정 (1~2일, 코드 X)
-| Task | 산출물 |
-|------|-------|
-| 0.1 카테고리 10개 + 정책 확정 | `docs/specs/categories.md` |
-| 0.2 URL 구조 + slug 규칙 확정 | `docs/specs/url.md` |
-| 0.3 ToolConfig 전체 필드 확정 | `docs/specs/tool-config.md` |
-| 0.4 이벤트 14개 + GA4/Supabase 매핑 | `docs/specs/analytics.md` |
-| 0.5 Supabase 스키마 전체 SQL | `docs/specs/db-schema.sql` |
-| 0.6 디자인 토큰 + 다크모드 가이드 | `docs/specs/design-tokens.md` |
-| 0.7 서브에이전트 시스템 프롬프트 가이드 | `docs/specs/agent-guidelines.md` |
-| 0.8 YAML 명세서 양식 | `docs/specs/tool-spec.yaml.template` |
+### Phase 0 — 초기 설계 확정 (1~2일, 코드 X) ✅ **완료** (commit `b01d879`)
+| Task | 산출물 | 상태 |
+|------|-------|------|
+| 0.1 카테고리 10개 + 정책 확정 | `docs/specs/categories.md` | ✅ |
+| 0.2 URL 구조 + slug 규칙 확정 | `docs/specs/url.md` | ✅ |
+| 0.3 ToolConfig 전체 필드 확정 | `docs/specs/tool-config.md` | ✅ |
+| 0.4 이벤트 14개 + GA4/Supabase 매핑 | `docs/specs/analytics.md` | ✅ |
+| 0.5 Supabase 스키마 전체 SQL | `docs/specs/db-schema.sql` | ✅ |
+| 0.6 디자인 토큰 + 다크모드 가이드 | `docs/specs/design-tokens.md` | ✅ |
+| 0.7 서브에이전트 시스템 프롬프트 가이드 | `docs/specs/agent-guidelines.md` | ✅ |
+| 0.8 YAML 명세서 양식 | `docs/specs/tool-spec.yaml.template` | ✅ |
 
-### Phase 1 — 공통 인프라 구축 (1~2주, breaking 있음)
+### Phase 1 — 공통 인프라 구축 (1~2주, breaking 있음) ✅ **완료** (commit `fbdde2c`)
 
-| # | Task | PR 단위 |
-|---|------|--------|
-| 1.1 | `_shared/` 공용 UI 프리미티브 (Input/Select/Textarea/Button) | PR-1 |
-| 1.2 | ToolConfig 타입 확장 + 기존 29개 default 값 채우기 | PR-2 |
-| 1.3 | ToolPageLayout → 15개 컴포넌트 분리 | PR-3 |
-| 1.4 | 9개 템플릿 (5개 실 구현 + 4개 스켈레톤) | PR-4 |
-| 1.5 | 6개 공통 hooks (useFavorite는 LocalStorage 전용) | PR-5 |
-| 1.6 | HowTo JSON-LD 추가 | PR-6 |
-| 1.7 | llms.txt 자동 생성 (registry 기반) | PR-6 |
-| 1.8 | `trackToolEvent()` (GA4 전용) + 14개 이벤트 발화 위치 적용 | PR-7 |
-| 1.9 | 카테고리 10개로 재매핑 (29개 툴 카테고리 변경) | PR-8 |
-| 1.10 | vitest + logic.ts 단위 테스트 (29개) | PR-9 |
-| 1.11 | `validate-tools.ts` + GitHub Actions CI (tsc + eslint + vitest + validate-tools + build) | PR-10 |
-| 1.12 | `/dev/components` 라우트 (개발 환경만) | PR-11 |
-| 1.13 | URL 구조 변경 + 29개 슬러그 마이그레이션 + 301 redirect | **PR-12 (마지막)** |
+| # | Task | PR 단위 | 상태 |
+|---|------|--------|------|
+| 1.1 | `_shared/` 공용 UI 프리미티브 (Input/Select/Textarea/Button) | PR-1 | ✅ |
+| 1.2 | ToolConfig 타입 확장 + 기존 29개 default 값 채우기 | PR-2 | ✅ |
+| 1.3 | ToolPageLayout → 15개 컴포넌트 분리 | PR-3 | ✅ |
+| 1.4 | 9개 템플릿 (5개 실 구현 + 4개 스켈레톤) | PR-4 | ✅ |
+| 1.5 | 6개 공통 hooks (useFavorite는 LocalStorage 전용) | PR-5 | ✅ |
+| 1.6 | HowTo JSON-LD 추가 | PR-6 | ✅ |
+| 1.7 | llms.txt 자동 생성 (registry 기반) | PR-6 | ✅ |
+| 1.8 | `trackToolEvent()` (GA4 전용) + 14개 이벤트 발화 위치 적용 | PR-7 | ✅ |
+| 1.9 | 카테고리 10개로 재매핑 (29개 툴 카테고리 변경) | PR-8 | ✅ |
+| 1.10 | vitest + logic.ts 단위 테스트 (29개, **135 tests**) | PR-9 | ✅ |
+| 1.11 | `validate-tools.ts` + GitHub Actions CI (tsc + eslint + vitest + validate-tools + build) | PR-10 | ✅ |
+| 1.12 | `/dev/components` 라우트 (개발 환경만) | PR-11 | ✅ |
+| 1.13 | URL 구조 변경 + 29개 슬러그 마이그레이션 + **308 redirect** (58개) | **PR-12 (마지막)** | ✅ |
 
 > ⚠️ **Supabase 통합 PR 제거됨.** 다른 프로젝트와 DB 공유 충돌 회피. Phase 4.5 (전용 DB 분리) 이후 별도 PR로 추가 예정.
 
-### Phase 2 — 하네스/슬래시커맨드/서브에이전트 (2~3주)
+### Phase 2 — 하네스/슬래시커맨드/서브에이전트 (2~3주) — **2.1~2.4 완료, 2.5~2.7 대기**
 
-| # | Task |
-|---|------|
-| 2.1 | YAML 명세서 양식 확정 + 예시 3개 |
-| 2.2 | 38개 서브에이전트 정의 (`.claude/agents/*.md`) |
-| 2.3 | 6개 슬래시커맨드 정의 (`.claude/commands/*.md`) |
-| 2.4 | 파이프라인 흐름 문서화 |
-| 2.5 | 첫 시범 툴 1개를 파이프라인으로 양산 (whitespace-remover 추천) |
-| 2.6 | 파이프라인 피드백 → 에이전트 프롬프트 개선 |
-| 2.7 | 시범 툴 3~5개 추가 양산 |
+| # | Task | 상태 |
+|---|------|------|
+| 2.1 | YAML 명세서 양식 확정 + 예시 3개 | ✅ |
+| 2.2 | 38개 서브에이전트 정의 (`.claude/agents/*.md`) | ✅ (local-only, .gitignore) |
+| 2.3 | 6개 슬래시커맨드 정의 (`.claude/commands/*.md`) | ✅ (local-only, .gitignore) |
+| 2.4 | 파이프라인 흐름 문서화 | ✅ |
+| 2.5 | 첫 시범 툴 1개를 파이프라인으로 양산 (whitespace-remover 추천) | ⏳ 대기 |
+| 2.6 | 파이프라인 피드백 → 에이전트 프롬프트 개선 | ⏳ 대기 |
+| 2.7 | 시범 툴 3~5개 추가 양산 | ⏳ 대기 |
 
-### Phase 3 — UX 강화 (1~2주)
-| # | Task |
-|---|------|
-| 3.1 | ToolActions 채우기 (다운로드/공유/즐겨찾기 LocalStorage 버전) |
-| 3.2 | 다크모드 + 헤더 토글 |
-| 3.3 | 에러 바운더리 + 로딩 상태 표준화 (ToolErrorBoundary, ToolLoading) |
-| 3.4 | a11y 패스 (ARIA 라벨, 키보드 네비) |
+> Phase 2 산출물 (`.claude/`)은 사용자 결정에 따라 **로컬 전용**으로 유지 — repo에 포함 X.
+
+### Phase 3 — UX 강화 (1~2주) ✅ **완료** (commit `c6035ab` + 후속 fix)
+| # | Task | 상태 |
+|---|------|------|
+| 3.1 | ToolActions 채우기 (다운로드/공유/즐겨찾기 LocalStorage 버전, 7 버튼) | ✅ |
+| 3.2 | 다크모드 + 헤더 토글 (자체 ThemeProvider, FOUC 방지 inline script) | ✅ |
+| 3.3 | 에러 바운더리 + 로딩 상태 표준화 (ToolErrorBoundary, ToolLoading) | ✅ |
+| 3.4 | a11y 패스 (ARIA 라벨, 키보드 네비, **글로벌 skip-to-content**) | ✅ |
+| 3.5 | 후속 fix: 다크모드 input 가독성 + script-in-component 경고 + skip link 글로벌화 | ✅ |
 
 ### Phase 4 — 툴 양산 (지속, 우선)
 1.5차 21개 → 2차 28개 → 3차 12개. Phase 2 하네스로 자동 양산.

@@ -88,7 +88,7 @@ export default function HomePage() {
                 id="home-search"
                 type="search"
                 placeholder={t("common.search")}
-                className="w-full rounded-2xl border border-border bg-white px-12 py-4 text-base shadow-lg shadow-primary/5 transition-all focus:border-primary focus:outline-none focus:shadow-primary/10"
+                className="w-full rounded-2xl border border-border bg-card px-12 py-4 text-base text-foreground shadow-lg shadow-primary/5 transition-all focus:border-primary focus:outline-none focus:shadow-primary/10"
               />
             </div>
           </div>
@@ -151,7 +151,7 @@ export default function HomePage() {
                           {seo.description}
                         </p>
                         <div className="mt-3 flex items-center gap-2">
-                          <span className="rounded-md bg-green-50 px-2 py-0.5 text-xs font-medium text-green-700">
+                          <span className="rounded-md bg-green-500/10 px-2 py-0.5 text-xs font-medium text-green-700 dark:text-green-400">
                             {t("common.free")}
                           </span>
                           <span className="text-xs text-muted-foreground">

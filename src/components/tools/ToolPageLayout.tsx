@@ -64,18 +64,7 @@ export default function ToolPageLayout({ tool, children }: ToolPageLayoutProps) 
 
   return (
     <>
-      {/* Skip-to-content link: visually hidden until focused. */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground focus:shadow-lg"
-      >
-        {t("common.skipToContent")}
-      </a>
-      <div
-        id="main-content"
-        tabIndex={-1}
-        className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8 focus:outline-none"
-      >
+      <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
         <ToolBreadcrumb
           homeLabel={t("common.home")}
           categoryLabel={t(`categories.${tool.category}`)}

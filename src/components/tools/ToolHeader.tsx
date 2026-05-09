@@ -18,8 +18,8 @@ export default function ToolHeader({ title, description }: ToolHeaderProps) {
       <h1 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl leading-tight">
         {title}
       </h1>
-      <div className="mt-4 flex gap-3 rounded-xl border border-blue-200 bg-blue-50/50 p-4">
-        <Info className="mt-0.5 h-5 w-5 shrink-0 text-blue-500" aria-hidden="true" />
+      <div className="mt-4 flex gap-3 rounded-xl border border-primary/20 bg-primary/5 p-4">
+        <Info className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
         <p className="text-[15px] leading-relaxed text-muted-foreground">
           {description}
         </p>
