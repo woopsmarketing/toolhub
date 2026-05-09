@@ -1,0 +1,341 @@
+# =============================================================================
+# Tool Spec YAML Template
+# =============================================================================
+# 본 파일은 신규 툴 1개를 정의하는 YAML 명세서의 표준 양식이다.
+# `/new-tool <slug>.yaml` 슬래시커맨드(Phase 2 이후)가 이 양식을 입력으로 받아
+# 파이프라인 38개 서브에이전트를 거쳐 ToolConfig + 코드 + 메타를 자동 생성한다.
+#
+# -----------------------------------------------------------------------------
+# 1. 결정 사항 (불변)
+# -----------------------------------------------------------------------------
+# - PROJECT_PLAN.md §13 = 본 양식의 정본. 본 파일은 §13을 사용 가능한 템플릿으로
+#   확장한 것이며, §13과 충돌이 발생하면 §13이 우선한다.
+# - 신규 툴 명세는 본 양식만 사용한다. 다른 형식 금지.
+# - 저장 위치: `tools-spec/<slug>.yaml` (디렉터리 고정)
+# - 9개 템플릿 (template 필드 enum):
+#     text-to-text     : 텍스트 → 텍스트/통계 (현존)
+#     form-to-result   : 폼 필드 → 결과 카드 (현존)
+#     live-preview     : 텍스트 → 실시간 HTML (현존)
+#     multi-input      : 텍스트 2~3개 → 비교 결과 (Phase 1)
+#     form-to-visual   : 폼 → 이미지/SVG (Phase 1)
+#     realtime         : 상태/인터벌 → 시각 표시 (Phase 1, 스켈레톤)
+#     workspace        : LocalStorage CRUD (Phase 1, 스켈레톤)
+#     file-processor   : 파일 업로드 → 변환 (Phase 1, 스켈레톤)
+#     image-editor     : 이미지 편집 (Phase 1, 스켈레톤)
+# - 10개 카테고리 (category 필드 enum):
+#     text · developer · calculator · converter · image · pdf
+#     · seo · security · productivity · ai
+#
+# -----------------------------------------------------------------------------
+# 2. 정의 / 규칙
+# -----------------------------------------------------------------------------
+#
+# [필수 필드 — 9개]
+#   1. slug                       (string, 소문자+하이픈, 카테고리 prefix 제거)
+#   2. category                   (10개 enum 중 1개)
+#   3. template                   (9개 enum 중 1개)
+#   4. i18n.ko.title              (string)
+#   5. i18n.ko.description        (string)
+#   6. i18n.ko.keywords           (string[], 5개 이상)
+#   7. i18n.en.{title, description, keywords}  (ko와 동일 구조)
+#   8. features                   ({ko: string[], en: string[]} 각 4개 이상)
+#   9. howToUse                   ({ko: string[], en: string[]} 각 3단계 이상)
+#  10. faq                        ({ko: {q,a}[], en: {q,a}[]} 각 3개 이상)
+#  11. relatedTools               (string[], registry에 존재하는 slug만)
+#
+# [Optional 필드 — 13개]
+#   - subCategory      : 미래 대비 (현재 미사용)
+#   - tags             : 자유 문자열 배열
+#   - status           : "draft" | "published"   (기본 "draft" → publish 후 "published")
+#   - processing       : "client" | "server" | "ai"  (기본 "client")
+#   - useCases         : {ko/en: {title, description, example?}[]}
+#   - guide            : {ko/en: {title, content}}  긴 글
+#   - inputConfig      : {inputLabel?, outputLabel?, placeholder?, outputType?}
+#   - formFields       : InputFieldConfig[]  (form-to-result/form-to-visual 용)
+#   - resultLabels     : {key, label, suffix?}[]  (stats 모드에서 logic.ts return key와 일치)
+#   - schema           : {type?, applicationCategory?}  JSON-LD
+#   - privacy          : {storesInput?, storesFiles?, clientSideOnly?}
+#   - monetization     : {ads?, proCta?, affiliate?, aiCredits?}
+#   - analytics        : {customEvents?: string[]}  (14개 표준 이벤트 외 추가)
+#
+# [카테고리/템플릿별 변동 필드]
+#   - template: file-processor | image-editor   → privacy.storesFiles 명시 권장
+#   - processing: ai (또는 category: ai)        → monetization.aiCredits 검토 + privacy.storesInput 명시
+#   - processing: server                         → privacy.clientSideOnly: false
+#   - template: form-to-result | form-to-visual  → formFields 필수
+#   - inputConfig.outputType: stats              → resultLabels 필수, logic.ts return key 일치
+#
+# [네이밍 규칙]
+#   - slug: 소문자 영문 + 하이픈만. 카테고리 prefix는 URL이 이미 가지므로 제거.
+#       예) image-compressor → compress
+#           lorem-ipsum-generator → lorem-ipsum
+#   - 기존 29개 slug는 마이그레이션하지 않음. 신규 툴부터 적용.
+#
+# -----------------------------------------------------------------------------
+# 3. 예시 (실제 사용) — PROJECT_PLAN.md §13 image-compress.yaml 그대로
+# -----------------------------------------------------------------------------
+#
+# # tools-spec/image-compress.yaml
+#
+# slug: compress
+# category: image
+# subCategory: edit                        # optional
+# tags: [image, optimization, jpeg, png, webp]
+# status: draft
+# processing: server                       # client | server | ai
+# template: file-processor                 # 9개 템플릿 중 1개
+#
+# i18n:
+#   ko:
+#     title: 이미지 압축
+#     description: 화질을 유지하면서 이미지 파일 크기를 줄입니다. PNG, JPG, WebP 지원.
+#     keywords: [이미지 압축, 사진 용량 줄이기, jpg 압축, png 압축, webp 압축]
+#   en:
+#     title: Image Compression
+#     description: Reduce image file size while preserving quality. Supports PNG, JPG, WebP.
+#     keywords: [image compression, photo size reducer, jpg compress, png compress]
+#
+# features:
+#   ko:
+#     - 화질 유지하며 최대 80% 압축
+#     - PNG, JPG, WebP, AVIF 지원
+#     - 일괄 압축 (여러 파일 동시)
+#     - 파일을 서버에 저장하지 않음
+#   en:
+#     - Up to 80% compression while preserving quality
+#     - Supports PNG, JPG, WebP, AVIF
+#     - Batch compression (multiple files)
+#     - Files never stored on server
+#
+# howToUse:
+#   ko:
+#     - 압축할 이미지 파일을 드래그 또는 선택합니다
+#     - 품질 슬라이더로 압축률을 조정합니다
+#     - 압축된 이미지를 다운로드합니다
+#   en:
+#     - Drag or select image files to compress
+#     - Adjust compression with the quality slider
+#     - Download the compressed images
+#
+# faq:
+#   ko:
+#     - q: 무료인가요?
+#       a: 네, 완전 무료입니다.
+#     - q: 파일이 서버에 저장되나요?
+#       a: 아니오, 압축 후 즉시 삭제됩니다.
+#   en:
+#     - q: Is it free?
+#       a: Yes, completely free.
+#
+# useCases:
+#   ko:
+#     - title: 블로그 이미지 최적화
+#       description: 블로그 포스트의 이미지 용량을 줄여 페이지 로딩 속도 향상
+#     - title: 이메일 첨부 파일
+#       description: 이메일 첨부 용량 제한을 피해 이미지 전송
+#
+# relatedTools: [image-resizer, image-converter, webp-converter]
+#
+# privacy:
+#   storesInput: false
+#   storesFiles: false
+#   clientSideOnly: false                  # 서버 처리 필요
+#
+# monetization:
+#   ads: true
+#   proCta: true
+#   affiliate: false
+#
+# -----------------------------------------------------------------------------
+# 4. 검증 방법 / 체크리스트
+# -----------------------------------------------------------------------------
+# [config.ts 품질 기준 — CLAUDE.md §4]
+#   - [ ] seo.title (= i18n.*.title) ko/en 둘 다 존재
+#   - [ ] seo.description (= i18n.*.description) ko/en 둘 다 존재
+#   - [ ] keywords 각 locale 5개 이상
+#   - [ ] faq 각 locale 3개 이상
+#   - [ ] howToUse 각 locale 3단계 이상
+#   - [ ] features 각 locale 4개 이상
+#   - [ ] relatedTools가 모두 registry에 실존하는 slug
+#   - [ ] outputType: "stats"인 경우 → logic.ts return key가 resultLabels와 일치
+#   - [ ] template: form-to-result인 경우 → formFields[].name이 logic.ts return key와 일치
+#
+# [validate-tools.ts 검사 항목 — PROJECT_PLAN.md §14]
+#   - [ ] slug 중복 없음
+#   - [ ] category가 10개 enum 중 하나
+#   - [ ] ko/en seo.title/description 존재
+#   - [ ] howToUse ≥ 3 / features ≥ 4 / faq ≥ 3
+#   - [ ] relatedTools가 모두 registry에 존재
+#   - [ ] ToolLoader.tsx에 등록됨
+#   - [ ] inputConfig vs logic.ts return key 일치 (stats 모드)
+#
+# [YAML 자체 검증]
+#   - [ ] 9개 templates enum 외 사용 X
+#   - [ ] 10개 categories enum 외 사용 X
+#   - [ ] 본 양식에 정의되지 않은 임의 필드 X
+#   - [ ] 14개 표준 이벤트(PROJECT_PLAN.md §4.1) 외 이벤트는 analytics.customEvents에만
+#
+# -----------------------------------------------------------------------------
+# 5. 변경 이력
+# -----------------------------------------------------------------------------
+# - 2026-05-09 v1.0 — 초안 (Phase 0). PROJECT_PLAN.md §13 정본 기반.
+#
+# =============================================================================
+
+
+# === 식별 ===
+slug: <slug>                               # 필수. 소문자 + 하이픈. 카테고리 prefix 제거.
+                                           # 예: compress / word-counter / lorem-ipsum
+category: <category-id>                    # 필수. enum:
+                                           #   text | developer | calculator | converter
+                                           #   | image | pdf | seo | security | productivity | ai
+subCategory: <subcat>                      # (optional) 미래 대비. 현재 사용 X.
+tags:                                      # (optional) 자유 문자열 배열. 카테고리 외 부가 분류.
+  - <tag1>
+  - <tag2>
+
+# === 상태 ===
+status: draft                              # (optional, 기본 "draft" → publish 후 "published")
+                                           # enum: draft | published
+processing: client                         # (optional, 기본 "client")
+                                           # enum: client | server | ai
+                                           #   client → 브라우저에서만 처리 (logic.ts 순수 함수)
+                                           #   server → 서버 라우트 필요 (file-processor 등)
+                                           #   ai     → AI 호출 (Phase 3 이후)
+template: text-to-text                     # 필수. 9개 enum 중 1개:
+                                           #   text-to-text | form-to-result | live-preview
+                                           #   | multi-input | form-to-visual
+                                           #   | realtime | workspace | file-processor | image-editor
+
+# === i18n (필수, ko/en 모두) ===
+i18n:
+  ko:
+    title: <한글 툴 이름>                  # 필수. SEO H1 + meta title 베이스.
+    description: <한글 한 줄 설명>         # 필수. meta description 베이스. 80~160자 권장.
+    keywords:                              # 필수. 5개 이상.
+      - <키워드1>
+      - <키워드2>
+      - <키워드3>
+      - <키워드4>
+      - <키워드5>
+  en:
+    title: <English tool name>             # 필수.
+    description: <One-line English description>
+    keywords:                              # 필수. 5개 이상.
+      - <keyword1>
+      - <keyword2>
+      - <keyword3>
+      - <keyword4>
+      - <keyword5>
+
+# === 콘텐츠 (필수, ko/en 모두) ===
+features:                                  # 필수. 각 locale 4개 이상.
+  ko:
+    - <기능 설명1>
+    - <기능 설명2>
+    - <기능 설명3>
+    - <기능 설명4>
+  en:
+    - <feature1>
+    - <feature2>
+    - <feature3>
+    - <feature4>
+
+howToUse:                                  # 필수. 각 locale 3단계 이상.
+  ko:
+    - <1단계>
+    - <2단계>
+    - <3단계>
+  en:
+    - <step 1>
+    - <step 2>
+    - <step 3>
+
+faq:                                       # 필수. 각 locale 3개 이상.
+  ko:
+    - q: <질문1>
+      a: <답변1>
+    - q: <질문2>
+      a: <답변2>
+    - q: <질문3>
+      a: <답변3>
+  en:
+    - q: <question 1>
+      a: <answer 1>
+    - q: <question 2>
+      a: <answer 2>
+    - q: <question 3>
+      a: <answer 3>
+
+useCases:                                  # (optional) 사용 사례 카드.
+  ko:
+    - title: <사례 제목>
+      description: <사례 설명>
+      example:                             # (optional)
+        input: <예시 입력>
+        output: <예시 출력>
+  en:
+    - title: <use case title>
+      description: <use case description>
+
+guide:                                     # (optional) 긴 글 가이드.
+  ko:
+    title: <가이드 제목>
+    content: <마크다운 본문>
+  en:
+    title: <guide title>
+    content: <markdown body>
+
+# === 관계 ===
+relatedTools:                              # 필수. registry에 실존하는 slug만.
+  - <slug-1>
+  - <slug-2>
+  - <slug-3>
+
+# === 입출력 (템플릿별) ===
+inputConfig:                               # (optional, text-to-text/live-preview 권장)
+  inputLabel: <입력 라벨>
+  outputLabel: <출력 라벨>
+  placeholder: <플레이스홀더>
+  outputType: text                         # text | stats   (stats → resultLabels 필수)
+
+formFields:                                # (form-to-result / form-to-visual 사용 시 필수)
+  - name: <field-key>                      # logic.ts return/입력 키와 일치
+    label:
+      ko: <라벨>
+      en: <label>
+    type: text                             # text | number | select | textarea | checkbox 등
+    placeholder: <플레이스홀더>            # (optional)
+    defaultValue: <기본값>                 # (optional)
+    options:                               # (type: select 일 때)
+      - value: <value1>
+        label: { ko: <라벨1>, en: <label1> }
+
+resultLabels:                              # (outputType: stats 사용 시 필수)
+  - key: <result-key>                      # logic.ts return key와 일치
+    label: <결과 라벨>
+    suffix: <단위>                         # (optional, 예: "자", "ms")
+
+# === 구조화 데이터 (JSON-LD) ===
+schema:                                    # (optional)
+  type: WebApplication                     # WebApplication | SoftwareApplication
+  applicationCategory: <카테고리>          # 예: UtilitiesApplication
+
+# === 프라이버시 ===
+privacy:                                   # (optional, file-processor/image-editor/ai는 명시 권장)
+  storesInput: false                       # 기본 false. 서버에 입력 저장 여부.
+  storesFiles: false                       # 기본 false. 파일 저장 여부 (file-processor 핵심).
+  clientSideOnly: true                     # 기본 true. processing: server/ai이면 false.
+
+# === 수익화 (미래 대비, Phase 6 이후 활성) ===
+monetization:                              # (optional)
+  ads: false                               # AdSense 슬롯 활성
+  proCta: false                            # Pro 업셀 CTA
+  affiliate: false                         # 제휴 링크 슬롯
+  aiCredits: false                         # AI 크레딧 (processing: ai일 때)
+
+# === 분석 ===
+analytics:                                 # (optional)
+  customEvents: []                         # 14개 표준 이벤트(PROJECT_PLAN.md §4.1) 외
+                                           # 이 툴 고유 이벤트가 필요할 때만 등록.
+                                           # 예: ["compress_quality_changed"]
