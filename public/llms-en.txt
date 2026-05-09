@@ -2,7 +2,7 @@
 
 > Free online tools for text, code, calculation, conversion, image, and PDF processing. All tools run entirely in your browser; your data is never sent to any server. Korean/English supported. No sign-up required.
 
-> Total: 29 tools across 5 categories. Updated: 2026-05-09
+> Total: 30 tools across 5 categories. Updated: 2026-05-09
 
 ## Tools
 
@@ -32,6 +32,9 @@
 - [URL Slug Generator - Online Slug Creator Tool](https://toolhub.example/en/tools/text/slug-generator): Convert any text to a URL-friendly slug instantly. Automatically replaces spaces with hyphens, removes special characters, and lowercases text. Free online slug generator.
   - Key features: Automatically replaces spaces with hyphens · Converts uppercase to lowercase · Removes URL-unsafe special characters
   - Use cases: Blog Post URLs · File Name Generation
+- [Whitespace Remover - Clean Up Extra Spaces & Empty Lines](https://toolhub.example/en/tools/text/whitespace-remover): Whitespace Remover is a free online tool that strips leading/trailing spaces, collapses consecutive spaces or tabs, and removes empty lines in one click. Handles 10k+ characters in under one second, fully in-browser.
+  - Key features: Trims leading and trailing spaces from every line · Collapses consecutive spaces and tabs into a single space · Removes blank lines (whitespace-only lines) to tighten content
+  - Use cases: Cleaning copied web text · README / code comment hygiene
 
 ### Developer
 

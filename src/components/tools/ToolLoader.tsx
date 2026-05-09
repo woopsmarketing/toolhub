@@ -42,6 +42,7 @@ const toolComponents: Record<string, React.ComponentType> = {
   "slug-generator": dynamic(() => import("@/tools/slug-generator/component")),
   "text-diff": dynamic(() => import("@/tools/text-diff/component")),
   "korean-typing-converter": dynamic(() => import("@/tools/korean-typing-converter/component")),
+  "whitespace-remover": dynamic(() => import("@/tools/whitespace-remover/component")),
   // Developer
   "json-formatter": dynamic(() => import("@/tools/json-formatter/component")),
   "base64-encoder": dynamic(() => import("@/tools/base64-encoder/component")),

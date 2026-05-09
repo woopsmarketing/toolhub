@@ -2,7 +2,7 @@
 
 > Free online tools for text, code, calculation, conversion, image, and PDF processing. All tools run entirely in your browser; your data is never sent to any server. Korean/English supported. No sign-up required.
 
-> Generated: 2026-05-09 · 29 tools · 5 categories
+> Generated: 2026-05-09 · 30 tools · 5 categories
 
 ## Tools
 
@@ -357,6 +357,53 @@ A URL slug is the human-readable part of a web address that describes the page c
 Good slugs are short, descriptive, use only lowercase letters, and replace spaces with hyphens. Special characters and those requiring URL encoding are removed or replaced.
 
 From an SEO perspective, including relevant keywords in your slug is important, and keeping it concise is best. Slugs with 3-5 words are generally ideal.
+
+### Whitespace Remover - Clean Up Extra Spaces & Empty Lines
+
+URL: https://toolhub.example/en/tools/text/whitespace-remover
+
+Whitespace Remover is a free online tool that strips leading/trailing spaces, collapses consecutive spaces or tabs, and removes empty lines in one click. Handles 10k+ characters in under one second, fully in-browser.
+
+**Key features**
+
+- Trims leading and trailing spaces from every line
+- Collapses consecutive spaces and tabs into a single space
+- Removes blank lines (whitespace-only lines) to tighten content
+- Preserves line breaks so paragraph structure stays intact
+- Processes 10k+ characters in under one second (pure client-side)
+
+**How to use**
+
+1. Paste the text you want to clean into the input area.
+2. The cleaned result appears in the output area immediately.
+3. Click the copy button to copy the cleaned text to your clipboard.
+
+**Use cases**
+
+- **Cleaning copied web text** — Tidy uneven spaces and blank lines in text copied from websites or PDFs in one shot.
+- **README / code comment hygiene** — Strip stray whitespace from READMEs, markdown, and code comments to cut git-diff noise.
+
+**FAQ**
+
+- Q: Is my text sent to a server?
+  A: No, Whitespace Remover never transmits your input to any server. All processing happens entirely inside your browser.
+- Q: Are line breaks preserved or removed?
+  A: Line breaks are preserved. Whitespace Remover only removes blank lines (whitespace-only lines) and keeps meaningful line breaks intact so paragraph structure is maintained.
+- Q: What is the maximum text length I can process?
+  A: Whitespace Remover processes 10,000+ characters in under one second. There is effectively no limit other than your browser's available memory.
+- Q: Are tab characters also cleaned?
+  A: Yes, Whitespace Remover treats both regular spaces and tab characters as whitespace and collapses consecutive runs into a single space.
+
+**Guide: Whitespace Remover Guide — when, why, and how**
+
+Whitespace Remover strips meaningless whitespace from text to improve readability and consistency. The most common scenarios are (1) cleaning text copied from web pages or PDFs, (2) normalizing user-submitted form data that contains uneven spacing, and (3) preparing Markdown / README files to reduce noise in git diffs.
+
+The tool performs three transformations in a single pass:
+1) Trim leading and trailing whitespace from every line.
+2) Collapse consecutive spaces and tabs into a single space.
+3) Remove blank lines (lines containing only whitespace), while preserving line breaks between meaningful content so paragraphs stay separate.
+
+All processing happens entirely in your browser, so your input text is never sent to any server. You can safely clean personal data, internal documents, or work-in-progress code.
 
 ---
 

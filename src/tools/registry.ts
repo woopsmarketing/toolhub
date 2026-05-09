@@ -8,6 +8,7 @@ import { config as textReverserConfig } from "./text-reverser/config";
 import { config as slugGeneratorConfig } from "./slug-generator/config";
 import { config as textDiffConfig } from "./text-diff/config";
 import { config as koreanTypingConverterConfig } from "./korean-typing-converter/config";
+import { config as whitespaceRemoverConfig } from "./whitespace-remover/config";
 import { config as jsonFormatterConfig } from "./json-formatter/config";
 import { config as base64EncoderConfig } from "./base64-encoder/config";
 import { config as urlEncoderConfig } from "./url-encoder/config";
@@ -42,6 +43,7 @@ const tools: ToolConfig[] = [
   slugGeneratorConfig,
   textDiffConfig,
   koreanTypingConverterConfig,
+  whitespaceRemoverConfig,
   // Developer
   jsonFormatterConfig,
   base64EncoderConfig,
