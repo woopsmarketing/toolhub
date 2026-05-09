@@ -2,7 +2,7 @@
 
 > Free online tools for text, code, calculation, conversion, image, and PDF processing. All tools run entirely in your browser; your data is never sent to any server. Korean/English supported. No sign-up required.
 
-> Generated: 2026-05-09 · 30 tools · 5 categories
+> Generated: 2026-05-09 · 34 tools · 6 categories
 
 ## Tools
 
@@ -540,6 +540,50 @@ Common HTML entities:
 
 HTML entities are also essential for XSS (Cross-Site Scripting) prevention. If you output user input directly to HTML without escaping, malicious scripts can execute.
 
+### HTML Preview - Live HTML Renderer in Sandbox
+
+URL: https://toolhub.example/en/tools/developer/html-preview
+
+HTML Preview is a free online tool that renders your HTML inside a safe sandbox iframe in real time. Supports CSS and inline styles, with no server uploads — everything runs locally in your browser.
+
+**Key features**
+
+- Renders your HTML side-by-side in real time as you type
+- Isolated inside a sandbox iframe (no allow-same-origin) to protect the host page
+- <style> tags and inline styles render exactly so you can verify visual design
+- Fully client-side — your HTML never reaches a server
+- Input is a textarea, preview is an iframe; you can also copy the rendered HTML
+
+**How to use**
+
+1. Paste or type your HTML into the input area on the left.
+2. The preview panel on the right renders the HTML instantly.
+3. As you edit the code, the preview updates in real time.
+
+**Use cases**
+
+- **Visual check while building email templates** — Write newsletter or transactional email HTML and verify inline CSS renders as intended on the spot.
+- **HTML learning and quick experiments** — Use it as a sandbox while following HTML/CSS tutorials — see results as you change the code.
+
+**FAQ**
+
+- Q: Is my HTML sent to a server?
+  A: No, HTML Preview never transmits your code. Rendering happens inside a sandbox iframe entirely within your browser.
+- Q: Do <script> tags execute?
+  A: HTML Preview isolates the iframe via the sandbox attribute but allows allow-scripts. Because allow-same-origin is disabled, the script cannot access this page's cookies or DOM. Do not paste untrusted code.
+- Q: Are CSS and external fonts supported?
+  A: Yes, <style> tags and inline styles render normally. External CSS or font links work too but trigger network requests directly from your browser to the CDN — never through this tool's server.
+- Q: Are there performance limits for large HTML?
+  A: HTML Preview re-renders on every keystroke, so very large HTML (tens of thousands of lines) can cause input lag. Split the code into smaller chunks if needed.
+
+**Guide: HTML Preview Guide**
+
+HTML Preview renders your HTML in a sandbox iframe in real time so you can quickly verify visual results. It fits well for email templates, landing-page markup, HTML learning, or any task that needs a fast visual check.
+
+The iframe is isolated via the sandbox attribute. allow-scripts is enabled so <script> tags run, but allow-same-origin is disabled so the script cannot reach this page's cookies, DOM, or LocalStorage. Avoid pasting untrusted HTML.
+
+All processing happens in your browser, so your HTML never reaches a server. You can safely preview private markup or internal email templates.
+
 ### JSON Formatter & Validator
 
 URL: https://toolhub.example/en/tools/developer/json-formatter
@@ -1051,6 +1095,53 @@ Income tax is determined by the simplified wage income tax table and varies by t
 
 If severance pay is included in the annual salary, 1/13 of the total is set aside as severance reserve, reducing the monthly base pay. When severance is separate, the full salary is divided by 12 months. Always confirm whether an offer includes or excludes severance pay during negotiations.
 
+### Korean Savings Calculator - Simple/Compound Interest with Tax
+
+URL: https://toolhub.example/en/tools/calculator/savings-calculator
+
+Savings Calculator is a free online tool that estimates Korean installment-savings maturity amounts. Enter monthly deposit, annual rate, and term to see simple vs. compound interest plus pre/post-tax payouts under three tax brackets (15.4% / 9.5% / 0%). All calculations run in your browser.
+
+**Key features**
+
+- Shows simple and compound maturity amounts plus pre/post-tax interest in one view
+- Supports three Korean tax brackets: standard 15.4%, preferential 9.5%, exempt 0%
+- Computes month-by-month installment savings using the standard Korean formula
+- Only three inputs (monthly deposit, annual rate, term) — no signup needed
+- All math happens in your browser; your numbers never leave the device
+
+**How to use**
+
+1. Enter your monthly deposit amount (KRW).
+2. Enter the annual interest rate (%) and term (months).
+3. Pick a tax bracket (standard/preferential/exempt) and click "Calculate".
+
+**Use cases**
+
+- **Pre-signup maturity simulation** — Before opening a monthly savings account at 4%/12 months for 300,000 KRW, see the after-tax interest in advance.
+- **Simple vs. compound product comparison** — Compare simple vs. compound maturity payouts under the same rate and term in one shot.
+
+**FAQ**
+
+- Q: What is the difference between simple and compound interest in Korean savings?
+  A: Simple interest computes interest on each monthly deposit based on remaining months. Compound (monthly) interest adds the interest from each month back into principal, so the maturity amount is larger for the same rate. Most Korean banks offer simple-interest savings; compound is mostly seen at internet or savings banks.
+- Q: How is the tax on interest computed?
+  A: Korean savings interest tax is one of three brackets: standard 15.4% (14% income + 1.4% local), preferential 9.5% (mutual finance, etc.), and exempt 0%. The calculator shows all three so you can compare side by side.
+- Q: Who qualifies for the exempt bracket (0%)?
+  A: People aged 65+, disabled persons, and certain merit holders may use 비과세 종합저축 up to a combined 50M KRW. General residents can instead use preferential 9.5% products at 새마을금고/신협/수협 (cap 30M KRW).
+- Q: Are my inputs sent to a server?
+  A: No, Savings Calculator never sends your numbers anywhere. All calculations run inside your browser.
+
+**Guide: Korean Savings Calculator Guide**
+
+Savings Calculator estimates the maturity amount and after-tax interest of Korean installment-style savings accounts. Enter monthly deposit, annual interest rate, term in months, and tax bracket; the tool returns both simple and compound results.
+
+Formulas used:
+• Simple interest = monthly × (rate / 12) × n(n+1) / 2  (n = months)
+• Compound maturity = monthly × [(1 + r/12)^n - 1] / (r/12)  (r = annual rate)
+• After-tax interest = pre-tax interest × (1 - tax rate)
+
+Tax brackets supported: standard 15.4%, preferential 9.5%, exempt 0%. Output includes total principal, pre-tax interest, after-tax interest, and maturity amount, all computed instantly in your browser.
+
 ### Loan Calculator - Monthly Payment & Total Interest
 
 URL: https://toolhub.example/en/tools/calculator/loan-calculator
@@ -1193,6 +1284,54 @@ HEX (#RRGGBB) represents each channel (red, green, blue) as two hexadecimal digi
 RGB (r, g, b) expresses each channel as an integer from 0 to 255 — intuitive for mixing colors directly.
 
 HSL (hue, saturation, lightness) uses a 0–360° hue angle, and 0–100% saturation and lightness. It makes it easy to adjust only brightness or saturation, which is especially useful for CSS themes and dark mode implementations.
+
+### Temperature Converter - Celsius / Fahrenheit / Kelvin
+
+URL: https://toolhub.example/en/tools/converter/temperature-converter
+
+Temperature Converter is a free online tool that converts between Celsius (°C), Fahrenheit (°F), and Kelvin (K). Enter a value in any unit and see the other two instantly — fully client-side, no signup.
+
+**Key features**
+
+- Enter a value in one unit and instantly see the other two
+- Uses standard conversion formulas (C↔F, C↔K)
+- Handles negative temperatures and absolute zero (0K = -273.15°C) correctly
+- Fully client-side — your input never leaves the browser
+- Results rounded to two decimal places
+
+**How to use**
+
+1. Choose the input unit (Celsius/Fahrenheit/Kelvin).
+2. Type the temperature value to convert.
+3. Click "Calculate" to see the other two unit values.
+
+**Use cases**
+
+- **Foreign recipes and scientific papers** — Convert °F oven temperatures from US recipes to °C, or convert Kelvin in scientific papers to Celsius.
+- **Weather checks for travel** — Quickly convert °F weather forecasts in the US/Canada to °C you are used to.
+
+**FAQ**
+
+- Q: What conversion formulas are used?
+  A: Temperature Converter uses the standard formulas. C → F = °C × 9/5 + 32, F → C = (°F − 32) × 5/9, C → K = °C + 273.15. Kelvin is an absolute scale, so 0K = -273.15°C.
+- Q: Can I enter values below absolute zero?
+  A: You can type any value, but physically nothing can exist below absolute zero (-273.15°C = 0K). If the Kelvin output is negative, recheck your input.
+- Q: What is 100°F in Celsius?
+  A: 100°F is about 37.78°C. (100 − 32) × 5/9 = 37.78°C, close to human body temperature (36.5~37.5°C).
+- Q: Are my inputs sent to a server?
+  A: No, Temperature Converter never sends your inputs anywhere. All math happens inside your browser.
+
+**Guide: Temperature Converter Guide**
+
+Temperature Converter converts between Celsius (°C), Fahrenheit (°F), and Kelvin (K). It is most useful for foreign recipes, scientific papers, or international weather forecasts where different unit systems mix.
+
+Formulas:
+• C → F:  °F = °C × 9/5 + 32
+• F → C:  °C = (°F − 32) × 5/9
+• C → K:  K = °C + 273.15
+• K → C:  °C = K − 273.15
+
+Pick the source unit and type a value; the other two unit values appear instantly. Everything runs in your browser, so your input never leaves the device.
 
 ### Unit Converter - Length Unit Conversion Online
 
@@ -1374,3 +1513,54 @@ A UUID (Universally Unique Identifier) is a 128-bit identifier guaranteed to be 
 UUID v4 is the most widely used version, generated using cryptographically secure random numbers. The probability of collision is astronomically low, making it practically unique across the globe.
 
 UUIDs are used for database primary keys, API request IDs, session tokens, file names, and anywhere a unique identifier is needed. This tool uses the browser's Web Crypto API for secure UUID generation.
+
+---
+
+## Productivity
+
+### QR Code Generator - Free Online QR Maker (SVG/PNG)
+
+URL: https://toolhub.example/en/tools/productivity/qr-code-generator
+
+QR Code Generator is a free online tool that turns URLs, text, phone numbers, and emails into downloadable SVG/PNG QR codes instantly. Tweak error correction level, size, and colors entirely in your browser.
+
+**Key features**
+
+- Converts URLs, plain text, phone numbers, and emails into a QR instantly
+- Pick from four error correction levels (L/M/Q/H — tolerates 7~30% damage)
+- Customize foreground and background colors to match your brand
+- Download as SVG or PNG (SVG recommended for print)
+- Inputs never leave the browser — fully client-side rendering
+
+**How to use**
+
+1. Enter the URL or text you want to encode into the input field.
+2. Choose the size and error correction level, then click "Generate".
+3. Preview the QR code and click the download button to save it as SVG.
+
+**Use cases**
+
+- **Adding URL QR to business cards & flyers** — Encode your homepage or portfolio URL into a QR for print materials so people can scan with their phone.
+- **Sharing Wi-Fi or event URLs** — Quickly share Wi-Fi info or event page URLs at cafes and exhibitions without typing.
+
+**FAQ**
+
+- Q: Are my inputs sent to a server?
+  A: No, QR Code Generator never transmits your input. All QR encoding runs entirely inside your browser.
+- Q: What is the difference between error correction levels (L/M/Q/H)?
+  A: Error correction level controls how much physical damage a QR can tolerate. L=7%, M=15%, Q=25%, H=30%. Higher levels add more cells to the QR matrix. M or Q is generally recommended for printing and stickers.
+- Q: Should I download SVG or PNG?
+  A: For print or any size scaling, choose SVG (vector) — it stays crisp at any resolution. Pick PNG only when you need a bitmap for web or social media uploads.
+- Q: Can I encode Korean characters or emojis?
+  A: Yes, QR Code Generator uses UTF-8 so it handles every Unicode string, including Korean, Chinese, Japanese characters, and emojis.
+
+**Guide: QR Code Generator Guide**
+
+QR Code Generator turns arbitrary strings — URLs, plain text, contact info — into standard QR codes (ISO/IEC 18004). Common scenarios include attaching a URL to a business card or flyer and sharing Wi-Fi or event URLs at cafes and exhibitions.
+
+The tool offers three knobs:
+1) Error correction level (L/M/Q/H) — tolerates 7~30% damage. Use M or Q for print.
+2) Colors — pick foreground and background to match your brand.
+3) Output format — SVG (vector, recommended for print) or PNG (web uploads).
+
+All encoding happens in your browser, so your URLs and text never leave the device.

@@ -2,7 +2,7 @@
 
 > Free online tools for text, code, calculation, conversion, image, and PDF processing. All tools run entirely in your browser; your data is never sent to any server. Korean/English supported. No sign-up required.
 
-> Total: 30 tools across 5 categories. Updated: 2026-05-09
+> Total: 34 tools across 6 categories. Updated: 2026-05-09
 
 ## Tools
 
@@ -47,6 +47,9 @@
 - [HTML Entity Converter](https://toolhub.example/en/tools/developer/html-entity-converter): Convert HTML special characters to entities (&amp;, &lt;, &gt;, etc.) or decode HTML entities back to plain text. Essential for XSS prevention and HTML content creation.
   - Key features: Converts HTML special characters like <, >, &, ", ' to entities · Decodes HTML entities back to plain text · Shows both encode and decode results simultaneously
   - Use cases: XSS Prevention Escaping · Displaying HTML Source Code
+- [HTML Preview - Live HTML Renderer in Sandbox](https://toolhub.example/en/tools/developer/html-preview): HTML Preview is a free online tool that renders your HTML inside a safe sandbox iframe in real time. Supports CSS and inline styles, with no server uploads — everything runs locally in your browser.
+  - Key features: Renders your HTML side-by-side in real time as you type · Isolated inside a sandbox iframe (no allow-same-origin) to protect the host page · <style> tags and inline styles render exactly so you can verify visual design
+  - Use cases: Visual check while building email templates · HTML learning and quick experiments
 - [JSON Formatter & Validator](https://toolhub.example/en/tools/developer/json-formatter): Format and validate JSON instantly. Pretty-print JSON with proper indentation and catch syntax errors in real time. Free online JSON formatter.
   - Key features: Real-time JSON syntax validation · Clean formatting with 2-space indentation · Clear error messages when JSON is invalid
   - Use cases: API Response Debugging · Config File Cleanup
@@ -83,6 +86,9 @@
 - [Korea Salary Calculator - Take-Home Pay After Tax & Insurance](https://toolhub.example/en/tools/calculator/salary-calculator): Calculate your actual take-home pay in South Korea based on 2026 tax rates and social insurance premiums. See detailed deductions for National Pension, Health Insurance, Employment Insurance, and income tax, instantly and with no sign-up required.
   - Key features: 2026 Korean social insurance rates automatically applied (NPS 4.75%, NHI 3.545%, LTC 12.81%, EI 0.9%) · Detailed breakdown of all 6 deduction items: pension, health, long-term care, employment, income tax, local tax · Income tax calculated based on simplified wage tax table and number of dependents
   - Use cases: Salary Negotiation for Expats · Comparing Job Offers
+- [Korean Savings Calculator - Simple/Compound Interest with Tax](https://toolhub.example/en/tools/calculator/savings-calculator): Savings Calculator is a free online tool that estimates Korean installment-savings maturity amounts. Enter monthly deposit, annual rate, and term to see simple vs. compound interest plus pre/post-tax payouts under three tax brackets (15.4% / 9.5% / 0%). All calculations run in your browser.
+  - Key features: Shows simple and compound maturity amounts plus pre/post-tax interest in one view · Supports three Korean tax brackets: standard 15.4%, preferential 9.5%, exempt 0% · Computes month-by-month installment savings using the standard Korean formula
+  - Use cases: Pre-signup maturity simulation · Simple vs. compound product comparison
 - [Loan Calculator - Monthly Payment & Total Interest](https://toolhub.example/en/tools/calculator/loan-calculator): Enter loan amount, interest rate, and term to instantly calculate monthly payments and total interest. Perfect for mortgages, personal loans, and auto loans.
   - Key features: Monthly payment calculated using standard amortization formula · Automatic calculation of total payment and total interest · Decimal interest rates supported (e.g., 3.5%)
   - Use cases: Mortgage Calculation · Auto Loan Calculation
@@ -95,6 +101,9 @@
 - [Color Code Converter - HEX, RGB, HSL](https://toolhub.example/en/tools/converter/color-converter): Instantly convert between HEX, RGB, and HSL color codes. Free online color converter for web designers and developers.
   - Key features: HEX → RGB, HSL automatic conversion · RGB → HEX, HSL automatic conversion · HSL → HEX, RGB automatic conversion
   - Use cases: Web CSS Color Conversion · Brand Color Management
+- [Temperature Converter - Celsius / Fahrenheit / Kelvin](https://toolhub.example/en/tools/converter/temperature-converter): Temperature Converter is a free online tool that converts between Celsius (°C), Fahrenheit (°F), and Kelvin (K). Enter a value in any unit and see the other two instantly — fully client-side, no signup.
+  - Key features: Enter a value in one unit and instantly see the other two · Uses standard conversion formulas (C↔F, C↔K) · Handles negative temperatures and absolute zero (0K = -273.15°C) correctly
+  - Use cases: Foreign recipes and scientific papers · Weather checks for travel
 - [Unit Converter - Length Unit Conversion Online](https://toolhub.example/en/tools/converter/unit-converter): Convert between kilometers, meters, centimeters, millimeters, miles, feet, and inches instantly. Free online length unit converter.
   - Key features: 7 length units supported (km, m, cm, mm, mi, ft, in) · Precise conversion using meter as base unit · Up to 8 decimal places of precision
   - Use cases: Travel Distance Conversion · Clothing Size Conversion
@@ -110,3 +119,9 @@
 - [UUID Generator - Online UUID v4 Generator](https://toolhub.example/en/tools/security/uuid-generator): Generate UUID v4 instantly. Create up to 50 UUIDs at once. Free online UUID generator tool.
   - Key features: UUID v4 (random) generation · Bulk generation up to 50 at once · Standard UUID format (8-4-4-4-12)
   - Use cases: Database Primary Keys · API Request IDs
+
+### Productivity
+
+- [QR Code Generator - Free Online QR Maker (SVG/PNG)](https://toolhub.example/en/tools/productivity/qr-code-generator): QR Code Generator is a free online tool that turns URLs, text, phone numbers, and emails into downloadable SVG/PNG QR codes instantly. Tweak error correction level, size, and colors entirely in your browser.
+  - Key features: Converts URLs, plain text, phone numbers, and emails into a QR instantly · Pick from four error correction levels (L/M/Q/H — tolerates 7~30% damage) · Customize foreground and background colors to match your brand
+  - Use cases: Adding URL QR to business cards & flyers · Sharing Wi-Fi or event URLs

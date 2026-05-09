@@ -27,10 +27,14 @@ import { config as discountCalculatorConfig } from "./discount-calculator/config
 import { config as salaryCalculatorConfig } from "./salary-calculator/config";
 import { config as unitConverterConfig } from "./unit-converter/config";
 import { config as colorConverterConfig } from "./color-converter/config";
+import { config as temperatureConverterConfig } from "./temperature-converter/config";
 import { config as loremIpsumGeneratorConfig } from "./lorem-ipsum-generator/config";
 import { config as passwordGeneratorConfig } from "./password-generator/config";
 import { config as uuidGeneratorConfig } from "./uuid-generator/config";
 import { config as hashGeneratorConfig } from "./hash-generator/config";
+import { config as savingsCalculatorConfig } from "./savings-calculator/config";
+import { config as htmlPreviewConfig } from "./html-preview/config";
+import { config as qrCodeGeneratorConfig } from "./qr-code-generator/config";
 
 // Central tool registry — config only (server-safe)
 // Components are loaded dynamically in page.tsx via import(`@/tools/${slug}/component`)
@@ -54,6 +58,7 @@ const tools: ToolConfig[] = [
   regexTesterConfig,
   markdownPreviewConfig,
   csvJsonConverterConfig,
+  htmlPreviewConfig,
   // Calculator
   percentageCalculatorConfig,
   dateCalculatorConfig,
@@ -62,14 +67,18 @@ const tools: ToolConfig[] = [
   ageCalculatorConfig,
   discountCalculatorConfig,
   salaryCalculatorConfig,
+  savingsCalculatorConfig,
   // Converter
   unitConverterConfig,
   colorConverterConfig,
-  // Generator
+  temperatureConverterConfig,
+  // Security / Generator (legacy bucket)
   loremIpsumGeneratorConfig,
   passwordGeneratorConfig,
   uuidGeneratorConfig,
   hashGeneratorConfig,
+  // Productivity
+  qrCodeGeneratorConfig,
 ];
 
 export function getAllTools(): ToolConfig[] {

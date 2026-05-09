@@ -1,0 +1,145 @@
+# tools-spec/html-preview.yaml
+# Phase 2.7 시범 양산 3호 — live-preview 템플릿 검증.
+
+slug: html-preview
+category: developer
+tags: [html, preview, live, sandbox, web]
+
+status: draft
+processing: client
+template: live-preview
+
+i18n:
+  ko:
+    title: HTML 미리보기 - 실시간 HTML 코드 렌더링 도구
+    description: HTML 미리보기는 HTML 코드를 입력하면 즉시 안전한 sandbox iframe으로 렌더링해주는 무료 온라인 도구입니다. CSS·인라인 스타일 지원, 외부 서버 전송 없이 브라우저 내에서만 동작합니다.
+    keywords:
+      - HTML 미리보기
+      - HTML 렌더링
+      - HTML 테스트
+      - 실시간 HTML
+      - HTML 에디터
+      - HTML preview 온라인
+      - HTML 코드 확인
+      - HTML 샌드박스
+  en:
+    title: HTML Preview - Live HTML Renderer in Sandbox
+    description: HTML Preview is a free online tool that renders your HTML inside a safe sandbox iframe in real time. Supports CSS and inline styles, with no server uploads — everything runs locally in your browser.
+    keywords:
+      - html preview
+      - html renderer
+      - live html editor
+      - online html tester
+      - html sandbox
+      - html code preview
+      - render html online
+      - test html snippet
+
+features:
+  ko:
+    - HTML 코드를 입력하면 좌우 분할 미리보기로 즉시 렌더링
+    - sandbox iframe(allow-same-origin 미지정)으로 격리되어 호스트 페이지 보호
+    - <style> 태그·인라인 스타일 그대로 적용되어 디자인 확인 가능
+    - 모든 처리는 브라우저 내 (입력한 HTML이 서버로 전송되지 않음)
+    - 입력 코드는 textarea, 결과는 iframe — 결과 텍스트 복사도 가능
+  en:
+    - Renders your HTML side-by-side in real time as you type
+    - Isolated inside a sandbox iframe (no allow-same-origin) to protect the host page
+    - <style> tags and inline styles render exactly so you can verify visual design
+    - Fully client-side — your HTML never reaches a server
+    - Input is a textarea, preview is an iframe; you can also copy the rendered HTML
+
+howToUse:
+  ko:
+    - 왼쪽 입력 영역에 HTML 코드를 붙여넣거나 직접 작성하세요.
+    - 오른쪽 미리보기 패널에 즉시 렌더링됩니다.
+    - 코드를 수정하면 미리보기가 실시간으로 업데이트됩니다.
+  en:
+    - Paste or type your HTML into the input area on the left.
+    - The preview panel on the right renders the HTML instantly.
+    - As you edit the code, the preview updates in real time.
+
+useCases:
+  ko:
+    - title: 이메일 템플릿 작성 시 시각 확인
+      description: 뉴스레터·트랜잭션 메일 HTML을 작성하며 inline CSS가 의도대로 렌더되는지 즉시 검증.
+    - title: HTML 학습 및 빠른 실험
+      description: HTML/CSS 강의를 따라하면서 코드 변경 결과를 실시간으로 확인하는 학습용 샌드박스.
+  en:
+    - title: Visual check while building email templates
+      description: Write newsletter or transactional email HTML and verify inline CSS renders as intended on the spot.
+    - title: HTML learning and quick experiments
+      description: Use it as a sandbox while following HTML/CSS tutorials — see results as you change the code.
+
+faq:
+  ko:
+    - q: 입력한 HTML이 외부 서버로 전송되나요?
+      a: 아니오, HTML 미리보기는 입력한 코드를 어떤 서버로도 전송하지 않습니다. 렌더링은 sandbox iframe 안에서 브라우저 내부적으로 수행됩니다.
+    - q: <script> 태그도 실행되나요?
+      a: HTML 미리보기는 sandbox 속성으로 iframe을 격리하지만 allow-scripts는 활성화되어 있습니다. 단 allow-same-origin이 비활성화되어 있어 호스트 페이지의 쿠키·DOM에 접근할 수 없습니다. 신뢰할 수 없는 코드는 붙여넣지 마세요.
+    - q: CSS와 외부 폰트도 적용되나요?
+      a: 네, <style> 태그와 인라인 스타일은 그대로 적용됩니다. 외부 CDN의 CSS·폰트 링크도 동작하지만 네트워크 요청이 발생합니다 (브라우저 → CDN, 도구 서버는 거치지 않음).
+    - q: 코드가 길어도 성능 문제가 없나요?
+      a: HTML 미리보기는 렌더링을 즉시 수행하지만 매우 큰 HTML(수만 줄 이상)을 입력하면 입력 반응성이 떨어질 수 있습니다. 필요 시 코드를 분할해 테스트하세요.
+  en:
+    - q: Is my HTML sent to a server?
+      a: No, HTML Preview never transmits your code. Rendering happens inside a sandbox iframe entirely within your browser.
+    - q: Do <script> tags execute?
+      a: HTML Preview isolates the iframe via the sandbox attribute but allows allow-scripts. Because allow-same-origin is disabled, the script cannot access this page's cookies or DOM. Do not paste untrusted code.
+    - q: Are CSS and external fonts supported?
+      a: Yes, <style> tags and inline styles render normally. External CSS or font links work too but trigger network requests directly from your browser to the CDN — never through this tool's server.
+    - q: Are there performance limits for large HTML?
+      a: HTML Preview re-renders on every keystroke, so very large HTML (tens of thousands of lines) can cause input lag. Split the code into smaller chunks if needed.
+
+guide:
+  ko:
+    title: HTML 미리보기 사용 가이드
+    content: |
+      HTML 미리보기는 HTML 코드를 입력하면 즉시 sandbox iframe으로 렌더링해 시각 결과를 확인할 수 있는
+      도구입니다. 이메일 템플릿, 랜딩 페이지 마크업, HTML 학습 등 빠른 시각 검증이 필요한 모든 상황에
+      적합합니다.
+
+      이 도구는 sandbox 속성으로 iframe을 격리합니다. allow-scripts는 활성화되어 있어 <script> 안의 JS도
+      실행되지만, allow-same-origin이 비활성화되어 있어 호스트 페이지의 쿠키·DOM·LocalStorage에는 접근할
+      수 없습니다. 신뢰할 수 없는 HTML은 붙여넣지 마세요.
+
+      모든 처리는 브라우저 내에서 이루어지므로 입력한 HTML 코드가 외부 서버로 전송되지 않습니다.
+      비공개 마크업이나 사내 이메일 템플릿도 안전하게 미리볼 수 있습니다.
+  en:
+    title: HTML Preview Guide
+    content: |
+      HTML Preview renders your HTML in a sandbox iframe in real time so you can quickly
+      verify visual results. It fits well for email templates, landing-page markup, HTML
+      learning, or any task that needs a fast visual check.
+
+      The iframe is isolated via the sandbox attribute. allow-scripts is enabled so <script>
+      tags run, but allow-same-origin is disabled so the script cannot reach this page's
+      cookies, DOM, or LocalStorage. Avoid pasting untrusted HTML.
+
+      All processing happens in your browser, so your HTML never reaches a server. You can
+      safely preview private markup or internal email templates.
+
+inputConfig:
+  inputLabel: HTML 코드
+  outputLabel: 미리보기
+  placeholder: "<h1>Hello, World!</h1>"
+  inputType: text
+  outputType: html
+
+relatedTools:
+  - markdown-preview
+  - html-entity-converter
+  - json-formatter
+  - regex-tester
+
+datePublished: "2026-05-10"
+lastUpdated: "2026-05-10"
+
+privacy:
+  storesInput: false
+  storesFiles: false
+  clientSideOnly: true
+
+schema:
+  type: WebApplication
+  applicationCategory: DeveloperApplication

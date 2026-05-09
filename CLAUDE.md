@@ -9,11 +9,11 @@
 
 | 항목 | 상태 |
 |------|------|
-| 운영 중인 툴 | **30개** (Phase 2.5 시범 양산 1호 `whitespace-remover` 추가, `/[locale]/tools/[category]/[slug]` URL · 짧은 URL → 308 자동 리다이렉트) |
+| 운영 중인 툴 | **34개** (Phase 2.7 시범 양산 4호 동시 완료: qr-code-generator / html-preview / savings-calculator / temperature-converter, `/[locale]/tools/[category]/[slug]` URL · 짧은 URL → 308 자동 리다이렉트) |
 | 카테고리 | **10개** (text/developer/calculator/converter/image/pdf/seo/security/productivity/ai) |
-| 인프라 | ToolPageLayout 15컴포넌트 분리, **9개 템플릿** (5 실구현 + 4 스켈레톤), 6 hooks, GA4 분석 |
-| **완료** | Phase 0 ✅ · Phase 1 (12 PR) ✅ · Phase 2.1~2.5 ✅ (`.claude/` 로컬, 시범 1호 `whitespace-remover`) · Phase 3 ✅ · **AEO/SEO 강화 ✅** |
-| **다음 단계** | Phase 2.6~2.7 — 시범 툴 2~5개 추가 (다른 템플릿 검증) → Phase 4 본격 양산 |
+| 인프라 | ToolPageLayout 15컴포넌트 분리, **9개 템플릿** (form-to-visual / live-preview 추가 검증 → 5 실구현, 4 스켈레톤), 6 hooks, GA4 분석 |
+| **완료** | Phase 0 ✅ · Phase 1 (12 PR) ✅ · Phase 2.1~2.7 ✅ (`.claude/` 로컬, 시범 1호 `whitespace-remover` + 시범 2~5호 4개 동시 양산) · Phase 3 ✅ · **AEO/SEO 강화 ✅** |
+| **다음 단계** | Phase 4 본격 양산 (검증된 9-STAGE 파이프라인으로 N개 툴 동시 진행) |
 | 다크모드 | 자체 `ThemeProvider` + FOUC 방지 inline script · `data-theme` 토큰 |
 | 분석 | **GA4 전용** (`trackToolEvent` + 14 표준 이벤트) ✅ |
 | AEO/SEO | JSON-LD 5종 (WebApp/Breadcrumb/FAQ+speakable/HowTo/TechArticle) + Organization/WebSite + ItemList · llms.txt + llms-full.txt · /tools.json · /feed.xml · 동적 OG image · AI bot allowlist · about/privacy/terms |

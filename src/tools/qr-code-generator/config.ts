@@ -1,0 +1,224 @@
+import { type ToolConfig } from "@/config/types";
+
+export const config: ToolConfig = {
+  slug: "qr-code-generator",
+  category: "productivity",
+  template: "form-to-visual",
+  processingType: "client",
+  icon: "QrCode",
+  tags: ["qr", "qrcode", "generator", "productivity", "sharing"],
+  status: "published",
+
+  datePublished: "2026-05-10",
+  lastUpdated: "2026-05-10",
+
+  inputConfig: {
+    placeholder: "https://example.com 또는 임의의 텍스트",
+    inputLabel: "콘텐츠 (URL 또는 텍스트)",
+    outputLabel: "QR 코드 미리보기",
+    inputType: "text",
+  },
+
+  formFields: [
+    {
+      name: "text",
+      label: "콘텐츠 (URL 또는 텍스트)",
+      type: "text",
+      placeholder: "https://example.com",
+      defaultValue: "https://toolhub.tools",
+    },
+    {
+      name: "errorCorrectionLevel",
+      label: "오류 정정 레벨",
+      type: "select",
+      defaultValue: "M",
+      options: [
+        { label: "L (7%)", value: "L" },
+        { label: "M (15%)", value: "M" },
+        { label: "Q (25%)", value: "Q" },
+        { label: "H (30%)", value: "H" },
+      ],
+    },
+    {
+      name: "size",
+      label: "셀 크기 (px)",
+      type: "number",
+      defaultValue: 8,
+      min: 2,
+      max: 20,
+      step: 1,
+    },
+    {
+      name: "foreground",
+      label: "셀 색상 (HEX)",
+      type: "text",
+      defaultValue: "#000000",
+    },
+    {
+      name: "background",
+      label: "배경 색상 (HEX)",
+      type: "text",
+      defaultValue: "#FFFFFF",
+    },
+  ],
+
+  seo: {
+    ko: {
+      title: "QR 코드 생성기 - 무료 온라인 QR 코드 만들기",
+      description:
+        "QR 코드 생성기는 URL·텍스트·전화·이메일을 즉시 QR 코드 SVG/PNG로 변환하는 무료 온라인 도구입니다. 오류 정정 레벨·크기·색상 조절 가능, 모든 처리는 브라우저 내에서 수행됩니다.",
+      keywords: [
+        "QR 코드 생성기",
+        "QR 만들기",
+        "큐알 코드 생성",
+        "URL QR 코드",
+        "QR 코드 다운로드",
+        "무료 QR 생성",
+        "QR 코드 SVG",
+        "QR 코드 PNG",
+      ],
+    },
+    en: {
+      title: "QR Code Generator - Free Online QR Maker (SVG/PNG)",
+      description:
+        "QR Code Generator is a free online tool that turns URLs, text, phone numbers, and emails into downloadable SVG/PNG QR codes instantly. Tweak error correction level, size, and colors entirely in your browser.",
+      keywords: [
+        "qr code generator",
+        "free qr maker",
+        "url qr code",
+        "qr code svg",
+        "qr code png download",
+        "error correction qr",
+        "online qr generator",
+        "browser qr generator",
+      ],
+    },
+  },
+
+  howToUse: {
+    ko: [
+      "QR로 만들 텍스트 또는 URL을 입력 필드에 넣으세요.",
+      '크기와 오류 정정 레벨을 선택하고 "생성" 버튼을 누르세요.',
+      "미리보기를 확인한 뒤 다운로드 버튼으로 SVG 파일을 저장하세요.",
+    ],
+    en: [
+      "Enter the URL or text you want to encode into the input field.",
+      'Choose the size and error correction level, then click "Generate".',
+      "Preview the QR code and click the download button to save it as SVG.",
+    ],
+  },
+
+  features: {
+    ko: [
+      "URL·일반 텍스트·전화번호·이메일 등 모든 문자열을 QR로 즉시 변환",
+      "오류 정정 레벨 4단계 선택 (L/M/Q/H — 손상 허용 7~30%)",
+      "QR 셀·배경 색상을 자유롭게 조정하여 브랜드 컬러 적용",
+      "SVG·PNG 다운로드 지원 (인쇄용 고해상도 SVG 권장)",
+      "입력 데이터는 서버 전송 없이 브라우저 내에서만 처리",
+    ],
+    en: [
+      "Converts URLs, plain text, phone numbers, and emails into a QR instantly",
+      "Pick from four error correction levels (L/M/Q/H — tolerates 7~30% damage)",
+      "Customize foreground and background colors to match your brand",
+      "Download as SVG or PNG (SVG recommended for print)",
+      "Inputs never leave the browser — fully client-side rendering",
+    ],
+  },
+
+  useCases: {
+    ko: [
+      {
+        title: "명함·전단지에 URL QR 추가",
+        description:
+          "회사 홈페이지, 포트폴리오 URL을 QR로 만들어 인쇄물에 부착해 모바일 접근성을 높입니다.",
+      },
+      {
+        title: "Wi-Fi 비밀번호·이벤트 URL 공유",
+        description:
+          "카페·전시회에서 Wi-Fi 정보나 이벤트 페이지 URL을 손쉽게 공유할 수 있습니다.",
+      },
+    ],
+    en: [
+      {
+        title: "Adding URL QR to business cards & flyers",
+        description:
+          "Encode your homepage or portfolio URL into a QR for print materials so people can scan with their phone.",
+      },
+      {
+        title: "Sharing Wi-Fi or event URLs",
+        description:
+          "Quickly share Wi-Fi info or event page URLs at cafes and exhibitions without typing.",
+      },
+    ],
+  },
+
+  guide: {
+    ko: {
+      title: "QR 코드 생성기 사용 가이드",
+      content:
+        "QR 코드 생성기는 URL, 텍스트, 연락처 등 임의의 문자열을 표준 QR 코드(ISO/IEC 18004)로 변환하는 도구입니다. 명함·전단지·포스터에 URL을 부착하거나, 카페·전시회에서 Wi-Fi 비밀번호와 이벤트 URL을 공유할 때 유용합니다.\n\n이 도구는 다음 옵션을 제공합니다.\n1) 오류 정정 레벨 (L/M/Q/H) — 손상 허용 비율 7~30%. 인쇄용은 M·Q 권장.\n2) 색상 — QR 셀과 배경 색을 브랜드에 맞게 조정.\n3) 출력 형식 — SVG(벡터·인쇄 권장)와 PNG(웹 업로드).\n\n모든 인코딩은 브라우저 내에서 처리되므로 입력한 URL이나 텍스트가 외부 서버에 전송되지 않습니다.",
+    },
+    en: {
+      title: "QR Code Generator Guide",
+      content:
+        "QR Code Generator turns arbitrary strings — URLs, plain text, contact info — into standard QR codes (ISO/IEC 18004). Common scenarios include attaching a URL to a business card or flyer and sharing Wi-Fi or event URLs at cafes and exhibitions.\n\nThe tool offers three knobs:\n1) Error correction level (L/M/Q/H) — tolerates 7~30% damage. Use M or Q for print.\n2) Colors — pick foreground and background to match your brand.\n3) Output format — SVG (vector, recommended for print) or PNG (web uploads).\n\nAll encoding happens in your browser, so your URLs and text never leave the device.",
+    },
+  },
+
+  faq: {
+    ko: [
+      {
+        q: "입력한 URL이 서버로 전송되나요?",
+        a: "아니오, QR 코드 생성기는 입력 데이터를 어떤 서버로도 전송하지 않습니다. QR 인코딩은 사용자의 브라우저 내에서만 수행됩니다.",
+      },
+      {
+        q: "오류 정정 레벨(L/M/Q/H)은 어떤 차이가 있나요?",
+        a: "오류 정정 레벨은 QR 코드의 손상 허용 정도입니다. L=7%, M=15%, Q=25%, H=30%까지 손상되어도 인식되며, 레벨이 높을수록 데이터 영역이 커지고 셀이 많아집니다. 인쇄·스티커는 보통 M 또는 Q를 권장합니다.",
+      },
+      {
+        q: "SVG와 PNG 중 무엇을 다운로드해야 하나요?",
+        a: "인쇄·확대 용도는 SVG(벡터)를 권장합니다. 화질 손실 없이 어떤 크기로도 깔끔하게 출력됩니다. 웹·SNS 업로드처럼 비트맵이 필요한 경우에만 PNG를 선택하세요.",
+      },
+      {
+        q: "한글이나 이모지도 QR로 만들 수 있나요?",
+        a: "네, QR 코드 생성기는 UTF-8 기반이라 한글·중국어·일본어·이모지를 포함한 모든 유니코드 문자열을 인코딩할 수 있습니다.",
+      },
+    ],
+    en: [
+      {
+        q: "Are my inputs sent to a server?",
+        a: "No, QR Code Generator never transmits your input. All QR encoding runs entirely inside your browser.",
+      },
+      {
+        q: "What is the difference between error correction levels (L/M/Q/H)?",
+        a: "Error correction level controls how much physical damage a QR can tolerate. L=7%, M=15%, Q=25%, H=30%. Higher levels add more cells to the QR matrix. M or Q is generally recommended for printing and stickers.",
+      },
+      {
+        q: "Should I download SVG or PNG?",
+        a: "For print or any size scaling, choose SVG (vector) — it stays crisp at any resolution. Pick PNG only when you need a bitmap for web or social media uploads.",
+      },
+      {
+        q: "Can I encode Korean characters or emojis?",
+        a: "Yes, QR Code Generator uses UTF-8 so it handles every Unicode string, including Korean, Chinese, Japanese characters, and emojis.",
+      },
+    ],
+  },
+
+  relatedTools: [
+    "url-encoder",
+    "color-converter",
+    "password-generator",
+    "hash-generator",
+  ],
+
+  privacy: {
+    storesInput: false,
+    storesFiles: false,
+    clientSideOnly: true,
+  },
+
+  schema: {
+    type: "WebApplication",
+    applicationCategory: "UtilitiesApplication",
+  },
+};

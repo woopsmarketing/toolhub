@@ -19,6 +19,7 @@
     "generate:llms-txt": "tsx scripts/generate-llms-txt.ts"
   },
   "dependencies": {
+    "@types/qrcode": "^1.5.6",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "js-md5": "^0.8.3",
@@ -29,6 +30,7 @@
     "next": "16.2.2",
     "next-intl": "^4.1.0",
     "next-themes": "^0.4.6",
+    "qrcode": "^1.5.4",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "tailwind-merge": "^3.0.2"

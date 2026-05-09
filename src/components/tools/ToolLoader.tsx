@@ -53,6 +53,7 @@ const toolComponents: Record<string, React.ComponentType> = {
   "regex-tester": dynamic(() => import("@/tools/regex-tester/component")),
   "markdown-preview": dynamic(() => import("@/tools/markdown-preview/component")),
   "csv-json-converter": dynamic(() => import("@/tools/csv-json-converter/component")),
+  "html-preview": dynamic(() => import("@/tools/html-preview/component")),
   // Calculator
   "percentage-calculator": dynamic(() => import("@/tools/percentage-calculator/component")),
   "date-calculator": dynamic(() => import("@/tools/date-calculator/component")),
@@ -61,14 +62,18 @@ const toolComponents: Record<string, React.ComponentType> = {
   "age-calculator": dynamic(() => import("@/tools/age-calculator/component")),
   "discount-calculator": dynamic(() => import("@/tools/discount-calculator/component")),
   "salary-calculator": dynamic(() => import("@/tools/salary-calculator/component")),
+  "savings-calculator": dynamic(() => import("@/tools/savings-calculator/component")),
   // Converter
   "unit-converter": dynamic(() => import("@/tools/unit-converter/component")),
   "color-converter": dynamic(() => import("@/tools/color-converter/component")),
-  // Generator
+  "temperature-converter": dynamic(() => import("@/tools/temperature-converter/component")),
+  // Security / Generator (legacy bucket)
   "lorem-ipsum-generator": dynamic(() => import("@/tools/lorem-ipsum-generator/component")),
   "password-generator": dynamic(() => import("@/tools/password-generator/component")),
   "uuid-generator": dynamic(() => import("@/tools/uuid-generator/component")),
   "hash-generator": dynamic(() => import("@/tools/hash-generator/component")),
+  // Productivity
+  "qr-code-generator": dynamic(() => import("@/tools/qr-code-generator/component")),
 };
 
 export default function ToolLoader({ slug }: { slug: string }) {
