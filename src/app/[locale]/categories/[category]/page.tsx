@@ -4,6 +4,12 @@ import { Link } from "@/i18n/navigation";
 import { categories, categoryOrder } from "@/config/categories";
 import { getToolsByCategory } from "@/tools/registry";
 import { ChevronRight } from "lucide-react";
+import { getCategoryItemListJsonLd } from "@/lib/jsonld";
+import type { Locale } from "@/config/types";
+
+const BASE_URL = (
+  process.env.NEXT_PUBLIC_BASE_URL || "https://toolhub.co.kr"
+).replace(/\/+$/, "");
 
 export async function generateStaticParams() {
   return categoryOrder.map((cat) => ({ category: cat }));
@@ -38,9 +44,25 @@ export default async function CategoryPage({
 
   const cat = categories[category];
   const tools = getToolsByCategory(category);
+  const localeTyped: Locale = locale === "en" ? "en" : "ko";
+  const itemListJsonLd =
+    tools.length > 0
+      ? getCategoryItemListJsonLd(
+          tools,
+          localeTyped,
+          BASE_URL,
+          t(`categories.${category}`),
+        )
+      : null;
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
+      {itemListJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+        />
+      )}
       {/* Breadcrumb */}
       <nav
         aria-label={t("common.breadcrumbLabel")}
@@ -118,7 +140,7 @@ export default async function CategoryPage({
                   {seo.description}
                 </p>
                 <div className="mt-3">
-                  <span className="rounded-md bg-green-50 px-2 py-0.5 text-xs font-medium text-green-700">
+                  <span className="rounded-md bg-green-500/10 px-2 py-0.5 text-xs font-medium text-green-700 dark:text-green-400">
                     {t("common.free")}
                   </span>
                 </div>

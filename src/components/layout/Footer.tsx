@@ -81,19 +81,28 @@ export default function Footer() {
             </h3>
             <ul className="mt-3 space-y-2">
               <li>
-                <span className="text-sm text-muted-foreground">
+                <Link
+                  href="/about"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                >
                   {t("footer.about")}
-                </span>
+                </Link>
               </li>
               <li>
-                <span className="text-sm text-muted-foreground">
+                <Link
+                  href="/privacy"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                >
                   {t("footer.privacy")}
-                </span>
+                </Link>
               </li>
               <li>
-                <span className="text-sm text-muted-foreground">
+                <Link
+                  href="/terms"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                >
                   {t("footer.terms")}
-                </span>
+                </Link>
               </li>
             </ul>
           </div>

@@ -1,0 +1,1329 @@
+# Toolhub — Free Online Tools (Full)
+
+> Free online tools for text, code, calculation, conversion, image, and PDF processing. All tools run entirely in your browser; your data is never sent to any server. Korean/English supported. No sign-up required.
+
+> Generated: 2026-05-09 · 29 tools · 5 categories
+
+## Tools
+
+---
+
+## Text & Document
+
+### Case Converter - Online Text Case Changer
+
+URL: https://toolhub.example/en/tools/text/case-converter
+
+Convert text to uppercase, lowercase, title case, camelCase, snake_case, and kebab-case instantly. Free online case converter tool.
+
+**Key features**
+
+- UPPERCASE conversion
+- lowercase conversion
+- Title Case conversion
+- camelCase conversion (for programming)
+- snake_case conversion (for programming)
+- kebab-case conversion (for URLs/CSS)
+
+**How to use**
+
+1. Type or paste your text into the input area.
+2. The text is instantly converted into 6 different cases.
+3. Copy the desired conversion result and use it.
+
+**Use cases**
+
+- **Variable Naming** — Quickly convert text to camelCase or snake_case when writing variable names in code.
+- **URL Slug Creation** — Convert blog post titles to URL-friendly kebab-case format.
+- **Document Formatting** — Ensure consistent capitalization in documents and presentations.
+
+**FAQ**
+
+- Q: Does it work with non-English text?
+  A: Non-English characters are preserved as-is during conversion. For camelCase, snake_case, and kebab-case, word boundaries are determined by spaces and special characters.
+- Q: What is the difference between camelCase and PascalCase?
+  A: camelCase starts with a lowercase letter (e.g., myVariableName) while PascalCase capitalizes every word (e.g., MyVariableName). This tool converts to camelCase.
+- Q: How are special characters handled?
+  A: Special characters are treated as word separators for camelCase, snake_case, and kebab-case conversions, and are removed from the output.
+
+**Guide: Why Case Conversion Matters**
+
+Different programming languages and contexts require different text cases. JavaScript uses camelCase for variables and functions, Python uses snake_case, and CSS class names typically use kebab-case.
+
+In document writing, titles use Title Case while body text uses sentence case. Consistent capitalization improves readability and professionalism.
+
+This tool converts your text into all 6 common formats simultaneously, so you can instantly pick the right case for your context.
+
+### Duplicate Line Remover - Online Duplicate Text Cleaner
+
+URL: https://toolhub.example/en/tools/text/duplicate-line-remover
+
+Remove duplicate lines from text instantly. Free online tool to clean up lists, code, and data by eliminating repeated entries.
+
+**Key features**
+
+- Automatic duplicate line detection and removal
+- Keeps only the first occurrence of each line
+- Preserves original line order
+- Handles empty lines
+- Case-sensitive duplicate detection
+- Real-time processing
+
+**How to use**
+
+1. Type or paste your text into the input area.
+2. Duplicate lines are automatically removed and shown in the result.
+3. Copy the result and paste it wherever you need.
+
+**Use cases**
+
+- **List Cleanup** — Quickly remove duplicate entries from email lists, keyword lists, or product catalogs.
+- **Log File Deduplication** — Remove repeated log messages to focus on unique errors and events.
+- **Data Preprocessing** — Clean up CSV or plain text data by removing duplicate rows before analysis.
+
+**FAQ**
+
+- Q: Is the duplicate detection case-sensitive?
+  A: Yes, the tool is case-sensitive. For example, 'Apple' and 'apple' are treated as different lines. To remove case-insensitive duplicates, convert the text to the same case first.
+- Q: Are empty lines treated as duplicates?
+  A: Yes, consecutive empty lines are collapsed into one. An empty line counts as a line and is subject to duplicate detection.
+- Q: Is there a size limit for the text?
+  A: Since this is a browser-based tool, very large files may process slowly. For typical text sizes (up to a few thousand lines), processing is real-time.
+
+**Guide: When to Use Duplicate Line Remover**
+
+Duplicate lines appear in many everyday workflows: merging lists from multiple sources, copy-paste errors, repeated log entries, or exported data with duplicates.
+
+Manually finding and removing duplicates is tedious and error-prone. This tool removes them instantly — just paste your text and get clean results.
+
+The tool preserves the original order, keeping the first occurrence of each line and removing all subsequent duplicates.
+
+### Korean English Typing Converter | QWERTY to Hangul Fixer
+
+URL: https://toolhub.example/en/tools/text/korean-typing-converter
+
+Free online Korean-English typing converter. Instantly fix typos like dksdud to 안녕 or 소둇.ㅜㄷㅅ to hello.net. Bidirectional conversion, one-click copy, no install required.
+
+**Key features**
+
+- Instantly recover typos like dksdud to 안녕 caused by forgetting to switch IME
+- Automatic bidirectional detection between QWERTY English and Hangul
+- Accurate jamo mapping based on the Dubeolsik standard (KS X 5002)
+- 100% client-side processing, your text never leaves the browser
+- Responsive design, works on mobile and desktop without any installation
+
+**How to use**
+
+1. Paste the text you want to convert (e.g., dksdud or 안녕) into the input box.
+2. The tool auto-detects direction and instantly converts English typos to Hangul or Hangul to QWERTY.
+3. Review the result and click the copy button to use the converted text anywhere.
+
+**Use cases**
+
+- **Fixing IME-switch typos in chat or email** — Sent 'dksdud gktpdy' by accident before a meeting? Paste it here, get '안녕 하세요' back, and resend without retyping the whole message.
+- **Typing Korean on a foreign computer without an IME** — Stuck on a hotel PC with no Korean input? Type in QWERTY layout like 'gksrmf' and instantly convert to '한글' to paste into documents or emails.
+
+**FAQ**
+
+- Q: Why do typos like 'dksdud' happen?
+  A: When a Korean user forgets to press the Han/Eng switch key, each intended jamo is typed as its QWERTY position instead. '안녕' maps to ㅇ(d)-ㅏ(k)-ㄴ(s)-ㄴ(s)-ㅕ(u)-ㅇ(d), producing 'dksdud'.
+- Q: Is my text sent to any server?
+  A: No. All conversion runs entirely in your browser using a local JavaScript engine. Your input never leaves the device, making it safe for sensitive messages.
+- Q: Which keyboard layout does this support?
+  A: Currently, only the Dubeolsik standard (KS X 5002) QWERTY layout is supported, which covers over 99% of Korean IME users and handles the vast majority of Han/Eng switch typos accurately.
+
+**Guide: Korean-English Typing Converter Guide**
+
+This tool converts text typed in the wrong IME mode back to its intended language. Based on the Dubeolsik (KS X 5002) standard and Unicode Hangul syllable composition (starting at U+AC00), it handles compound vowels, double consonants, and complex final consonants just like a real Korean IME. All processing happens entirely in your browser, so your text is never sent to any server. Use it to recover chat typos, type Korean on computers without an IME, or fix commands entered in the wrong mode.
+
+### Lorem Ipsum Generator - Online Placeholder Text Tool
+
+URL: https://toolhub.example/en/tools/text/lorem-ipsum-generator
+
+Generate Lorem Ipsum placeholder text with any number of paragraphs instantly. Free online tool for web design, UI mockups, and print layout work.
+
+**Key features**
+
+- Generate 1-20 paragraphs freely
+- Uses classic Lorem Ipsum text
+- Instant generation and copy
+- Optimized for web design mockups
+- Processed directly in browser (no server upload)
+
+**How to use**
+
+1. Enter the number of paragraphs you want (1-20).
+2. Click the generate button to create Lorem Ipsum text.
+3. Copy the generated text and use it in your design work.
+
+**Use cases**
+
+- **Web Design Mockups** — Use as placeholder text to check layout and typography before real content is ready.
+- **Print Layout** — Fill text spaces in brochures, posters, and business card designs.
+- **Development Testing** — Use as dummy data for testing text rendering, scrolling behavior, and responsive layouts.
+
+**FAQ**
+
+- Q: Is Lorem Ipsum actual Latin?
+  A: Not exactly. Lorem Ipsum originates from a real Latin text by Cicero, but the words have been scrambled and altered to be nonsensical. It is intentionally made unreadable.
+- Q: Can I use the generated text commercially?
+  A: Yes, Lorem Ipsum text is in the public domain and can be used freely for any purpose, including commercial projects, design work, and educational materials.
+- Q: Can I generate very long or very short paragraphs?
+  A: Lorem Ipsum has a fixed structure so paragraph lengths are relatively consistent. This tool cycles through standard Lorem Ipsum paragraphs based on the number you request.
+
+**Guide: What is Lorem Ipsum?**
+
+Lorem Ipsum is the standard placeholder text used in the design industry for centuries. It originates from Cicero's Latin text 'de Finibus Bonorum et Malorum' and has been used by printers as layout samples since the 1500s.
+
+The reason for using Lorem Ipsum is that meaningful text draws the reader's attention to the content rather than the layout. Lorem Ipsum looks like Latin but is nonsensical, allowing focus purely on visual layout evaluation.
+
+In modern web development and design, Lorem Ipsum is widely used in wireframes, prototypes, and UI component storybooks.
+
+### Online Word Counter
+
+URL: https://toolhub.example/en/tools/text/word-counter
+
+Count characters, words, sentences, and bytes in real time. Free online character counter with reading time estimation.
+
+**Key features**
+
+- Real-time character count with/without spaces
+- Automatic word and sentence counting
+- Byte count calculation (UTF-8)
+- Paragraph and line count
+- Estimated reading time
+- Supports all languages and special characters
+
+**How to use**
+
+1. Type or paste your text into the input area.
+2. Character count, word count, and sentence count are calculated in real time.
+3. View counts with and without spaces.
+
+**Use cases**
+
+- **Blog Post Titles** — SEO-friendly blog titles should be 50-60 characters. Check your title length instantly.
+- **Social Media Posts** — Twitter limits to 280 characters, Instagram to 2,200. Check your post length before publishing.
+
+**FAQ**
+
+- Q: Are spaces included in the character count?
+  A: It depends on the context. This tool shows both counts — with and without spaces. Most social media platforms count spaces, while some academic requirements exclude them.
+- Q: How is reading time calculated?
+  A: We estimate based on an average reading speed of 200-250 words per minute. Actual reading speed may vary depending on content complexity.
+- Q: Does it count Korean, Japanese, and Chinese characters?
+  A: Yes. CJK characters, emoji, and other Unicode text are counted accurately alongside Latin letters.
+- Q: Is my text uploaded to your servers?
+  A: No. All counting happens locally in your browser. Nothing is sent over the network or stored anywhere.
+
+**Guide: Why Character Counting Matters**
+
+Character limits are everywhere online. Meta descriptions (155 chars), tweets (280 chars), cover letters, academic abstracts — each has its own length requirement.
+
+Accurate character counting isn't just about staying within limits. The right length helps maintain reader attention and delivers your message effectively.
+
+Our tool counts characters with and without spaces, words, sentences, paragraphs, and even estimates reading time — everything you need in one place.
+
+### Text Diff Tool - Online Text Comparison
+
+URL: https://toolhub.example/en/tools/text/text-diff
+
+Compare two texts line by line. Instantly see added (+) and removed (-) lines. Free online text diff checker.
+
+**Key features**
+
+- Line-by-line text comparison
+- Clear marking of added (+), removed (-), and unchanged ( ) lines
+- Simple --- separator to split two texts
+- Summary of changed line count
+- Fast comparison even for long texts
+- Detects whitespace and empty line differences
+
+**How to use**
+
+1. Enter the first text in the input area.
+2. Type --- (three hyphens) as a separator, then enter the second text.
+3. In the result, (+) means added lines, (-) means removed lines, and ( ) means unchanged lines.
+
+**Use cases**
+
+- **Document Version Comparison** — Compare previous and current versions of contracts or reports to identify changes.
+- **Code Change Review** — Quickly compare before and after states of small code snippets.
+
+**FAQ**
+
+- Q: How exactly do I enter the --- separator?
+  A: Enter three hyphens (---) on a line by themselves, with no other text. Everything above is treated as the first text, and everything below as the second.
+- Q: Are whitespace and empty line differences detected?
+  A: Yes, whitespace and empty line differences are detected. If one text has a blank line that the other doesn't, it will be shown as added or removed.
+- Q: Can I compare very large texts?
+  A: Since processing runs in the browser, very large texts may be slower. Texts up to a few thousand lines work fine without issues.
+
+**Guide: What is Text Diff?**
+
+A diff shows the differences between two texts on a line-by-line basis. In software development, tools like git diff are used to review code changes.
+
+This tool compares two texts using an LCS (Longest Common Subsequence) algorithm:
+- (+) Added lines: present only in the second text
+- (-) Removed lines: present only in the first text
+- ( ) Unchanged lines: identical in both texts
+
+Useful for document review, code comparison, translation verification, and version tracking.
+
+### Text Reverser - Online String Reversal Tool
+
+URL: https://toolhub.example/en/tools/text/text-reverser
+
+Reverse any text instantly. Free online tool to flip text backwards, reverse character order, or reverse line order.
+
+**Key features**
+
+- Full character-by-character text reversal
+- Supports Korean, English, and special characters
+- Reversal includes line breaks
+- Real-time conversion
+- Original text preserved
+
+**How to use**
+
+1. Type or paste the text you want to reverse into the input area.
+2. The entire text is automatically reversed character by character.
+3. Copy the result and use it wherever you need.
+
+**Use cases**
+
+- **Fun Messages** — Create reversed messages for fun, puzzles, or hidden messages to share with friends.
+- **Palindrome Check** — Reverse text and compare with the original to check if a word or phrase is a palindrome.
+- **Simple Encryption Learning** — Use text reversal as a simple demonstration of basic encryption concepts.
+
+**FAQ**
+
+- Q: Can I reverse text line by line?
+  A: This tool reverses the entire text character by character. For line-by-line reversal, paste each line separately.
+- Q: Does it work correctly with non-Latin characters?
+  A: Yes, all Unicode characters including Korean, Chinese, Arabic, and others are handled correctly.
+- Q: Can emojis be reversed?
+  A: Emojis have complex Unicode structures and may not reverse correctly. Text containing emojis may produce unexpected results.
+
+**Guide: Creative Uses for Text Reversal**
+
+Reversing text has more uses than you might think. It's used to check palindromes, create puzzles, demonstrate simple encryption concepts, and produce unique visual effects.
+
+Mirrored text can make social media posts stand out, and reversed messages can be used as a simple hide-in-plain-sight trick.
+
+This tool supports all languages and characters and processes text in real time.
+
+### URL Slug Generator - Online Slug Creator Tool
+
+URL: https://toolhub.example/en/tools/text/slug-generator
+
+Convert any text to a URL-friendly slug instantly. Automatically replaces spaces with hyphens, removes special characters, and lowercases text. Free online slug generator.
+
+**Key features**
+
+- Automatically replaces spaces with hyphens
+- Converts uppercase to lowercase
+- Removes URL-unsafe special characters
+- Collapses consecutive hyphens
+- Trims leading and trailing hyphens
+- Supports text with Korean characters
+
+**How to use**
+
+1. Enter or paste the text (e.g., blog post title) to convert to a slug.
+2. A URL-friendly slug is automatically generated.
+3. Copy the slug and use it in URLs, file names, and more.
+
+**Use cases**
+
+- **Blog Post URLs** — Convert blog post titles into SEO-friendly URL slugs.
+- **File Name Generation** — Create safe file names without spaces or special characters.
+- **CSS Class Names** — Generate valid CSS class names or IDs from descriptive text.
+- **API Endpoints** — Generate consistent RESTful API endpoint paths from resource names.
+
+**FAQ**
+
+- Q: How are special characters handled?
+  A: Special characters that are not URL-safe (like !, @, #, $, etc.) are removed. Spaces and underscores are converted to hyphens.
+- Q: How are numbers treated in slugs?
+  A: Numbers are preserved as-is in the slug. For example, '10 Best Tips' becomes '10-best-tips'.
+- Q: What is the ideal slug length?
+  A: For SEO and usability, 3-5 words and under 50 characters is ideal. Very long slugs may be truncated in search results and are harder to remember.
+
+**Guide: Creating Good URL Slugs**
+
+A URL slug is the human-readable part of a web address that describes the page content. For example, in 'https://example.com/blog/my-first-post', 'my-first-post' is the slug.
+
+Good slugs are short, descriptive, use only lowercase letters, and replace spaces with hyphens. Special characters and those requiring URL encoding are removed or replaced.
+
+From an SEO perspective, including relevant keywords in your slug is important, and keeping it concise is best. Slugs with 3-5 words are generally ideal.
+
+---
+
+## Developer
+
+### Base64 Encoder & Decoder
+
+URL: https://toolhub.example/en/tools/developer/base64-encoder
+
+Encode text to Base64 or decode Base64 back to plain text. Automatically detects Base64 input and shows both encode and decode results. Free online tool.
+
+**Key features**
+
+- Instantly encode text to Base64
+- Instantly decode Base64 to plain text
+- Shows both encode and decode results simultaneously
+- Clear error messages for invalid Base64 input
+- Full UTF-8 character support (Korean, Japanese, etc.)
+- Processed entirely in your browser for data security
+
+**How to use**
+
+1. Paste the text you want to encode or decode into the input area.
+2. Both the Base64 encoded result and decoded result are shown automatically.
+3. Copy the result you need.
+
+**Use cases**
+
+- **Image Data URLs** — Encode image binary data to Base64 for embedding directly in HTML/CSS as a Data URL.
+- **API Authorization Headers** — Encode username:password to Base64 for HTTP Basic Authentication headers.
+
+**FAQ**
+
+- Q: What is the difference between Base64 encoding and encryption?
+  A: Base64 is not encryption. It is simply an encoding that changes the data format. Anyone can decode a Base64 string easily. For real security, use encryption algorithms like AES or RSA.
+- Q: What does the '=' sign at the end of Base64 mean?
+  A: Base64 processes data in 3-byte groups. If the input length is not a multiple of 3, padding '=' characters are added to fill the gap. You may see 1 or 2 '=' signs at the end.
+- Q: Can I encode Korean, Japanese, or emoji with this tool?
+  A: Yes. The tool uses UTF-8, so any Unicode characters — Korean, Japanese, Chinese, emoji — encode and decode correctly without data loss.
+
+**Guide: What is Base64 Encoding?**
+
+Base64 is an encoding scheme that converts binary data into an ASCII string using 64 characters: A-Z, a-z, 0-9, +, and /.
+
+Base64 is used in email attachments (MIME), HTTP Basic Authentication, JWT tokens, image Data URLs, cookie values, and more.
+
+Important: Base64 is encoding, not encryption. Anyone can decode it easily. Never rely on Base64 alone to protect sensitive information.
+
+### CSV to JSON Converter - Free Online Bidirectional Tool
+
+URL: https://toolhub.example/en/tools/developer/csv-json-converter
+
+Convert between CSV and JSON instantly with automatic direction detection. Free online tool that runs entirely in your browser — no uploads, no tracking. Supports RFC 4180 quoting, nested JSON flattening, and UTF-8 (including Korean) input.
+
+**Key features**
+
+- Bidirectional auto-detection based on the first character of the input
+- 100% client-side processing — nothing is ever uploaded or logged
+- RFC 4180 compliant quoting for commas, newlines, and embedded quotes
+- Flattens nested JSON objects using dot notation (e.g., user.name)
+- Full UTF-8 support including Korean, Japanese, and emoji
+
+**How to use**
+
+1. Paste your CSV or JSON text into the input area.
+2. The converter auto-detects the direction from the first character and converts instantly.
+3. Copy the result and drop it into your spreadsheet, code, or API request.
+
+**Use cases**
+
+- **Turn API responses into spreadsheets** — Convert JSON responses from REST APIs into CSV so you can analyze them directly in Excel or Google Sheets.
+- **Prepare JSON mock data from CSV** — Paste CSV copied from a spreadsheet to instantly produce a JSON array you can use as API request bodies or test fixtures.
+
+**FAQ**
+
+- Q: How does the auto-detection work?
+  A: After trimming whitespace and any BOM, the tool checks the first character: '[' or '{' is treated as JSON and converted to CSV; anything else is treated as CSV and converted to JSON. No manual mode switch is required.
+- Q: Is my data sent to a server?
+  A: No. All parsing and conversion happens locally in your browser. Nothing is uploaded, logged, or stored, so you can safely process sensitive data such as customer lists or API responses.
+- Q: Can it convert nested JSON to CSV?
+  A: Yes. Nested objects are flattened one level deep using dot notation, so {"user":{"name":"kim"}} becomes a 'user.name' column. Array values are serialized as JSON strings within a single cell.
+
+**Guide: CSV, JSON, and converting safely between them**
+
+CSV is the go-to tabular format for spreadsheets and database exports, while JSON is the standard for APIs and configuration files. They describe the same kind of data in very different shapes, which is why converting between them is such a common task.
+
+This tool auto-detects the direction from the first character of your input ('[' or '{' means JSON, anything else is treated as CSV), so there is no mode switch to flip. Conversions follow RFC 4180 rules, escaping commas, line breaks, and embedded quotes correctly, and nested JSON objects are flattened one level deep using dot notation. Everything runs entirely in your browser, so sensitive data such as customer lists or API responses never leaves your device.
+
+### HTML Entity Converter
+
+URL: https://toolhub.example/en/tools/developer/html-entity-converter
+
+Convert HTML special characters to entities (&amp;, &lt;, &gt;, etc.) or decode HTML entities back to plain text. Essential for XSS prevention and HTML content creation.
+
+**Key features**
+
+- Converts HTML special characters like <, >, &, ", ' to entities
+- Decodes HTML entities back to plain text
+- Shows both encode and decode results simultaneously
+- Safe escaping for XSS attack prevention
+- Supports both numeric (&#number;) and named (&name;) entities
+- Processed entirely in your browser for data security
+
+**How to use**
+
+1. Paste your HTML text or entity-encoded text into the input area.
+2. The HTML entity encoded result and decoded result are shown automatically.
+3. Copy the result you need.
+
+**Use cases**
+
+- **XSS Prevention Escaping** — Always escape special characters to entities when rendering user input in HTML to prevent XSS attacks.
+- **Displaying HTML Source Code** — Convert HTML tags to entities so they display as text rather than being interpreted by the browser.
+
+**FAQ**
+
+- Q: Do I need to convert all special characters to HTML entities?
+  A: Not all of them. You must convert &, <, >, ", and ' as they affect HTML structure. Korean and other Unicode characters are safe to use directly in modern HTML (UTF-8).
+- Q: Do React or Vue need HTML entity escaping?
+  A: React and Vue automatically escape output during rendering by default. However, when using dangerouslySetInnerHTML (React) or v-html (Vue), you must escape manually.
+- Q: What is the difference between &amp; and &#38;?
+  A: &amp; is the named entity for '&', while &#38; is the numeric entity for the same character. Both render identically in HTML — use whichever your codebase prefers.
+
+**Guide: What are HTML Entities?**
+
+HTML entities are codes used to represent characters that have special meaning in HTML. For example, '<' marks the start of an HTML tag, so to display it as text you must write '&lt;'.
+
+Common HTML entities:
+- & → &amp;
+- < → &lt;
+- > → &gt;
+- " → &quot;
+- ' → &#39;
+
+HTML entities are also essential for XSS (Cross-Site Scripting) prevention. If you output user input directly to HTML without escaping, malicious scripts can execute.
+
+### JSON Formatter & Validator
+
+URL: https://toolhub.example/en/tools/developer/json-formatter
+
+Format and validate JSON instantly. Pretty-print JSON with proper indentation and catch syntax errors in real time. Free online JSON formatter.
+
+**Key features**
+
+- Real-time JSON syntax validation
+- Clean formatting with 2-space indentation
+- Clear error messages when JSON is invalid
+- Supports deeply nested objects and arrays
+- Handles large JSON payloads
+- Processed entirely in your browser for data security
+
+**How to use**
+
+1. Paste your JSON text into the input area.
+2. The JSON is automatically validated and pretty-printed.
+3. Copy the formatted JSON and use it wherever you need.
+
+**Use cases**
+
+- **API Response Debugging** — Format API JSON responses to easily understand the data structure.
+- **Config File Cleanup** — Tidy up package.json, tsconfig.json, and other project config files.
+
+**FAQ**
+
+- Q: What is the difference between JSON formatting and JSON validation?
+  A: JSON formatting transforms valid JSON into a readable, indented form. JSON validation checks whether the input text follows correct JSON syntax. This tool does both simultaneously.
+- Q: Can it handle large JSON files?
+  A: Yes. Processing happens in your browser memory, so files of several MB are fine. Very large files (10MB+) may be slow depending on your device.
+- Q: Is my JSON data sent to a server?
+  A: No. All processing is done locally in your browser. Nothing is sent to any server, so sensitive data is safe.
+
+**Guide: Why JSON Formatting Matters**
+
+JSON (JavaScript Object Notation) is the most widely used data exchange format. It appears in API responses, config files, database exports, and more.
+
+In production, JSON is often transmitted as a single compressed line with no whitespace, making it extremely hard to read.
+
+A JSON formatter transforms this compressed JSON into a human-readable form with proper indentation and line breaks. It also instantly detects syntax errors, saving valuable debugging time.
+
+### JWT Decoder - Parse JWT Tokens
+
+URL: https://toolhub.example/en/tools/developer/jwt-decoder
+
+Instantly decode and inspect the header and payload of any JWT (JSON Web Token). Check expiration time, user info, and claims from login tokens. Free online JWT decoder.
+
+**Key features**
+
+- Base64 decoding and JSON formatting of JWT Header
+- Base64 decoding and JSON formatting of JWT Payload
+- Detects invalid JWT format with clear error messages
+- Check token expiration using the exp claim
+- Processed entirely in your browser — token never leaves your device
+- Supports all JWT algorithms (HS256, RS256, ES256, etc.)
+
+**How to use**
+
+1. Paste your JWT token (the string starting with eyJ...) into the input area.
+2. The header and payload are automatically decoded to JSON format.
+3. Inspect the algorithm, user info, expiration time, and other claims.
+
+**Use cases**
+
+- **API Authentication Debugging** — When API auth errors occur, inspect the JWT token to quickly check user info, permissions, and expiration.
+- **Checking Token Expiration** — The exp field in the payload is a Unix timestamp for expiration. Decode the token to check when it expires.
+
+**FAQ**
+
+- Q: What is the difference between decoding and verifying a JWT?
+  A: Decoding reads the Base64-encoded header and payload content. Verification uses the secret key to confirm the signature is valid and the token has not been tampered with. This tool only decodes — signature verification requires the server-side secret key.
+- Q: Is it safe to paste my JWT token into this tool?
+  A: All processing happens locally in your browser and nothing is sent to any server. However, since JWTs may contain sensitive information, we recommend using test tokens or expired tokens rather than live production tokens.
+- Q: How do I convert the exp value to a human-readable date?
+  A: The exp field is a Unix timestamp (seconds since January 1, 1970 UTC). In JavaScript: new Date(exp * 1000).toLocaleString() converts it to a readable date.
+
+**Guide: What is JWT (JSON Web Token)?**
+
+JWT is an open standard (RFC 7519) for securely transmitting information between parties. It is primarily used for authentication and information exchange.
+
+A JWT consists of three parts separated by dots (.):
+1. Header: Token type and hashing algorithm
+2. Payload: Claims — user ID, name, permissions, expiration time, etc.
+3. Signature: Verifies the integrity of the header and payload
+
+The header and payload are Base64Url encoded, so anyone can decode and read them. Signature verification requires the secret key, so avoid putting sensitive data in the payload.
+
+### Markdown Preview - Online Markdown to HTML Converter
+
+URL: https://toolhub.example/en/tools/developer/markdown-preview
+
+Convert Markdown to HTML instantly. Supports headings, bold, italic, lists, code blocks, links, and more. Free online Markdown converter.
+
+**Key features**
+
+- Heading conversion (# H1, ## H2, ### H3)
+- Bold (**text**) and italic (*text*) formatting
+- Unordered list (- item) support
+- Inline code (`code`) and code blocks (```...```)
+- Link ([text](url)) conversion
+- Blockquote (>) and horizontal rule (---) support
+
+**How to use**
+
+1. Enter text using Markdown syntax in the input area.
+2. The HTML output is generated instantly as you type.
+3. Copy the converted HTML and use it in your web page or editor.
+
+**Use cases**
+
+- **README Preview** — Write a GitHub README.md and instantly preview the HTML output.
+- **Blog Content Writing** — Write blog posts in Markdown and convert to HTML to paste into your CMS.
+
+**FAQ**
+
+- Q: Are ordered lists (1. 2. 3.) supported?
+  A: The current version supports unordered lists (-). Ordered list (1. 2. 3.) support is planned for a future update.
+- Q: Are tables supported?
+  A: The current version supports core Markdown syntax (headings, bold, italic, lists, code, links, blockquotes, horizontal rules). Table syntax is not supported.
+- Q: Can I use the converted HTML directly?
+  A: Yes, the converted HTML can be copied and used directly in web pages, CMS platforms, email editors, or anywhere HTML is accepted.
+
+**Guide: Markdown Syntax Summary**
+
+Markdown is a lightweight markup language that lets you write formatted documents using plain text. It's widely used on GitHub, Notion, and developer documentation.
+
+Key syntax:
+- Headings: # H1, ## H2, ### H3
+- Bold: **text** or __text__
+- Italic: *text* or _text_
+- Lists: - item (one per line)
+- Code: `inline code` or ```block code```
+- Links: [display text](URL)
+- Blockquote: > quote content
+- Horizontal rule: ---
+
+This converter handles all major Markdown syntax without any external library.
+
+### Regex Tester - Online Regular Expression Tool
+
+URL: https://toolhub.example/en/tools/developer/regex-tester
+
+Test regular expression patterns in real time. Find all matches with positions instantly. Free online regex tester.
+
+**Key features**
+
+- Find all matches using global flag (g)
+- Display match positions (index)
+- Total match count summary
+- Clear error messages for invalid patterns
+- Multi-line text support
+- Capture group results displayed
+
+**How to use**
+
+1. Enter your regex pattern on the first line (e.g., \d+, [a-z]+, ^hello).
+2. Enter the text to test starting from the second line.
+3. Matched results, positions, and counts are displayed instantly.
+
+**Use cases**
+
+- **Email Validation** — Test whether an email regex pattern works correctly.
+- **Number Extraction** — Extract all numbers from a text string.
+
+**FAQ**
+
+- Q: How do I specify regex flags?
+  A: This tool automatically applies the global (g) and multiline (m) flags to find all matches. No need to specify flags manually.
+- Q: How do I enter backslash patterns like \d?
+  A: Just type \d, \w, etc. directly in the input field. The tool interprets your first line as a raw regex pattern.
+- Q: What happens if my regex pattern is invalid?
+  A: If you enter an invalid pattern, an error message is displayed in the result area. Check for missing brackets, invalid quantifiers, or other syntax errors.
+
+**Guide: Regular Expression Basics Guide**
+
+Regular expressions (Regex) are a powerful tool for defining string patterns.
+
+Character classes: \d (digit), \w (word char), \s (whitespace), . (any char)
+Quantifiers: * (0+), + (1+), ? (0 or 1), {n,m} (n to m times)
+Anchors: ^ (start), $ (end)
+Groups: (abc) capture group, [abc] character set, [^abc] negation
+
+This tool automatically applies the global (g) and multiline (m) flags to find all matches in the input text.
+
+### Unicode Converter - Text ↔ Unicode Escape Sequences
+
+URL: https://toolhub.example/en/tools/developer/unicode-converter
+
+Convert text to Unicode escape sequences (\uXXXX) or decode Unicode escapes back to readable text. Find Unicode code points for Korean, emoji, and special characters. Free online tool.
+
+**Key features**
+
+- Converts text to \uXXXX Unicode escape sequences
+- Interprets Unicode escape sequences back to plain text
+- Shows both conversion and interpretation results simultaneously
+- Supports all Unicode characters: Korean, emoji, CJK, etc.
+- Handles code points beyond U+FFFF (surrogate pairs)
+- Processed entirely in your browser for data security
+
+**How to use**
+
+1. Paste your text or \uXXXX Unicode escape sequences into the input area.
+2. The Unicode escape conversion and interpretation results are shown automatically.
+3. Copy the result you need.
+
+**Use cases**
+
+- **Source Code String Literals** — Convert non-ASCII characters to Unicode escapes for use in Java, Python, or JavaScript source code string literals.
+- **Decoding Unicode Escapes** — Convert \uXXXX escape sequences found in source code or logs back to readable text.
+
+**FAQ**
+
+- Q: What is the difference between \uXXXX and \UXXXXXXXX?
+  A: \uXXXX represents characters in the BMP (U+0000–U+FFFF) using 4 hex digits. \UXXXXXXXX represents supplementary characters (including emoji) above U+10000 using 8 digits. JavaScript also supports \u{XXXXX} format since ES6.
+- Q: Can emoji be converted to Unicode escapes?
+  A: Yes. Emoji are supplementary characters above U+1F600. In JavaScript they are represented as surrogate pairs (two \uXXXX sequences). For example, 😀 is \uD83D\uDE00.
+- Q: Which programming languages accept \uXXXX escapes?
+  A: Most modern languages support them, including Java, JavaScript, TypeScript, C#, Python, Go, and Swift. The exact syntax varies slightly between languages.
+
+**Guide: What are Unicode Escape Sequences?**
+
+Unicode is an international standard for representing all the world's characters in a single system. Each character has a unique code point in the format U+XXXX.
+
+Unicode escape sequences express these code points using only ASCII characters. Most programming languages use the '\uXXXX' format — Java, JavaScript, Python, C#, and more.
+
+For example, the Korean character '한' has code point U+D55C, so it can be written as '\uD55C' in source code.
+
+Escape sequences are used to safely transmit non-ASCII characters through ASCII-only systems, or to avoid source file encoding issues.
+
+### URL Encoder & Decoder
+
+URL: https://toolhub.example/en/tools/developer/url-encoder
+
+Encode URLs with percent-encoding (%XX) or decode encoded URLs back to plain text. Safely use Korean, special characters, and spaces in URLs. Free online tool.
+
+**Key features**
+
+- Percent encoding using encodeURIComponent
+- URL decoding using decodeURIComponent
+- Shows both encode and decode results simultaneously
+- Full multibyte character support (Korean, Japanese, etc.)
+- Safely encodes spaces and special characters
+- Processed entirely in your browser for data security
+
+**How to use**
+
+1. Paste the URL or text you want to encode into the input area.
+2. The percent-encoded result and decoded result are shown automatically.
+3. Copy the result you need.
+
+**Use cases**
+
+- **Query Parameter Encoding** — Encode Korean characters or special characters for use in URL query strings.
+- **Decoding Encoded URLs** — Decode complex percent-encoded URLs from browser address bars or logs for easy reading.
+
+**FAQ**
+
+- Q: What is the difference between encodeURI and encodeURIComponent?
+  A: encodeURI encodes a full URL and does not encode structural characters like ':', '/', '?', '#'. encodeURIComponent encodes URL components like query parameter values and does encode those characters. This tool uses encodeURIComponent.
+- Q: Is a space encoded as '%20' or '+'?
+  A: encodeURIComponent encodes spaces as '%20'. Some older systems encode spaces as '+' in HTML form submissions. The modern web standard recommends '%20'.
+- Q: Why does my Korean text turn into long '%XX' sequences?
+  A: Each non-ASCII character is converted to its UTF-8 bytes, and each byte becomes '%XX'. A Korean character takes 3 bytes, so it produces 9 characters like '%EA%B0%80'. This is normal and expected.
+
+**Guide: What is URL Encoding?**
+
+URLs can only contain ASCII characters by design. To include Korean, Japanese, spaces, or special characters in a URL, percent-encoding is required.
+
+Percent-encoding converts each character to its UTF-8 bytes, then represents each byte as '%XX'. For example, a space becomes '%20'.
+
+JavaScript's encodeURIComponent() is ideal for encoding query parameter values — it encodes characters like ':', '/', '?', '#' that affect URL structure.
+
+---
+
+## Calculator
+
+### Age Calculator - Calculate Your Exact Age
+
+URL: https://toolhub.example/en/tools/calculator/age-calculator
+
+Enter your birth date to instantly calculate your exact age, Korean age, days lived, and days until your next birthday. Free online age calculator.
+
+**Key features**
+
+- Precise age calculation based on birth date
+- Korean age calculation (current year - birth year + 1)
+- Total days lived calculation
+- Days until next birthday
+- Supports any birth date from the past
+
+**How to use**
+
+1. Enter your birth date in YYYY-MM-DD format.
+2. Your exact age, Korean age, and days lived are calculated automatically.
+3. Also see how many days until your next birthday.
+
+**Use cases**
+
+- **Check Your Exact Age** — Find out your precise age based on today's date.
+- **Birthday Countdown** — See how many days are left until your next birthday.
+
+**FAQ**
+
+- Q: What is the Korean Age Unification Act of 2023?
+  A: Enacted on June 28, 2023, this law standardized the legal age calculation to the international system. Previously, three different age-counting methods coexisted in Korea. Now official documents use the international (exact) age.
+- Q: How is the next birthday countdown calculated?
+  A: If your birthday has already passed this year, the count shows days until next year's birthday. If it hasn't passed yet, it shows days until this year's birthday.
+- Q: Does it work for people born on February 29?
+  A: Yes. Leap-day birthdays are handled correctly — in non-leap years, the next birthday is treated as March 1 for countdown purposes.
+
+**Guide: International Age vs. Korean Age**
+
+In Korea, the traditional age system counts a person as 1 year old at birth, and everyone ages by one year on January 1st. However, since June 2023, Korea officially unified to the international age system for legal and administrative purposes.
+
+International age: If birthday has passed = current year - birth year; if not yet = current year - birth year - 1
+
+Korean age: current year - birth year + 1
+
+For example, someone born on June 15, 1990:
+- International age in July 2024: 34 (birthday has passed)
+- Korean age: 35 (2024 - 1990 + 1)
+
+### BMI Calculator - Body Mass Index Online
+
+URL: https://toolhub.example/en/tools/calculator/bmi-calculator
+
+Enter your height and weight to instantly calculate your BMI. Check if you are underweight, normal, overweight, or obese with our free online BMI calculator.
+
+**Key features**
+
+- BMI calculated per WHO standards (weight ÷ height²)
+- Automatic classification: underweight, normal, overweight, obese
+- Displays healthy weight range (BMI 18.5–24.9)
+- Precise to one decimal place
+- Based on internationally recognized BMI standards
+
+**How to use**
+
+1. Enter your height in centimeters (cm).
+2. Enter your weight in kilograms (kg).
+3. Instantly see your BMI, classification, and healthy weight range.
+
+**Use cases**
+
+- **Pre-checkup Health Review** — Check your BMI before a medical exam to prepare for doctor consultations.
+- **Setting Diet Goals** — Review your current BMI and set a target weight to reach the normal range.
+
+**FAQ**
+
+- Q: Can I be healthy with a high BMI?
+  A: Yes, BMI is a simple reference tool. It does not account for muscle mass, fat distribution, age, or gender. Consult a doctor for a comprehensive health assessment.
+- Q: Are BMI standards different for Asians?
+  A: Some research suggests Asians face higher risks of diabetes and cardiovascular disease at lower BMI values. The Korean Society for the Study of Obesity defines overweight as BMI ≥23 and obese as BMI ≥25.
+- Q: Is BMI accurate for children and teenagers?
+  A: No. The adult BMI ranges apply only to ages 18 and over. For children and adolescents, use age- and sex-specific BMI percentile charts instead.
+
+**Guide: What is BMI?**
+
+BMI (Body Mass Index) is calculated by dividing weight in kilograms by height in meters squared. It is the standard indirect measure of body fat recommended by the World Health Organization (WHO).
+
+BMI Formula: BMI = Weight (kg) ÷ [Height (m)]²
+
+WHO Classifications:
+- Below 18.5: Underweight
+- 18.5–24.9: Normal weight
+- 25.0–29.9: Overweight
+- 30.0 and above: Obese
+
+Note: BMI does not distinguish between muscle and fat. Athletes with high muscle mass may have a high BMI despite being healthy. Use BMI as a reference, not a definitive diagnosis.
+
+### Date Calculator - Days Between Two Dates
+
+URL: https://toolhub.example/en/tools/calculator/date-calculator
+
+Calculate the number of days, weeks, and months between two dates instantly. Free online date difference calculator for deadlines, anniversaries, and countdowns.
+
+**Key features**
+
+- Accurate day count between two dates
+- Conversion to weeks
+- Approximate month count
+- Supports both past and future dates
+- Simple YYYY-MM-DD input format
+
+**How to use**
+
+1. Enter the start date in YYYY-MM-DD format.
+2. Enter the end date in YYYY-MM-DD format.
+3. Instantly see the number of days, weeks, and months between the two dates.
+
+**Use cases**
+
+- **Countdown Timer** — Calculate exactly how many days until an exam, trip, or event.
+- **Project Duration** — Calculate the duration from project start to deadline.
+
+**FAQ**
+
+- Q: What if the start and end dates are the same?
+  A: If the same date is entered for both fields, the result will be 0 days. Add 1 to include the day itself.
+- Q: Are leap years handled correctly?
+  A: Yes, leap years (February 29) are accurately accounted for in all calculations.
+- Q: Can I enter the end date before the start date?
+  A: Yes. The result is shown as an absolute value, so you'll get the same day count regardless of which date comes first.
+
+**Guide: When You Need Date Calculations**
+
+Date calculations are frequently needed in daily life but tedious to do manually — especially when accounting for leap years and varying month lengths (28–31 days).
+
+This calculator computes the precise difference between two dates, displaying it in days, weeks, and months for maximum flexibility.
+
+Use the YYYY-MM-DD format (e.g., 2024-01-01) to avoid ambiguity with international date standards.
+
+### Discount Calculator - Instant Sale Price Calculator
+
+URL: https://toolhub.example/en/tools/calculator/discount-calculator
+
+Enter the original price and discount rate to instantly calculate the discount amount and final price. Free online discount calculator for shopping.
+
+**Key features**
+
+- Instant discount amount from original price and rate
+- Automatic final price calculation
+- Savings percentage display
+- Thousands separator for readable amounts
+- Supports 0–100% discount rates
+- Simple and clean input interface
+
+**How to use**
+
+1. Enter the original (full) price.
+2. Enter the discount rate (%).
+3. Click Calculate to see the discount amount, final price, and savings percentage.
+
+**Use cases**
+
+- **Online Shopping Sale Price** — Quickly calculate the actual price of a 30%-off sale item while shopping online.
+- **Black Friday Price Comparison** — Calculate discounted prices for multiple items to compare deals.
+
+**FAQ**
+
+- Q: What happens with a 100% discount?
+  A: A 100% discount results in a final price of 0. Rare in practice, but the calculator handles it correctly.
+- Q: Can I enter a decimal discount rate like 12.5%?
+  A: Yes, decimal discount rates like 12.5% are calculated accurately.
+- Q: Is VAT included?
+  A: This calculator performs a pure discount calculation only. VAT and additional fees are not included. Enter the tax-inclusive price as the original price if you want the after-tax discounted price.
+
+**Guide: How Discount Calculation Works**
+
+Discount calculation uses a simple formula:
+
+Discount Amount = Original Price × (Discount Rate ÷ 100)
+Final Price = Original Price - Discount Amount
+
+For example, a $50 item with a 20% discount:
+- Discount Amount = $50 × 0.20 = $10
+- Final Price = $50 - $10 = $40
+
+Use this calculator whenever you see a percentage-off sale and want to know exactly how much you save and pay.
+
+### Korea Salary Calculator - Take-Home Pay After Tax & Insurance
+
+URL: https://toolhub.example/en/tools/calculator/salary-calculator
+
+Calculate your actual take-home pay in South Korea based on 2026 tax rates and social insurance premiums. See detailed deductions for National Pension, Health Insurance, Employment Insurance, and income tax, instantly and with no sign-up required.
+
+**Key features**
+
+- 2026 Korean social insurance rates automatically applied (NPS 4.75%, NHI 3.545%, LTC 12.81%, EI 0.9%)
+- Detailed breakdown of all 6 deduction items: pension, health, long-term care, employment, income tax, local tax
+- Income tax calculated based on simplified wage tax table and number of dependents
+- Non-taxable meal allowance setting (up to KRW 200,000/month)
+- Compare take-home pay with severance included vs. separate
+- Instant client-side calculation with no data sent to servers
+
+**How to use**
+
+1. Enter your annual gross salary in KRW.
+2. Select the number of dependents (including yourself).
+3. Set non-taxable meal allowance and whether severance pay is included.
+4. Review the detailed breakdown of social insurance premiums, income tax, local income tax, and your monthly take-home pay.
+
+**Use cases**
+
+- **Salary Negotiation for Expats** — Calculate your actual monthly take-home pay from a Korean salary offer to evaluate if it meets your living cost expectations.
+- **Comparing Job Offers** — Compare two offers with different gross salaries to see the real difference in net monthly income after Korean taxes and insurance.
+- **First Paycheck Estimate** — Foreign nationals starting their first job in Korea can estimate their first monthly paycheck before arriving, helping them plan housing and living expenses in advance.
+
+**FAQ**
+
+- Q: How much is the actual take-home pay for a KRW 50 million salary?
+  A: Based on 2026 rates with 1 dependent (self only), KRW 200,000 non-taxable meal allowance, and severance separate, a KRW 50 million annual salary yields approximately KRW 3,570,000 in monthly take-home pay.
+- Q: What are the 2026 social insurance rates in Korea?
+  A: For 2026, employee-side rates are: National Pension 4.75%, National Health Insurance 3.545%, Long-Term Care Insurance 12.81% of health insurance, and Employment Insurance 0.9%.
+- Q: Does this calculator work for foreign employees in Korea?
+  A: Yes. Foreign employees in Korea are generally subject to the same social insurance obligations and income tax rules as Korean nationals. This calculator uses the standard Korean deduction rules.
+- Q: What is the difference between severance-inclusive and separate salary?
+  A: When severance pay is included in your annual salary, 1/13 of the total is set aside as a severance reserve, which means your monthly base pay is approximately 7.7% lower than it would be under a severance-separate arrangement. For example, a KRW 36,000,000 severance-inclusive salary results in a meaningfully lower monthly gross than the same figure quoted as severance-separate, so always confirm which structure applies before comparing offers.
+
+**Guide: Guide to Calculating Take-Home Pay in Korea (2026)**
+
+Take-home pay is the amount deposited into your bank account after deducting social insurance premiums, income tax, and local income tax from your gross annual salary. Because insurance rates change every year, it is important to use the latest figures.
+
+As of 2026, employee-side social insurance rates are: National Pension 4.75%, National Health Insurance 3.545%, Long-Term Care Insurance 12.81% of health insurance premium, and Employment Insurance 0.9%. National Pension contributions are capped at a monthly income of KRW 6,170,000.
+
+Income tax is determined by the simplified wage income tax table and varies by the number of dependents. Local income tax is automatically assessed at 10% of income tax. A non-taxable meal allowance of up to KRW 200,000 per month is excluded from taxable income, effectively increasing your take-home pay.
+
+If severance pay is included in the annual salary, 1/13 of the total is set aside as severance reserve, reducing the monthly base pay. When severance is separate, the full salary is divided by 12 months. Always confirm whether an offer includes or excludes severance pay during negotiations.
+
+### Loan Calculator - Monthly Payment & Total Interest
+
+URL: https://toolhub.example/en/tools/calculator/loan-calculator
+
+Enter loan amount, interest rate, and term to instantly calculate monthly payments and total interest. Perfect for mortgages, personal loans, and auto loans.
+
+**Key features**
+
+- Monthly payment calculated using standard amortization formula
+- Automatic calculation of total payment and total interest
+- Decimal interest rates supported (e.g., 3.5%)
+- Accurate for large loan amounts
+- Results displayed with thousands separators for readability
+
+**How to use**
+
+1. Enter the loan principal amount.
+2. Enter the annual interest rate (%) and loan term (years).
+3. Instantly see the monthly payment, total payment, and total interest.
+
+**Use cases**
+
+- **Mortgage Calculation** — Calculate monthly payments for a $300,000 mortgage at 3.5% over 30 years.
+- **Auto Loan Calculation** — Calculate payments for a $30,000 car loan at 6% over 5 years.
+
+**FAQ**
+
+- Q: What is the difference between amortization and interest-only loans?
+  A: With amortization, each payment covers both principal and interest. With interest-only loans, you only pay interest for a period, then a large principal payment is due. Amortization results in owning the asset outright after the term.
+- Q: Are fees and insurance included?
+  A: This calculator only computes principal and interest. Origination fees, mortgage insurance, and other costs are not included. Consult your lender for full cost estimates.
+- Q: Does this work for variable-rate loans?
+  A: No. The calculator assumes a fixed rate for the entire term. For adjustable-rate loans, recalculate at each rate change using the new rate and remaining balance.
+
+**Guide: How Amortization Works**
+
+Amortization is the most common loan repayment method where you pay the same amount every month.
+
+Formula:
+Monthly Payment = P × [r(1+r)^n] / [(1+r)^n - 1]
+
+Where P = principal, r = monthly interest rate (annual rate ÷ 12), n = total number of payments
+
+For example, a $100,000 loan at 3.5% over 30 years:
+- Monthly rate: 3.5% ÷ 12 = 0.2917%
+- Total payments: 30 × 12 = 360
+- Monthly payment: ~$449
+
+Early payments are mostly interest; later payments are mostly principal.
+
+### Percentage Calculator - Calculate Percent Online
+
+URL: https://toolhub.example/en/tools/calculator/percentage-calculator
+
+Calculate percentages instantly. Find the percentage of a value, increase, or decrease. Free online percentage calculator for discounts, taxes, and growth rates.
+
+**Key features**
+
+- Calculates percentage of any value (value × percent / 100)
+- Automatic percentage increase calculation
+- Automatic percentage decrease calculation
+- Precise decimal calculations
+- Versatile use for discounts, taxes, and growth rates
+
+**How to use**
+
+1. Enter the base value.
+2. Enter the percentage to apply.
+3. Instantly see the result, increased value, and decreased value.
+
+**Use cases**
+
+- **Shopping Discounts** — Calculate the discount amount and final price during a 30% off sale.
+- **Tax Calculation** — Calculate the final price including 10% VAT.
+
+**FAQ**
+
+- Q: What is the difference between percent and percentage points?
+  A: Percent (%) is a unit representing a ratio, while percentage points (pp) represent the difference between two percent values. For example, if an interest rate rises from 3% to 5%, it increased by 2 percentage points.
+- Q: Can I calculate percentages with decimals?
+  A: Yes, decimal percentages are calculated accurately. You can enter values like 3.5% or 12.75%.
+- Q: Can I enter values greater than 100%?
+  A: Yes. Percentages above 100% are valid — for example, entering 150% returns 1.5× the base value, which is useful for growth and markup calculations.
+
+**Guide: Complete Guide to Percentage Calculations**
+
+Percentages are one of the most commonly used mathematical concepts in daily life. The word 'percent' comes from the Latin 'per centum', meaning 'per hundred'.
+
+Basic formula: Result = Total Value × Percentage ÷ 100
+
+For example, a 30% discount on a $500 item gives a discount of 500 × 30 ÷ 100 = $150, making the final price $350.
+
+To calculate an increase, add the result to the original value. To calculate a decrease, subtract the result from the original value.
+
+---
+
+## Converter
+
+### Color Code Converter - HEX, RGB, HSL
+
+URL: https://toolhub.example/en/tools/converter/color-converter
+
+Instantly convert between HEX, RGB, and HSL color codes. Free online color converter for web designers and developers.
+
+**Key features**
+
+- HEX → RGB, HSL automatic conversion
+- RGB → HEX, HSL automatic conversion
+- HSL → HEX, RGB automatic conversion
+- Shorthand HEX format support (#ABC)
+- Real-time conversion as you type
+- Case-insensitive input
+
+**How to use**
+
+1. Enter a color code in HEX (#FF5733), RGB (rgb(255,87,51)), or HSL (hsl(11,100%,60%)) format.
+2. The other two formats are automatically calculated instantly.
+3. Copy the converted color code and use it in your CSS or design tool.
+
+**Use cases**
+
+- **Web CSS Color Conversion** — Convert HEX colors from design tools to rgb() or hsl() format for use in CSS.
+- **Brand Color Management** — Quickly generate all format variants when documenting brand colors in style guides.
+
+**FAQ**
+
+- Q: Can I enter 3-digit shorthand HEX like #FFF?
+  A: Yes, shorthand #RGB format is supported. #FFF expands to #FFFFFF and #F53 expands to #FF5533 before conversion.
+- Q: Is transparency (alpha) supported?
+  A: The current version supports opaque colors only (RGB, HSL). rgba() and hsla() alpha channel conversion is not supported.
+- Q: How do I read the HSL hue value?
+  A: Hue is an angle on the color wheel (0–360°): 0°/360° = red, 120° = green, 240° = blue. Saturation 100% is the most vivid color, 0% is gray. Lightness 50% is the pure color, 100% is white, and 0% is black.
+
+**Guide: Understanding Color Code Formats**
+
+The three main color formats used on the web are HEX, RGB, and HSL.
+
+HEX (#RRGGBB) represents each channel (red, green, blue) as two hexadecimal digits. You can use the full 6-digit form (#FF5733) or the 3-digit shorthand (#F53).
+
+RGB (r, g, b) expresses each channel as an integer from 0 to 255 — intuitive for mixing colors directly.
+
+HSL (hue, saturation, lightness) uses a 0–360° hue angle, and 0–100% saturation and lightness. It makes it easy to adjust only brightness or saturation, which is especially useful for CSS themes and dark mode implementations.
+
+### Unit Converter - Length Unit Conversion Online
+
+URL: https://toolhub.example/en/tools/converter/unit-converter
+
+Convert between kilometers, meters, centimeters, millimeters, miles, feet, and inches instantly. Free online length unit converter.
+
+**Key features**
+
+- 7 length units supported (km, m, cm, mm, mi, ft, in)
+- Precise conversion using meter as base unit
+- Up to 8 decimal places of precision
+- Supports conversion between the same units
+- Both metric and imperial units supported
+- Instant real-time conversion
+
+**How to use**
+
+1. Enter the numeric value to convert.
+2. Select the source unit and the target unit.
+3. See the conversion result instantly.
+
+**Use cases**
+
+- **Travel Distance Conversion** — Convert miles used in the US/UK to familiar kilometers.
+- **Clothing Size Conversion** — Convert inch-based sizes from international shopping sites to centimeters.
+
+**FAQ**
+
+- Q: How many kilometers is 1 mile?
+  A: 1 mile is approximately 1.60934 kilometers. The exact value is 1 mi = 1,609.344 m.
+- Q: How many centimeters is 1 foot?
+  A: 1 foot is exactly 30.48 centimeters.
+- Q: Are weight, temperature, or area units supported?
+  A: Not yet. This converter currently handles length units only. Other unit categories will be added in future updates.
+
+**Guide: Complete Guide to Length Unit Conversion**
+
+There are two major unit systems worldwide. The metric system (SI) is used in most countries including Korea, covering km, m, cm, and mm. The imperial system is used in the US and UK, covering miles, feet, and inches.
+
+This converter uses meters (m) as the base unit for accurate conversion between all units.
+
+Key conversion ratios:
+- 1 km = 1,000 m
+- 1 mi = 1,609.344 m
+- 1 ft = 0.3048 m
+- 1 in = 0.0254 m
+
+---
+
+## Security
+
+### Hash Generator - MD5, SHA-1, SHA-256, SHA-384, SHA-512 Online
+
+URL: https://toolhub.example/en/tools/security/hash-generator
+
+Free online hash generator that converts text into MD5, SHA-1, SHA-256, SHA-384, and SHA-512 hashes at once. All processing runs locally in your browser with no server upload — ideal for file checksums, API signatures, and blockchain hash verification.
+
+**Key features**
+
+- Generates MD5, SHA-1, SHA-256, SHA-384, and SHA-512 hashes simultaneously from a single input
+- 100% client-side processing — input never leaves your browser
+- ⚠️ security warning badges on MD5 and SHA-1 to guide safer usage
+- One-click full copy for pasting into docs, issue trackers, or shell scripts
+- Completely free with no signup, installation, or rate limit
+
+**How to use**
+
+1. Paste or type the text you want to hash into the input field at the top.
+2. The tool instantly outputs all five hashes — MD5, SHA-1, SHA-256, SHA-384, and SHA-512.
+3. Copy the individual line you need, or use the copy button to grab the entire result block.
+
+**Use cases**
+
+- **File checksum verification** — Quickly compare a published SHA-256 checksum against the value you compute locally to confirm a download has not been tampered with.
+- **API signature and blockchain hash checks** — Compute SHA-256 of an API request payload while building HMAC signatures, or verify that a blockchain transaction string produces the expected hash.
+
+**FAQ**
+
+- Q: Is my input sent to a server?
+  A: No. All hashing happens inside your browser using JavaScript, and no network request is made with your input. You can safely paste sensitive development strings or configuration snippets.
+- Q: Why are MD5 and SHA-1 marked with a warning?
+  A: MD5 has had practical collision attacks since 2004, and SHA-1 was broken by the SHAttered attack in 2017. They are no longer recommended for digital signatures, TLS, or any cryptographic integrity use. They remain fine for legacy compatibility or non-security checksums, but for any security-sensitive purpose use SHA-256 or stronger.
+- Q: Can I use SHA-256 to store passwords?
+  A: No. SHA-family hashes are designed to be fast, which means GPUs can guess billions of passwords per second. For password storage use a purpose-built algorithm such as bcrypt, argon2, or scrypt with a unique salt per user and a tunable work factor.
+
+**Guide: About the Hash Generator**
+
+This hash generator converts any text into MD5, SHA-1, SHA-256, SHA-384, and SHA-512 hashes in a single step. All hashing runs locally in your browser via JavaScript, so your input is never uploaded to any server. It is built for developer workflows such as file checksum verification, API signature generation, blockchain hash checks, and test data creation. Note that MD5 and SHA-1 are considered cryptographically broken and are flagged with a ⚠️ warning — use SHA-256 or stronger for signatures and integrity checks, and use bcrypt/argon2/scrypt for password storage.
+
+### Password Generator - Create Strong Random Passwords
+
+URL: https://toolhub.example/en/tools/security/password-generator
+
+Generate secure random passwords with uppercase letters, numbers, and symbols instantly. Customize length and character types with our free online password generator.
+
+**Key features**
+
+- Customizable length from 4 to 128 characters
+- Toggle uppercase, numbers, and symbols
+- Automatic security strength evaluation (Weak/Fair/Strong/Very Strong)
+- Cryptographically secure random generation
+- New password generated every time
+
+**How to use**
+
+1. Set the desired password length (4–128 characters).
+2. Choose whether to include uppercase letters, numbers, and symbols.
+3. View the generated password and its security strength.
+
+**Use cases**
+
+- **New Account Password** — Generate a strong password instantly when signing up for a new service.
+- **PIN Generation** — Generate a short numeric PIN.
+
+**FAQ**
+
+- Q: Is my generated password stored on a server?
+  A: No. All password generation happens entirely in your browser. No data is sent to any server. It is completely private.
+- Q: How often should I change my password?
+  A: Security experts now recommend that if you use strong, unique passwords, you don't need to change them regularly. However, change immediately if you suspect a data breach.
+- Q: Is a password without symbols still secure?
+  A: It can be, if it's long enough. A 20-character password using only letters and numbers is very strong, but adding symbols increases the possible combinations and makes brute-force attacks even harder.
+
+**Guide: How to Create Strong Passwords**
+
+A strong password is your first line of defense for account security. The more of these criteria you meet, the safer your password:
+
+1. Length: At least 12 characters recommended, 16+ is ideal
+2. Complexity: Include uppercase, lowercase, numbers, and symbols
+3. Unpredictability: Avoid names, birthdays, or common words
+4. Uniqueness: Use a different password for every service
+
+Strength criteria:
+- Weak: Less than 8 characters or only one character type
+- Fair: 8+ characters, 2–3 character types
+- Strong: 12+ characters, 3–4 character types
+- Very Strong: 16+ characters, all character types
+
+### UUID Generator - Online UUID v4 Generator
+
+URL: https://toolhub.example/en/tools/security/uuid-generator
+
+Generate UUID v4 instantly. Create up to 50 UUIDs at once. Free online UUID generator tool.
+
+**Key features**
+
+- UUID v4 (random) generation
+- Bulk generation up to 50 at once
+- Standard UUID format (8-4-4-4-12)
+- Cryptographically secure random numbers
+- Copy result support
+- Fully local processing in the browser
+
+**How to use**
+
+1. Select the number of UUIDs to generate (1–50).
+2. Select the UUID version (v4 supported).
+3. Click Generate to instantly create the specified number of UUIDs.
+
+**Use cases**
+
+- **Database Primary Keys** — Pre-generate UUIDs to use as unique primary keys for database records.
+- **API Request IDs** — Use UUIDs as unique request IDs for API call tracing.
+
+**FAQ**
+
+- Q: Are UUID v4 values truly unique?
+  A: UUID v4 is based on 128 bits of randomness, making collision probability essentially zero even when generating billions of UUIDs. Safe to use without worrying about duplicates.
+- Q: Are generated UUIDs stored on a server?
+  A: No, all processing is done locally in your browser. Generated UUIDs are never sent to or stored on any server.
+- Q: What is the difference between UUID and GUID?
+  A: GUID (Globally Unique Identifier) is Microsoft's term for the same concept as UUID. The format and generation method are identical — they are effectively the same thing.
+
+**Guide: What is a UUID?**
+
+A UUID (Universally Unique Identifier) is a 128-bit identifier guaranteed to be unique worldwide. The standard format is 32 hexadecimal characters separated by hyphens in an 8-4-4-4-12 pattern.
+
+UUID v4 is the most widely used version, generated using cryptographically secure random numbers. The probability of collision is astronomically low, making it practically unique across the globe.
+
+UUIDs are used for database primary keys, API request IDs, session tokens, file names, and anywhere a unique identifier is needed. This tool uses the browser's Web Crypto API for secure UUID generation.

@@ -12,10 +12,11 @@
 | 운영 중인 툴 | 29개 (`/[locale]/tools/[category]/[slug]` URL · 구 URL → 308 자동 리다이렉트) |
 | 카테고리 | **10개** (text/developer/calculator/converter/image/pdf/seo/security/productivity/ai) |
 | 인프라 | ToolPageLayout 15컴포넌트 분리, **9개 템플릿** (5 실구현 + 4 스켈레톤), 6 hooks, GA4 분석 |
-| **완료** | Phase 0 ✅ · Phase 1 (12 PR) ✅ · Phase 2.1~2.4 ✅ (`.claude/` 로컬) · Phase 3 ✅ |
+| **완료** | Phase 0 ✅ · Phase 1 (12 PR) ✅ · Phase 2.1~2.4 ✅ (`.claude/` 로컬) · Phase 3 ✅ · **AEO/SEO 강화 ✅** |
 | **다음 단계** | Phase 2.5~2.7 — 시범 툴 양산 (`/new-tool <slug>.yaml`) |
 | 다크모드 | 자체 `ThemeProvider` + FOUC 방지 inline script · `data-theme` 토큰 |
 | 분석 | **GA4 전용** (`trackToolEvent` + 14 표준 이벤트) ✅ |
+| AEO/SEO | JSON-LD 5종 (WebApp/Breadcrumb/FAQ+speakable/HowTo/TechArticle) + Organization/WebSite + ItemList · llms.txt + llms-full.txt · /tools.json · /feed.xml · 동적 OG image · AI bot allowlist · about/privacy/terms |
 | Supabase | **현재 미사용.** Phase 4.5 (전용 DB 분리) 후 도입 |
 | 인증 | **미도입.** Phase 5 |
 

@@ -1,49 +1,109 @@
 # Toolhub — Free Online Tools
 
-> Free online tools for text, code, calculation, conversion, image, and PDF processing. All tools run entirely in your browser; your data is never sent to any server.
+> Free online tools for text, code, calculation, conversion, image, and PDF processing. All tools run entirely in your browser; your data is never sent to any server. Korean/English supported. No sign-up required.
+
+> Total: 29 tools across 5 categories. Updated: 2026-05-09
 
 ## Tools
 
 ### Text & Document
 
 - [Case Converter - Online Text Case Changer](https://toolhub.example/en/tools/text/case-converter): Convert text to uppercase, lowercase, title case, camelCase, snake_case, and kebab-case instantly. Free online case converter tool.
+  - Key features: UPPERCASE conversion · lowercase conversion · Title Case conversion
+  - Use cases: Variable Naming · URL Slug Creation
 - [Duplicate Line Remover - Online Duplicate Text Cleaner](https://toolhub.example/en/tools/text/duplicate-line-remover): Remove duplicate lines from text instantly. Free online tool to clean up lists, code, and data by eliminating repeated entries.
+  - Key features: Automatic duplicate line detection and removal · Keeps only the first occurrence of each line · Preserves original line order
+  - Use cases: List Cleanup · Log File Deduplication
 - [Korean English Typing Converter | QWERTY to Hangul Fixer](https://toolhub.example/en/tools/text/korean-typing-converter): Free online Korean-English typing converter. Instantly fix typos like dksdud to 안녕 or 소둇.ㅜㄷㅅ to hello.net. Bidirectional conversion, one-click copy, no install required.
+  - Key features: Instantly recover typos like dksdud to 안녕 caused by forgetting to switch IME · Automatic bidirectional detection between QWERTY English and Hangul · Accurate jamo mapping based on the Dubeolsik standard (KS X 5002)
+  - Use cases: Fixing IME-switch typos in chat or email · Typing Korean on a foreign computer without an IME
 - [Lorem Ipsum Generator - Online Placeholder Text Tool](https://toolhub.example/en/tools/text/lorem-ipsum-generator): Generate Lorem Ipsum placeholder text with any number of paragraphs instantly. Free online tool for web design, UI mockups, and print layout work.
+  - Key features: Generate 1-20 paragraphs freely · Uses classic Lorem Ipsum text · Instant generation and copy
+  - Use cases: Web Design Mockups · Print Layout
 - [Online Word Counter](https://toolhub.example/en/tools/text/word-counter): Count characters, words, sentences, and bytes in real time. Free online character counter with reading time estimation.
+  - Key features: Real-time character count with/without spaces · Automatic word and sentence counting · Byte count calculation (UTF-8)
+  - Use cases: Blog Post Titles · Social Media Posts
 - [Text Diff Tool - Online Text Comparison](https://toolhub.example/en/tools/text/text-diff): Compare two texts line by line. Instantly see added (+) and removed (-) lines. Free online text diff checker.
+  - Key features: Line-by-line text comparison · Clear marking of added (+), removed (-), and unchanged ( ) lines · Simple --- separator to split two texts
+  - Use cases: Document Version Comparison · Code Change Review
 - [Text Reverser - Online String Reversal Tool](https://toolhub.example/en/tools/text/text-reverser): Reverse any text instantly. Free online tool to flip text backwards, reverse character order, or reverse line order.
+  - Key features: Full character-by-character text reversal · Supports Korean, English, and special characters · Reversal includes line breaks
+  - Use cases: Fun Messages · Palindrome Check
 - [URL Slug Generator - Online Slug Creator Tool](https://toolhub.example/en/tools/text/slug-generator): Convert any text to a URL-friendly slug instantly. Automatically replaces spaces with hyphens, removes special characters, and lowercases text. Free online slug generator.
+  - Key features: Automatically replaces spaces with hyphens · Converts uppercase to lowercase · Removes URL-unsafe special characters
+  - Use cases: Blog Post URLs · File Name Generation
 
 ### Developer
 
 - [Base64 Encoder & Decoder](https://toolhub.example/en/tools/developer/base64-encoder): Encode text to Base64 or decode Base64 back to plain text. Automatically detects Base64 input and shows both encode and decode results. Free online tool.
+  - Key features: Instantly encode text to Base64 · Instantly decode Base64 to plain text · Shows both encode and decode results simultaneously
+  - Use cases: Image Data URLs · API Authorization Headers
 - [CSV to JSON Converter - Free Online Bidirectional Tool](https://toolhub.example/en/tools/developer/csv-json-converter): Convert between CSV and JSON instantly with automatic direction detection. Free online tool that runs entirely in your browser — no uploads, no tracking. Supports RFC 4180 quoting, nested JSON flattening, and UTF-8 (including Korean) input.
+  - Key features: Bidirectional auto-detection based on the first character of the input · 100% client-side processing — nothing is ever uploaded or logged · RFC 4180 compliant quoting for commas, newlines, and embedded quotes
+  - Use cases: Turn API responses into spreadsheets · Prepare JSON mock data from CSV
 - [HTML Entity Converter](https://toolhub.example/en/tools/developer/html-entity-converter): Convert HTML special characters to entities (&amp;, &lt;, &gt;, etc.) or decode HTML entities back to plain text. Essential for XSS prevention and HTML content creation.
+  - Key features: Converts HTML special characters like <, >, &, ", ' to entities · Decodes HTML entities back to plain text · Shows both encode and decode results simultaneously
+  - Use cases: XSS Prevention Escaping · Displaying HTML Source Code
 - [JSON Formatter & Validator](https://toolhub.example/en/tools/developer/json-formatter): Format and validate JSON instantly. Pretty-print JSON with proper indentation and catch syntax errors in real time. Free online JSON formatter.
+  - Key features: Real-time JSON syntax validation · Clean formatting with 2-space indentation · Clear error messages when JSON is invalid
+  - Use cases: API Response Debugging · Config File Cleanup
 - [JWT Decoder - Parse JWT Tokens](https://toolhub.example/en/tools/developer/jwt-decoder): Instantly decode and inspect the header and payload of any JWT (JSON Web Token). Check expiration time, user info, and claims from login tokens. Free online JWT decoder.
+  - Key features: Base64 decoding and JSON formatting of JWT Header · Base64 decoding and JSON formatting of JWT Payload · Detects invalid JWT format with clear error messages
+  - Use cases: API Authentication Debugging · Checking Token Expiration
 - [Markdown Preview - Online Markdown to HTML Converter](https://toolhub.example/en/tools/developer/markdown-preview): Convert Markdown to HTML instantly. Supports headings, bold, italic, lists, code blocks, links, and more. Free online Markdown converter.
+  - Key features: Heading conversion (# H1, ## H2, ### H3) · Bold (**text**) and italic (*text*) formatting · Unordered list (- item) support
+  - Use cases: README Preview · Blog Content Writing
 - [Regex Tester - Online Regular Expression Tool](https://toolhub.example/en/tools/developer/regex-tester): Test regular expression patterns in real time. Find all matches with positions instantly. Free online regex tester.
+  - Key features: Find all matches using global flag (g) · Display match positions (index) · Total match count summary
+  - Use cases: Email Validation · Number Extraction
 - [Unicode Converter - Text ↔ Unicode Escape Sequences](https://toolhub.example/en/tools/developer/unicode-converter): Convert text to Unicode escape sequences (\uXXXX) or decode Unicode escapes back to readable text. Find Unicode code points for Korean, emoji, and special characters. Free online tool.
+  - Key features: Converts text to \uXXXX Unicode escape sequences · Interprets Unicode escape sequences back to plain text · Shows both conversion and interpretation results simultaneously
+  - Use cases: Source Code String Literals · Decoding Unicode Escapes
 - [URL Encoder & Decoder](https://toolhub.example/en/tools/developer/url-encoder): Encode URLs with percent-encoding (%XX) or decode encoded URLs back to plain text. Safely use Korean, special characters, and spaces in URLs. Free online tool.
+  - Key features: Percent encoding using encodeURIComponent · URL decoding using decodeURIComponent · Shows both encode and decode results simultaneously
+  - Use cases: Query Parameter Encoding · Decoding Encoded URLs
 
 ### Calculator
 
 - [Age Calculator - Calculate Your Exact Age](https://toolhub.example/en/tools/calculator/age-calculator): Enter your birth date to instantly calculate your exact age, Korean age, days lived, and days until your next birthday. Free online age calculator.
+  - Key features: Precise age calculation based on birth date · Korean age calculation (current year - birth year + 1) · Total days lived calculation
+  - Use cases: Check Your Exact Age · Birthday Countdown
 - [BMI Calculator - Body Mass Index Online](https://toolhub.example/en/tools/calculator/bmi-calculator): Enter your height and weight to instantly calculate your BMI. Check if you are underweight, normal, overweight, or obese with our free online BMI calculator.
+  - Key features: BMI calculated per WHO standards (weight ÷ height²) · Automatic classification: underweight, normal, overweight, obese · Displays healthy weight range (BMI 18.5–24.9)
+  - Use cases: Pre-checkup Health Review · Setting Diet Goals
 - [Date Calculator - Days Between Two Dates](https://toolhub.example/en/tools/calculator/date-calculator): Calculate the number of days, weeks, and months between two dates instantly. Free online date difference calculator for deadlines, anniversaries, and countdowns.
+  - Key features: Accurate day count between two dates · Conversion to weeks · Approximate month count
+  - Use cases: Countdown Timer · Project Duration
 - [Discount Calculator - Instant Sale Price Calculator](https://toolhub.example/en/tools/calculator/discount-calculator): Enter the original price and discount rate to instantly calculate the discount amount and final price. Free online discount calculator for shopping.
+  - Key features: Instant discount amount from original price and rate · Automatic final price calculation · Savings percentage display
+  - Use cases: Online Shopping Sale Price · Black Friday Price Comparison
 - [Korea Salary Calculator - Take-Home Pay After Tax & Insurance](https://toolhub.example/en/tools/calculator/salary-calculator): Calculate your actual take-home pay in South Korea based on 2026 tax rates and social insurance premiums. See detailed deductions for National Pension, Health Insurance, Employment Insurance, and income tax, instantly and with no sign-up required.
+  - Key features: 2026 Korean social insurance rates automatically applied (NPS 4.75%, NHI 3.545%, LTC 12.81%, EI 0.9%) · Detailed breakdown of all 6 deduction items: pension, health, long-term care, employment, income tax, local tax · Income tax calculated based on simplified wage tax table and number of dependents
+  - Use cases: Salary Negotiation for Expats · Comparing Job Offers
 - [Loan Calculator - Monthly Payment & Total Interest](https://toolhub.example/en/tools/calculator/loan-calculator): Enter loan amount, interest rate, and term to instantly calculate monthly payments and total interest. Perfect for mortgages, personal loans, and auto loans.
+  - Key features: Monthly payment calculated using standard amortization formula · Automatic calculation of total payment and total interest · Decimal interest rates supported (e.g., 3.5%)
+  - Use cases: Mortgage Calculation · Auto Loan Calculation
 - [Percentage Calculator - Calculate Percent Online](https://toolhub.example/en/tools/calculator/percentage-calculator): Calculate percentages instantly. Find the percentage of a value, increase, or decrease. Free online percentage calculator for discounts, taxes, and growth rates.
+  - Key features: Calculates percentage of any value (value × percent / 100) · Automatic percentage increase calculation · Automatic percentage decrease calculation
+  - Use cases: Shopping Discounts · Tax Calculation
 
 ### Converter
 
 - [Color Code Converter - HEX, RGB, HSL](https://toolhub.example/en/tools/converter/color-converter): Instantly convert between HEX, RGB, and HSL color codes. Free online color converter for web designers and developers.
+  - Key features: HEX → RGB, HSL automatic conversion · RGB → HEX, HSL automatic conversion · HSL → HEX, RGB automatic conversion
+  - Use cases: Web CSS Color Conversion · Brand Color Management
 - [Unit Converter - Length Unit Conversion Online](https://toolhub.example/en/tools/converter/unit-converter): Convert between kilometers, meters, centimeters, millimeters, miles, feet, and inches instantly. Free online length unit converter.
+  - Key features: 7 length units supported (km, m, cm, mm, mi, ft, in) · Precise conversion using meter as base unit · Up to 8 decimal places of precision
+  - Use cases: Travel Distance Conversion · Clothing Size Conversion
 
 ### Security
 
 - [Hash Generator - MD5, SHA-1, SHA-256, SHA-384, SHA-512 Online](https://toolhub.example/en/tools/security/hash-generator): Free online hash generator that converts text into MD5, SHA-1, SHA-256, SHA-384, and SHA-512 hashes at once. All processing runs locally in your browser with no server upload — ideal for file checksums, API signatures, and blockchain hash verification.
+  - Key features: Generates MD5, SHA-1, SHA-256, SHA-384, and SHA-512 hashes simultaneously from a single input · 100% client-side processing — input never leaves your browser · ⚠️ security warning badges on MD5 and SHA-1 to guide safer usage
+  - Use cases: File checksum verification · API signature and blockchain hash checks
 - [Password Generator - Create Strong Random Passwords](https://toolhub.example/en/tools/security/password-generator): Generate secure random passwords with uppercase letters, numbers, and symbols instantly. Customize length and character types with our free online password generator.
+  - Key features: Customizable length from 4 to 128 characters · Toggle uppercase, numbers, and symbols · Automatic security strength evaluation (Weak/Fair/Strong/Very Strong)
+  - Use cases: New Account Password · PIN Generation
 - [UUID Generator - Online UUID v4 Generator](https://toolhub.example/en/tools/security/uuid-generator): Generate UUID v4 instantly. Create up to 50 UUIDs at once. Free online UUID generator tool.
+  - Key features: UUID v4 (random) generation · Bulk generation up to 50 at once · Standard UUID format (8-4-4-4-12)
+  - Use cases: Database Primary Keys · API Request IDs

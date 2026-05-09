@@ -1,13 +1,14 @@
 /**
- * Toolhub — ToolJsonLd (Phase 1 PR-6)
+ * Toolhub — ToolJsonLd
  *
  * 서버 컴포넌트. 단일 툴 페이지에 schema.org JSON-LD `<script>` 블록을 주입한다.
  *
  * 포함 스키마:
- *   1. WebApplication (또는 SoftwareApplication)
+ *   1. WebApplication (또는 SoftwareApplication, dateModified/isAccessibleForFree 포함)
  *   2. BreadcrumbList
- *   3. FAQPage          (faq[locale] 가 있을 때만)
+ *   3. FAQPage (+ speakable, faq[locale] 가 있을 때만)
  *   4. HowTo            (howToUse[locale] 가 있을 때만)
+ *   5. TechArticle      (guide[locale] 이 있을 때만)
  *
  * `<script type="application/ld+json">` 의 본문은 JSON.stringify 결과로 주입되며,
  * 이는 schema.org / Google Rich Results 가이드를 따른다.
@@ -18,6 +19,7 @@ import {
   getBreadcrumbJsonLd,
   getFaqJsonLd,
   getHowToJsonLd,
+  getTechArticleJsonLd,
 } from "@/lib/jsonld";
 import { categories } from "@/config/categories";
 import type { ToolConfig, Locale } from "@/config/types";
@@ -48,6 +50,7 @@ export default function ToolJsonLd({
     getBreadcrumbJsonLd(tool, locale, baseUrl, resolvedCategoryName),
     getFaqJsonLd(tool, locale),
     getHowToJsonLd(tool, locale),
+    getTechArticleJsonLd(tool, locale, baseUrl),
   ];
 
   const valid = schemas.filter(

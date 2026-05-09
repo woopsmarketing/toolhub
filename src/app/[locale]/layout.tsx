@@ -10,6 +10,8 @@ import {
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SkipToContent from "@/components/layout/SkipToContent";
+import SiteJsonLd from "@/components/seo/SiteJsonLd";
+import type { Locale } from "@/config/types";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -41,6 +43,7 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale);
   const messages = await getMessages();
+  const localeTyped: Locale = locale === "en" ? "en" : "ko";
 
   return (
     <html
@@ -51,6 +54,26 @@ export default async function LocaleLayout({
       <head>
         {/* Inline theme bootstrap — runs before first paint to avoid FOUC. */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        {/* Indexing hints — explicit signals for Google + AI crawlers */}
+        <meta
+          name="robots"
+          content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+        />
+        {/* Alternate machine-readable representations (LLM/agent discovery) */}
+        <link
+          rel="alternate"
+          type="application/json"
+          title="Toolhub Tools Catalog"
+          href="/tools.json"
+        />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Toolhub New Tools"
+          href="/feed.xml"
+        />
+        {/* Site-wide JSON-LD: Organization + WebSite + SearchAction */}
+        <SiteJsonLd locale={localeTyped} />
       </head>
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <ThemeProvider>

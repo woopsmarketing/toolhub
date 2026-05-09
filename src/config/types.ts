@@ -106,6 +106,12 @@ export interface ToolConfig {
    */
   processing?: ProcessingType;
 
+  // === Freshness 신호 (AEO/SEO) ===
+  /** 최초 공개일 (ISO 8601 YYYY-MM-DD). JSON-LD `datePublished` 로 사용. */
+  datePublished?: string;
+  /** 마지막 업데이트일 (ISO 8601 YYYY-MM-DD). JSON-LD `dateModified` 로 사용. 미지정 시 빌드 시각 사용. */
+  lastUpdated?: string;
+
   /**
    * 템플릿 키. PR-2 부터 kebab-case 사용 (TemplateType 참조).
    *

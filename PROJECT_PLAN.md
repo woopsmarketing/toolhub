@@ -477,6 +477,26 @@ export function trackToolEvent(params: {
 | 3.4 | a11y 패스 (ARIA 라벨, 키보드 네비, **글로벌 skip-to-content**) | ✅ |
 | 3.5 | 후속 fix: 다크모드 input 가독성 + script-in-component 경고 + skip link 글로벌화 | ✅ |
 
+### Phase 3.5 — AEO/SEO 강화 (Tier 1+2+3 일괄) ✅ **완료** (2026-05-10)
+
+LLM 인용률 + 검색 엔진 최적화를 위한 인프라 추가. **기존 29개 툴 모두 자동 적용**.
+
+| # | 작업 | 산출물 |
+|---|------|-------|
+| Tier 1.1 | llms.txt 확장 (49→109줄) + llms-full.txt 신설 (1359줄) | `scripts/generate-llms-txt.ts`, `public/llms*.txt` |
+| Tier 1.2 | robots.ts AI bot 명시적 allow (GPTBot/ClaudeBot/PerplexityBot 외 12개) | `src/app/robots.ts` |
+| Tier 1.3 | Site-wide JSON-LD: Organization + WebSite + SearchAction | `src/components/seo/SiteJsonLd.tsx` |
+| Tier 2.4 | `/tools.json` 머신 리더블 카탈로그 (Dataset + ItemList) | `src/app/tools.json/route.ts` |
+| Tier 2.5 | dateModified/datePublished/isAccessibleForFree → JSON-LD 4종 | `src/lib/jsonld.ts` + types.ts |
+| Tier 2.6 | 동적 OG image (`opengraph-image.tsx`, ImageResponse) — 60+ 툴 자동 | `src/app/[locale]/tools/[category]/[slug]/opengraph-image.tsx` |
+| Tier 3.7 | about/privacy/terms 페이지 + Footer Link화 | `src/app/[locale]/{about,privacy,terms}/page.tsx` |
+| Tier 3.8 | TechArticle schema for guide 콘텐츠 | `src/lib/jsonld.ts:getTechArticleJsonLd` |
+| Tier 3.9 | speakable schema for FAQ (음성 답변용) | `src/lib/jsonld.ts:getFaqJsonLd` |
+| Tier 3.10 | RSS/Atom feed (`/feed.xml`) | `src/app/feed.xml/route.ts` |
+| Bonus 1 | Category page ItemList JSON-LD | `src/app/[locale]/categories/[category]/page.tsx` |
+| Bonus 2 | seo-content-writer + faq-writer 에이전트에 LLM 인용 패턴 명시 | `.claude/agents/{seo-content-writer,faq-writer}.md` |
+| Bonus 3 | layout.tsx 메타 힌트 (max-snippet:-1, max-image-preview:large) + alternate links | `src/app/[locale]/layout.tsx` |
+
 ### Phase 4 — 툴 양산 (지속, 우선)
 1.5차 21개 → 2차 28개 → 3차 12개. Phase 2 하네스로 자동 양산.
 
