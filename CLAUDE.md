@@ -12,13 +12,13 @@
 | 운영 중인 툴 | **34개** (Phase 2.7 시범 양산 4호 동시 완료: qr-code-generator / html-preview / savings-calculator / temperature-converter, `/[locale]/tools/[category]/[slug]` URL · 짧은 URL → 308 자동 리다이렉트) |
 | 카테고리 | **10개** (text/developer/calculator/converter/image/pdf/seo/security/productivity/ai) |
 | 인프라 | ToolPageLayout 15컴포넌트 분리, **9개 템플릿** (form-to-visual / live-preview 추가 검증 → 5 실구현, 4 스켈레톤), 6 hooks, GA4 분석 |
-| **완료** | Phase 0 ✅ · Phase 1 (12 PR) ✅ · Phase 2.1~2.7 ✅ (`.claude/` 로컬, 시범 1호 `whitespace-remover` + 시범 2~5호 4개 동시 양산) · Phase 3 ✅ · **AEO/SEO 강화 ✅** |
-| **다음 단계** | Phase 4 본격 양산 (검증된 9-STAGE 파이프라인으로 N개 툴 동시 진행) |
+| **완료** | Phase 0 ✅ · Phase 1 (12 PR) ✅ · Phase 2.1~2.7 ✅ (`.claude/` 로컬, 시범 1호 `whitespace-remover` + 시범 2~5호 4개 동시 양산) · Phase 3 ✅ · **AEO/SEO 강화 ✅** · **Phase 4.5 (전용 Supabase DB 분리 + analytics DB 전송) ✅** |
+| **다음 단계** | Phase 5 (인증 + LocalStorage→DB 마이그레이션) → Phase 4 본격 양산 병행 |
 | 다크모드 | 자체 `ThemeProvider` + FOUC 방지 inline script · `data-theme` 토큰 |
-| 분석 | **GA4 전용** (`trackToolEvent` + 14 표준 이벤트) ✅ |
+| 분석 | **GA4 + Supabase 동시 fire-and-forget** (`trackToolEvent` + 14 표준 이벤트) ✅ |
 | AEO/SEO | JSON-LD 5종 (WebApp/Breadcrumb/FAQ+speakable/HowTo/TechArticle) + Organization/WebSite + ItemList · llms.txt + llms-full.txt · /tools.json · /feed.xml · 동적 OG image · AI bot allowlist · about/privacy/terms |
-| Supabase | **현재 미사용.** Phase 4.5 (전용 DB 분리) 후 도입 |
-| 인증 | **미도입.** Phase 5 |
+| Supabase | **전용 프로젝트 사용 중** (`ceziiqfcciehvygufmqq`, 8 테이블 + RLS + 4 분석 view). `src/lib/supabase/` 클라이언트. 즐겨찾기/히스토리는 Phase 5 인증 도입 후 dual-mode 활성화 예정 |
+| 인증 | **미도입.** Phase 5 (Supabase Auth + Google OAuth) |
 
 > ⚠️ 매 작업 시작 시 `PROJECT_PLAN.md` §9를 읽어 현재 어느 Phase / PR인지 확인할 것.
 
@@ -27,15 +27,20 @@
 ## 1. 핵심 규칙 (지금 즉시 적용)
 
 ### 1.1 데이터/저장
-- **모든 사용자 데이터는 LocalStorage에만 저장한다** (즐겨찾기/히스토리/설정/익명 ID).
-- **Supabase / 외부 DB / API 호출 금지** (Phase 4.5 전까지).
+- **사용자 데이터 기본 저장소는 LocalStorage** (즐겨찾기/히스토리/설정/익명 ID).
+- **Supabase 사용 허용** (Phase 4.5 완료 — 전용 프로젝트 `ceziiqfcciehvygufmqq`).
+  - 분석 이벤트: `trackToolEvent` 가 GA4 + `tool_usage_events` 테이블에 동시 fire-and-forget INSERT (익명 `anonymous_id` 채움).
+  - 인증 의존 데이터(`tool_favorites`, `tool_histories` 등): **Phase 5 인증 도입 후 dual-mode 활성화** — 그 전까지는 LocalStorage 단일 저장.
+  - 클라이언트 진입점: `import { getSupabaseBrowser } from "@/lib/supabase"`.
+  - 서버 진입점: `import { getSupabaseServer } from "@/lib/supabase/server"` (next/headers 의존, "use client" 모듈에서 import 금지).
 - **외부 API 호출 금지** (logic.ts는 순수 함수).
 - 서버 컴포넌트에서 fetch 필요하면 먼저 논의.
 
 ### 1.2 분석/추적
-- 이벤트 추적은 **GA4 전용** (`window.gtag`).
+- 이벤트 추적은 **GA4 + Supabase 동시 fire-and-forget**.
 - 표준 이벤트명 14개 (PROJECT_PLAN.md §4.1) 외에 임의 이벤트 발화 금지.
-- `trackToolEvent()` 함수로만 호출 (직접 gtag 호출 금지).
+- `trackToolEvent()` 함수로만 호출 (직접 gtag 또는 supabase.from 호출 금지).
+- DB 전송은 절대 await 하지 않음 — latency 영향 0, 실패 silent.
 
 ### 1.3 비밀/환경변수
 - `.env.local` 또는 Vercel 환경변수만 사용.
@@ -168,8 +173,7 @@ relatedTools         → 실제 registry에 존재하는 slug만 사용
 - `FileProcessor` / `ImageEditor` 템플릿 실 구현 (Phase 2 이미지 툴 시작 시점까지)
 
 ### 인프라
-- **Supabase 호출 금지** (Phase 4.5 전까지) — MCP는 연결돼 있지만 사용 X
-- **인증 시스템 도입 금지** (Phase 5 전까지)
+- **인증 시스템 도입 금지** (Phase 5 전까지) — `supabase.auth.*` 호출/UI 추가 X
 - 카테고리 임의 추가 (`src/config/categories.ts`로만)
 - 카테고리 ID 변경 (URL/SEO 영향)
 - 이벤트명 임의 추가 (PROJECT_PLAN.md §4.1 14개 외)
@@ -184,23 +188,30 @@ relatedTools         → 실제 registry에 존재하는 slug만 사용
 
 ## 8. Supabase / MCP 사용 가이드
 
-### 현재 상태
-- Supabase MCP 연결됨 (`mcp__supabase__*` 도구 사용 가능)
-- 다른 프로젝트와 DB 공유 중 (`profiles` 53명, `tool_usage_logs` 1055행 등)
-- Toolhub 전용 8개 테이블이 이미 적용돼 있으나 **사용하지 않는다**
+### 현재 상태 (Phase 4.5 완료)
+- **전용 프로젝트 사용 중** (`ceziiqfcciehvygufmqq`) — Toolhub 단독, 다른 프로젝트와 분리됨
+- 8 테이블 + RLS + 4 분석 view (`supabase/migrations/20260509000000_init_toolhub.sql` + `20260510000000_harden_security_and_perf.sql`)
+- 클라이언트 코드 진입점: `src/lib/supabase/{client,server,types,index}.ts`
+- 분석 이벤트: `trackToolEvent` 가 `tool_usage_events` 에 fire-and-forget INSERT (RLS: `events_insert_anyone`)
 
 ### 허용
-- ✅ `list_tables`, `execute_sql` (SELECT만), `get_advisors` — 조회/검증
-- ✅ 다른 프로젝트 데이터 조회 시 — 사용자 명시 요청 시만
+- ✅ MCP 모든 도구 — `list_tables`, `apply_migration`, `execute_sql`, `get_advisors`, `generate_typescript_types` 등
+- ✅ 코드에서 `@supabase/supabase-js`, `@supabase/ssr` import
+- ✅ `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY` 코드 참조
+- ✅ 신규 마이그레이션 작성 시 `supabase/migrations/<timestamp>_<name>.sql` 보존 + git commit
 
 ### 금지
-- ❌ `apply_migration`, `execute_sql` (INSERT/UPDATE/DELETE/DDL) — Phase 1~4에서 절대 실행 X
-- ❌ Supabase 클라이언트를 코드에서 import (`@supabase/supabase-js`)
-- ❌ 환경변수 `SUPABASE_*`를 코드에서 참조
+- ❌ `SUPABASE_SERVICE_ROLE_KEY` 를 클라이언트 번들에 노출 (`NEXT_PUBLIC_*` 접두사 X)
+- ❌ `supabase.auth.*` 호출 / 인증 UI 추가 — Phase 5 전까지
+- ❌ DB 스키마 변경 시 마이그레이션 파일 없이 MCP 만으로 적용 — 항상 `supabase/migrations/` 에 보존
+- ❌ 기존 공유 프로젝트 (`xogsufreiixvppnvxqxx` — seoworld) 에 접근 (MCP 가 새 프로젝트로 고정됨)
 
-### Phase 4.5 도입 시점
-- 전용 DB 프로젝트 분리 (Neon 추천)
-- 기존 Supabase 8개 테이블 SQL은 `supabase/migrations/`에 보존됨 → 그대로 신규 DB에 재적용
+### 마이그레이션 적용 절차
+1. `supabase/migrations/<YYYYMMDDHHMMSS>_<snake_name>.sql` 작성
+2. MCP `apply_migration` 으로 새 프로젝트에 적용
+3. `get_advisors security` + `get_advisors performance` 로 점검
+4. 스키마 타입이 바뀌면 `generate_typescript_types` 재생성 → `src/lib/supabase/types.ts` 갱신
+5. git commit (마이그레이션 파일 + 갱신된 types.ts 함께)
 
 ---
 

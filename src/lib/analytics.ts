@@ -1,12 +1,17 @@
 /**
- * Toolhub — GA4 Analytics (단일 진입점).
+ * Toolhub — Analytics (단일 진입점).
  * 출처: PROJECT_PLAN.md §4 / docs/specs/analytics.md.
- * 현재 백엔드는 GA4 전용 (window.gtag). Phase 4.5 에서 Supabase 전송이
- * 내부 구현으로 추가될 예정이며, 본 모듈의 시그니처는 불변이다.
- * 모든 호출은 SSR-safe 이며 절대 throw 하지 않는다.
+ *
+ * 백엔드 (Phase 4.5):
+ *   1. GA4 (window.gtag) — 모든 표준 14 이벤트
+ *   2. Supabase tool_usage_events — fire-and-forget INSERT (RLS: anon 허용)
+ *
+ * GA4 와 DB 는 독립적으로 시도된다 — 한쪽이 실패하거나 차단돼도 다른 쪽은 계속 동작.
+ * doNotTrack=1 이면 둘 다 차단. 모든 호출은 SSR-safe 이며 절대 throw 하지 않는다.
  */
 
 import type { Locale } from "@/config/types";
+import { getSupabaseBrowser } from "@/lib/supabase";
 
 // ----------------------------------------------------------------------------
 // 표준 이벤트 (15개 이름 — affiliate/pro_cta 는 같은 카테고리이지만 별도 이름)
@@ -63,12 +68,18 @@ function isBrowser(): boolean {
   return typeof window !== "undefined";
 }
 
+/** doNotTrack 만 체크 — DB / GA4 공통 사전 게이트. */
 function isTrackingAllowed(): boolean {
   if (!isBrowser()) return false;
   if (typeof navigator !== "undefined" && navigator.doNotTrack === "1") {
     return false;
   }
-  return typeof window.gtag === "function";
+  return true;
+}
+
+/** GA4 전송 가능 여부 — gtag 로딩 확인까지 포함. */
+function isGa4Allowed(): boolean {
+  return isTrackingAllowed() && typeof window.gtag === "function";
 }
 
 /** GA4 명명 규칙에 맞춰 값을 정규화 (string ≤100자, 유한 number 만 통과). */
@@ -98,6 +109,60 @@ function normalizeProperties(
 }
 
 // ----------------------------------------------------------------------------
+// Supabase fire-and-forget INSERT
+// ----------------------------------------------------------------------------
+
+/**
+ * Phase 4.5: tool_usage_events 테이블에 익명 INSERT.
+ * - RLS 정책 events_insert_anyone (WITH CHECK true) 로 anon key 허용
+ * - 절대 await 하지 않음 — 호출부 latency 영향 0
+ * - 실패는 silent (analytics 는 앱을 깨뜨리지 않는다)
+ * - Phase 5 인증 도입 후 user_id 자동 주입 예정 (현재는 anonymous_id 만)
+ */
+function sendEventToDb(params: TrackToolEventParams): void {
+  if (!isTrackingAllowed()) return;
+
+  const supabase = getSupabaseBrowser();
+  if (!supabase) return;
+
+  const props = params.properties ?? {};
+  const category =
+    typeof props.category === "string" ? props.category : null;
+
+  const userAgent =
+    typeof navigator !== "undefined" && typeof navigator.userAgent === "string"
+      ? navigator.userAgent.slice(0, 500)
+      : null;
+  const referrer =
+    typeof document !== "undefined" && typeof document.referrer === "string"
+      ? document.referrer.slice(0, 500) || null
+      : null;
+
+  // properties 에서 자동 첨부 4종을 제외한 나머지를 jsonb 로 보존
+  const { category: _c, ...restProps } = props;
+  void _c;
+
+  void supabase
+    .from("tool_usage_events")
+    .insert({
+      event_name: params.event,
+      tool_slug: params.toolSlug,
+      category,
+      locale: params.locale,
+      template: params.template ?? null,
+      processing: params.processing ?? null,
+      properties:
+        Object.keys(restProps).length > 0 ? (restProps as never) : null,
+      anonymous_id: getAnonymousId() || null,
+      user_agent: userAgent,
+      referrer,
+    })
+    .then(() => {
+      // success — silent
+    });
+}
+
+// ----------------------------------------------------------------------------
 // 메인 함수
 // ----------------------------------------------------------------------------
 
@@ -105,15 +170,20 @@ export function trackToolEvent(params: TrackToolEventParams): void {
   try {
     if (!isTrackingAllowed()) return;
 
-    const payload: Record<string, GtagPropertyValue> = {
-      tool_slug: params.toolSlug,
-      locale: params.locale,
-      template: params.template,
-      processing: params.processing,
-      ...normalizeProperties(params.properties),
-    };
+    // 1) GA4 — 가능하면 발화
+    if (isGa4Allowed()) {
+      const payload: Record<string, GtagPropertyValue> = {
+        tool_slug: params.toolSlug,
+        locale: params.locale,
+        template: params.template,
+        processing: params.processing,
+        ...normalizeProperties(params.properties),
+      };
+      window.gtag?.("event", params.event, payload);
+    }
 
-    window.gtag?.("event", params.event, payload);
+    // 2) Supabase — 독립적으로 fire-and-forget
+    sendEventToDb(params);
   } catch {
     // analytics 는 절대 앱을 깨뜨리지 않는다 (silent noop).
   }
