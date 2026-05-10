@@ -57,24 +57,13 @@ export default function LayoutShowcase() {
       {/* Actions */}
       <div>
         <h3 className="mb-3 text-base font-semibold text-foreground">
-          ToolActions (inline)
-        </h3>
-        <div className="rounded-xl border border-border bg-card p-4">
-          <ToolActions
-            toolSlug="demo-tool"
-            resultText="복사 가능한 결과 텍스트 예시"
-            variant="inline"
-          />
-          <p className="mt-3 text-xs text-muted-foreground">
-            Copy / Share / Favorite 3 버튼. resultText 가 있어야 Copy 표시됨.
-          </p>
-        </div>
-
-        <h3 className="mb-3 mt-6 text-base font-semibold text-foreground">
-          ToolActions (resultText 없음 → Copy 미표시)
+          ToolActions (보조 액션 — Share / History / AI / Feedback)
         </h3>
         <div className="rounded-xl border border-border bg-card p-4">
           <ToolActions toolSlug="demo-tool" variant="inline" />
+          <p className="mt-3 text-xs text-muted-foreground">
+            메인 액션(복사 / 다운로드)은 각 템플릿의 ResultActionBar 가 담당. 즐겨찾기는 ToolHeader 의 FavoriteToggle.
+          </p>
         </div>
       </div>
     </div>

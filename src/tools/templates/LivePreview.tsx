@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Eraser } from "lucide-react";
-import CopyButton from "@/components/tools/CopyButton";
+import ResultActionBar from "@/components/tools/ResultActionBar";
 import { type ToolConfig } from "@/config/types";
 
 interface LivePreviewProps {
@@ -55,7 +55,6 @@ export default function LivePreview({
             <label className="text-sm font-medium text-foreground">
               {tool.inputConfig?.outputLabel || t("output")}
             </label>
-            {result && <CopyButton text={result} />}
           </div>
           {renderPreview ? (
             <div className="h-80 overflow-auto rounded-xl border border-border bg-card p-4 text-foreground">
@@ -71,6 +70,13 @@ export default function LivePreview({
           )}
         </div>
       </div>
+
+      {/* 결과 메인 액션 — renderPreview 사용 시(예: HTML iframe)도 원본 텍스트는 복사 가능 */}
+      <ResultActionBar
+        toolSlug={tool.slug}
+        text={result || undefined}
+        fallbackToText
+      />
     </div>
   );
 }

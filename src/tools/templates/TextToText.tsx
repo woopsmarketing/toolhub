@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Eraser } from "lucide-react";
-import CopyButton from "@/components/tools/CopyButton";
+import ResultActionBar from "@/components/tools/ResultActionBar";
 import { type ToolConfig } from "@/config/types";
 
 interface TextToTextProps {
@@ -17,6 +17,17 @@ export default function TextToText({ tool, process }: TextToTextProps) {
 
   const result = input ? process(input) : null;
   const isStats = tool.inputConfig?.outputType === "stats";
+
+  // 메인 액션 바에 전달할 텍스트 (stats 모드면 key:value\n... 묶음).
+  const actionText: string | undefined = (() => {
+    if (!result) return undefined;
+    if (typeof result === "string") return result.length > 0 ? result : undefined;
+    if (isStats && typeof result === "object") {
+      const lines = Object.entries(result).map(([k, v]) => `${k}: ${v}`);
+      return lines.length > 0 ? lines.join("\n") : undefined;
+    }
+    return undefined;
+  })();
 
   return (
     <div className="space-y-4">
@@ -64,9 +75,6 @@ export default function TextToText({ tool, process }: TextToTextProps) {
               <label className="text-sm font-medium text-foreground">
                 {tool.inputConfig?.outputLabel || t("output")}
               </label>
-              {result && typeof result === "string" && (
-                <CopyButton text={result} />
-              )}
             </div>
             <textarea
               readOnly
@@ -77,6 +85,13 @@ export default function TextToText({ tool, process }: TextToTextProps) {
           </div>
         )}
       </div>
+
+      {/* 결과 메인 액션 (풀폭 큰 버튼) — 결과가 있을 때만 노출 */}
+      <ResultActionBar
+        toolSlug={tool.slug}
+        text={actionText}
+        fallbackToText
+      />
     </div>
   );
 }

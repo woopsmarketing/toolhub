@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { type ToolConfig, type InputFieldConfig } from "@/config/types";
-import CopyButton from "@/components/tools/CopyButton";
+import ResultActionBar from "@/components/tools/ResultActionBar";
 
 interface FormToResultProps {
   tool: ToolConfig;
@@ -136,6 +136,19 @@ export default function FormToResult({ tool, process, realtime = false }: FormTo
           <div className="flex h-48 items-center justify-center rounded-xl border border-dashed border-border text-sm text-muted-foreground">
             {t("calculate")} 버튼을 눌러 결과를 확인하세요
           </div>
+        )}
+
+        {/* 결과 메인 액션 — 모든 항목을 "label: value(suffix)" 줄로 묶어 복사 가능 */}
+        {result && (
+          <ResultActionBar
+            toolSlug={tool.slug}
+            text={resultLabels
+              .map(({ key, label, suffix }) =>
+                `${label}: ${result[key]}${suffix ?? ""}`,
+              )
+              .join("\n")}
+            fallbackToText
+          />
         )}
       </div>
     </div>

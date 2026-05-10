@@ -18,7 +18,7 @@
 import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Eraser } from "lucide-react";
-import CopyButton from "@/components/tools/CopyButton";
+import ResultActionBar from "@/components/tools/ResultActionBar";
 import { type ToolConfig } from "@/config/types";
 import { Textarea, Button } from "./_shared";
 
@@ -112,9 +112,6 @@ export default function MultiInput({ tool, process }: MultiInputProps) {
           <label className="text-sm font-medium text-foreground">
             {tool.inputConfig?.outputLabel || t("output")}
           </label>
-          {result && isStringResult && result.length > 0 && (
-            <CopyButton text={result} />
-          )}
         </div>
 
         {result && !isStringResult ? (
@@ -138,6 +135,18 @@ export default function MultiInput({ tool, process }: MultiInputProps) {
           />
         )}
       </div>
+
+      {/* 결과 메인 액션 — string 결과 또는 stats 결과를 묶어 복사/다운로드 */}
+      <ResultActionBar
+        toolSlug={tool.slug}
+        text={(() => {
+          if (!result) return undefined;
+          if (isStringResult) return result.length > 0 ? result : undefined;
+          const lines = Object.entries(result).map(([k, v]) => `${k}: ${v}`);
+          return lines.length > 0 ? lines.join("\n") : undefined;
+        })()}
+        fallbackToText
+      />
     </div>
   );
 }

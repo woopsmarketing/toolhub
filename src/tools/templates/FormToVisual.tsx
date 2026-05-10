@@ -18,10 +18,10 @@
  * javascript: URL 은 모두 제거.
  */
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Download } from "lucide-react";
 import { type ToolConfig, type InputFieldConfig } from "@/config/types";
+import ResultActionBar from "@/components/tools/ResultActionBar";
 import { Input, Select, Button } from "./_shared";
 
 export interface FormToVisualResult {
@@ -189,7 +189,6 @@ export default function FormToVisual({ tool, process }: FormToVisualProps) {
   const [values, setValues] =
     useState<Record<string, string | number>>(defaultValues);
   const [result, setResult] = useState<FormToVisualResult | null>(null);
-  const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
 
   const handleChange = (name: string, value: string | number) => {
     setValues((prev) => ({ ...prev, [name]: value }));
@@ -200,22 +199,6 @@ export default function FormToVisual({ tool, process }: FormToVisualProps) {
     const next = process(values);
     setResult(next);
   };
-
-  // Manage object URL lifecycle for Blob downloads
-  useEffect(() => {
-    if (!result?.downloadable) {
-      setDownloadUrl(null);
-      return;
-    }
-    const { data, mime } = result.downloadable;
-    const blob =
-      data instanceof Blob ? data : new Blob([data], { type: mime });
-    const url = URL.createObjectURL(blob);
-    setDownloadUrl(url);
-    return () => {
-      URL.revokeObjectURL(url);
-    };
-  }, [result]);
 
   const sanitizedSvg = useMemo(
     () => (result?.svg ? sanitizeMarkup(result.svg) : ""),
@@ -271,19 +254,7 @@ export default function FormToVisual({ tool, process }: FormToVisualProps) {
 
       {/* Visual preview */}
       <div>
-        <div className="mb-2 flex items-center justify-between">
-          <h3 className="text-sm font-medium text-foreground">{t("result")}</h3>
-          {result?.downloadable && downloadUrl && (
-            <a
-              href={downloadUrl}
-              download={result.downloadable.filename}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-            >
-              <Download className="h-3.5 w-3.5" />
-              {t("download") /* falls back to key if missing */}
-            </a>
-          )}
-        </div>
+        <h3 className="mb-2 text-sm font-medium text-foreground">{t("result")}</h3>
 
         <div className="flex min-h-[20rem] items-center justify-center rounded-xl border border-border bg-card p-4 text-foreground">
           {result?.svg ? (
@@ -302,6 +273,14 @@ export default function FormToVisual({ tool, process }: FormToVisualProps) {
             </span>
           )}
         </div>
+
+        {/* 결과 메인 액션 — process() 가 downloadable 을 반환하면 풀폭 큰 다운로드 버튼 */}
+        {result?.downloadable && (
+          <ResultActionBar
+            toolSlug={tool.slug}
+            downloadable={result.downloadable}
+          />
+        )}
       </div>
     </div>
   );
