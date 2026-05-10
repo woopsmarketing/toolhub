@@ -12,13 +12,14 @@
 | 운영 중인 툴 | **34개** (Phase 2.7 시범 양산 4호 동시 완료: qr-code-generator / html-preview / savings-calculator / temperature-converter, `/[locale]/tools/[category]/[slug]` URL · 짧은 URL → 308 자동 리다이렉트) |
 | 카테고리 | **10개** (text/developer/calculator/converter/image/pdf/seo/security/productivity/ai) |
 | 인프라 | ToolPageLayout 15컴포넌트 분리, **9개 템플릿** (form-to-visual / live-preview 추가 검증 → 5 실구현, 4 스켈레톤), 6 hooks, GA4 분석 |
-| **완료** | Phase 0 ✅ · Phase 1 (12 PR) ✅ · Phase 2.1~2.7 ✅ (`.claude/` 로컬, 시범 1호 `whitespace-remover` + 시범 2~5호 4개 동시 양산) · Phase 3 ✅ · **AEO/SEO 강화 ✅** · **Phase 4.5 (전용 Supabase DB 분리 + analytics DB 전송) ✅** |
-| **다음 단계** | Phase 5 (인증 + LocalStorage→DB 마이그레이션) → Phase 4 본격 양산 병행 |
+| **완료** | Phase 0 ✅ · Phase 1 (12 PR) ✅ · Phase 2.1~2.7 ✅ (`.claude/` 로컬, 시범 1호 `whitespace-remover` + 시범 2~5호 4개 동시 양산) · Phase 3 ✅ · **AEO/SEO 강화 ✅** · **Phase 4.5 (전용 Supabase DB) ✅** · **Phase 5 (Google OAuth + 즐겨찾기 dual-mode + 프로필 페이지) ✅** |
+| **다음 단계** | Phase 4 본격 양산 (34→90) · 도메인 결정/연결 · (선택) Phase 3.6.4 IndexNow |
 | 다크모드 | 자체 `ThemeProvider` + FOUC 방지 inline script · `data-theme` 토큰 |
-| 분석 | **GA4 + Supabase 동시 fire-and-forget** (`trackToolEvent` + 14 표준 이벤트) ✅ |
+| 분석 | **GA4 + Supabase 동시 fire-and-forget** (`trackToolEvent` + 14 표준 이벤트, 로그인 시 user_id 자동 주입) ✅ |
 | AEO/SEO | JSON-LD 5종 (WebApp/Breadcrumb/FAQ+speakable/HowTo/TechArticle) + Organization/WebSite + ItemList · llms.txt + llms-full.txt · /tools.json · /feed.xml · 동적 OG image · AI bot allowlist · about/privacy/terms |
-| Supabase | **전용 프로젝트 사용 중** (`ceziiqfcciehvygufmqq`, 8 테이블 + RLS + 4 분석 view). `src/lib/supabase/` 클라이언트. 즐겨찾기/히스토리는 Phase 5 인증 도입 후 dual-mode 활성화 예정 |
-| 인증 | **미도입.** Phase 5 (Supabase Auth + Google OAuth) |
+| Supabase | **전용 프로젝트 사용 중** (`ceziiqfcciehvygufmqq`, 8 테이블 + RLS + 4 분석 view). `src/lib/supabase/{client,server,types,index}.ts` |
+| 인증 | **Google OAuth 활성화** (Supabase Auth, `/auth/callback` route, `useUser` hook, `AuthButton` 컴포넌트, `/[locale]/profile` 페이지) ✅ |
+| 즐겨찾기 | **dual-mode**: 비로그인 LocalStorage / 로그인 `tool_favorites` 테이블. 첫 로그인 시 자동 마이그레이션 (`syncLocalFavoritesToDb`, 멱등) |
 
 > ⚠️ 매 작업 시작 시 `PROJECT_PLAN.md` §9를 읽어 현재 어느 Phase / PR인지 확인할 것.
 
@@ -27,12 +28,16 @@
 ## 1. 핵심 규칙 (지금 즉시 적용)
 
 ### 1.1 데이터/저장
-- **사용자 데이터 기본 저장소는 LocalStorage** (즐겨찾기/히스토리/설정/익명 ID).
-- **Supabase 사용 허용** (Phase 4.5 완료 — 전용 프로젝트 `ceziiqfcciehvygufmqq`).
-  - 분석 이벤트: `trackToolEvent` 가 GA4 + `tool_usage_events` 테이블에 동시 fire-and-forget INSERT (익명 `anonymous_id` 채움).
-  - 인증 의존 데이터(`tool_favorites`, `tool_histories` 등): **Phase 5 인증 도입 후 dual-mode 활성화** — 그 전까지는 LocalStorage 단일 저장.
-  - 클라이언트 진입점: `import { getSupabaseBrowser } from "@/lib/supabase"`.
-  - 서버 진입점: `import { getSupabaseServer } from "@/lib/supabase/server"` (next/headers 의존, "use client" 모듈에서 import 금지).
+- **사용자 데이터 저장 정책 (Phase 5 완료)**
+  - **익명 ID** (`getAnonymousId`): LocalStorage `toolhub_aid` (단일 저장)
+  - **즐겨찾기** (`useFavorite`): **dual-mode** — 비로그인 LocalStorage / 로그인 `tool_favorites` 테이블. 첫 로그인 시 `syncLocalFavoritesToDb` 자동 실행 (멱등, 한 번만)
+  - **히스토리** (`useToolHistory`): 현재 LocalStorage 단일 저장 (Pro 플랜 도입 시 `tool_histories` 테이블 활성화)
+  - **설정** (`user_tool_settings`): Phase 6 활성화 예정
+  - **분석 이벤트**: `trackToolEvent` 가 GA4 + `tool_usage_events` 테이블에 동시 fire-and-forget INSERT. 로그인 시 `user_id` 자동 주입, 익명은 `anonymous_id` 만.
+  - **프로필** (`profiles`): `auth.users` 트리거 (`handle_new_user`) 로 자동 생성. Google OAuth 메타데이터 (`name`, `avatar_url`) 자동 채움.
+- **Supabase 클라이언트 진입점**
+  - 클라이언트: `import { getSupabaseBrowser } from "@/lib/supabase"`
+  - 서버: `import { getSupabaseServer } from "@/lib/supabase/server"` (next/headers 의존, "use client" 모듈에서 import 금지)
 - **외부 API 호출 금지** (logic.ts는 순수 함수).
 - 서버 컴포넌트에서 fetch 필요하면 먼저 논의.
 
@@ -173,7 +178,6 @@ relatedTools         → 실제 registry에 존재하는 slug만 사용
 - `FileProcessor` / `ImageEditor` 템플릿 실 구현 (Phase 2 이미지 툴 시작 시점까지)
 
 ### 인프라
-- **인증 시스템 도입 금지** (Phase 5 전까지) — `supabase.auth.*` 호출/UI 추가 X
 - 카테고리 임의 추가 (`src/config/categories.ts`로만)
 - 카테고리 ID 변경 (URL/SEO 영향)
 - 이벤트명 임의 추가 (PROJECT_PLAN.md §4.1 14개 외)
@@ -202,7 +206,6 @@ relatedTools         → 실제 registry에 존재하는 slug만 사용
 
 ### 금지
 - ❌ `SUPABASE_SERVICE_ROLE_KEY` 를 클라이언트 번들에 노출 (`NEXT_PUBLIC_*` 접두사 X)
-- ❌ `supabase.auth.*` 호출 / 인증 UI 추가 — Phase 5 전까지
 - ❌ DB 스키마 변경 시 마이그레이션 파일 없이 MCP 만으로 적용 — 항상 `supabase/migrations/` 에 보존
 - ❌ 기존 공유 프로젝트 (`xogsufreiixvppnvxqxx` — seoworld) 에 접근 (MCP 가 새 프로젝트로 고정됨)
 

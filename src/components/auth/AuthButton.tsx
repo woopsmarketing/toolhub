@@ -14,13 +14,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { LogIn, LogOut, User as UserIcon } from "lucide-react";
+import { LogIn, LogOut, User as UserIcon, UserCircle } from "lucide-react";
 import { useUser } from "@/hooks/useUser";
+import { Link } from "@/i18n/navigation";
 import { getSupabaseBrowser } from "@/lib/supabase";
+import { resetSyncFlag } from "@/lib/favorites";
 import { cn } from "@/lib/utils";
 
 const BTN =
-  "inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40";
+  "inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
 const IDLE = "bg-card text-muted-foreground hover:bg-muted hover:text-foreground";
 const PRIMARY = "bg-primary text-white hover:bg-primary/90 border-primary";
 
@@ -31,15 +33,22 @@ export default function AuthButton() {
   const [busy, setBusy] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
-  // 외부 클릭 시 메뉴 닫기
+  // 외부 클릭 / Escape 로 메뉴 닫기
   useEffect(() => {
     if (!open) return;
     const onDocClick = (e: MouseEvent) => {
       if (!menuRef.current) return;
       if (!menuRef.current.contains(e.target as Node)) setOpen(false);
     };
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
     window.addEventListener("mousedown", onDocClick);
-    return () => window.removeEventListener("mousedown", onDocClick);
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("mousedown", onDocClick);
+      window.removeEventListener("keydown", onKeyDown);
+    };
   }, [open]);
 
   const handleSignIn = async () => {
@@ -70,6 +79,8 @@ export default function AuthButton() {
     setBusy(true);
     try {
       await supabase.auth.signOut();
+      // 다른 계정 로그인 가능성 — 다음 로그인 시 마이그레이션 재시도되도록 플래그 리셋
+      resetSyncFlag();
       setOpen(false);
       // 서버 상태(예: RSC) 갱신을 위해 새로고침
       if (typeof window !== "undefined") {
@@ -149,6 +160,15 @@ export default function AuthButton() {
               <div className="truncate">{user.email}</div>
             )}
           </div>
+          <Link
+            href="/profile"
+            role="menuitem"
+            onClick={() => setOpen(false)}
+            className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-foreground transition-colors hover:bg-muted"
+          >
+            <UserCircle className="h-4 w-4" aria-hidden="true" />
+            {t("profile")}
+          </Link>
           <button
             type="button"
             role="menuitem"

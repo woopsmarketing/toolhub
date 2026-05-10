@@ -20,8 +20,12 @@ export async function GET(request: NextRequest) {
   const errorParam = url.searchParams.get("error_description") ?? url.searchParams.get("error");
 
   // 안전한 redirect 경로만 허용 (open redirect 방지) — 우리 앱 내부 경로 또는 "/" 만.
+  // 백슬래시(`\`) 도 일부 브라우저가 `/` 로 정규화하여 외부 도메인으로 새는 우회 경로가 됨.
   const safeNext =
-    nextParam && nextParam.startsWith("/") && !nextParam.startsWith("//")
+    nextParam &&
+    nextParam.startsWith("/") &&
+    !nextParam.startsWith("//") &&
+    !nextParam.includes("\\")
       ? nextParam
       : "/";
 

@@ -12,6 +12,7 @@
 
 import type { Locale } from "@/config/types";
 import { getSupabaseBrowser } from "@/lib/supabase";
+import type { Json } from "@/lib/supabase";
 
 // ----------------------------------------------------------------------------
 // 표준 이벤트 (15개 이름 — affiliate/pro_cta 는 같은 카테고리이지만 별도 이름)
@@ -113,11 +114,11 @@ function normalizeProperties(
 // ----------------------------------------------------------------------------
 
 /**
- * Phase 4.5: tool_usage_events 테이블에 익명 INSERT.
+ * Phase 4.5 + 5.2: tool_usage_events 테이블에 INSERT.
  * - RLS 정책 events_insert_anyone (WITH CHECK true) 로 anon key 허용
  * - 절대 await 하지 않음 — 호출부 latency 영향 0
  * - 실패는 silent (analytics 는 앱을 깨뜨리지 않는다)
- * - Phase 5 인증 도입 후 user_id 자동 주입 예정 (현재는 anonymous_id 만)
+ * - 로그인 사용자: user_id 자동 주입 / 익명: anonymous_id 만
  */
 function sendEventToDb(params: TrackToolEventParams): void {
   if (!isTrackingAllowed()) return;
@@ -142,24 +143,28 @@ function sendEventToDb(params: TrackToolEventParams): void {
   const { category: _c, ...restProps } = props;
   void _c;
 
-  void supabase
-    .from("tool_usage_events")
-    .insert({
-      event_name: params.event,
-      tool_slug: params.toolSlug,
-      category,
-      locale: params.locale,
-      template: params.template ?? null,
-      processing: params.processing ?? null,
-      properties:
-        Object.keys(restProps).length > 0 ? (restProps as never) : null,
-      anonymous_id: getAnonymousId() || null,
-      user_agent: userAgent,
-      referrer,
-    })
-    .then(() => {
-      // success — silent
-    });
+  // getSession 은 메모리 캐시라 비용 작음. 그래도 fire-and-forget 으로 묶어 latency 0.
+  void supabase.auth.getSession().then(({ data }) => {
+    const userId = data.session?.user?.id ?? null;
+    return supabase
+      .from("tool_usage_events")
+      .insert({
+        event_name: params.event,
+        tool_slug: params.toolSlug,
+        category,
+        locale: params.locale,
+        template: params.template ?? null,
+        processing: params.processing ?? null,
+        properties:
+          Object.keys(restProps).length > 0
+            ? (restProps as Record<string, string | number | boolean | null> as Json)
+            : null,
+        user_id: userId,
+        anonymous_id: getAnonymousId() || null,
+        user_agent: userAgent,
+        referrer,
+      });
+  });
 }
 
 // ----------------------------------------------------------------------------
