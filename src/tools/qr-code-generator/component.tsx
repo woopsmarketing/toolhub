@@ -8,10 +8,11 @@ import { process, type QrResult } from "./logic";
 const PLACEHOLDER = "https://example.com";
 const DEFAULT_VALUE = "https://toolhub.tools";
 
+// 풀폭 큰 버튼 — "QR 코드 생성하기" 와 결과 하단 액션 3개 모두 사용
 const PRIMARY_BTN =
-  "inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 disabled:cursor-not-allowed disabled:opacity-60";
+  "inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 disabled:cursor-not-allowed disabled:opacity-60";
 const OUTLINE_BTN =
-  "inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-card px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 disabled:cursor-not-allowed disabled:opacity-60";
+  "inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl border border-border bg-card px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 disabled:cursor-not-allowed disabled:opacity-60";
 
 export default function QrCodeGeneratorTool() {
   const t = useTranslations("common");
@@ -144,9 +145,9 @@ export default function QrCodeGeneratorTool() {
           )}
         </div>
 
-        {/* 액션 버튼들 — 결과 하단 풀폭 큰 버튼 */}
+        {/* 액션 버튼들 — 항상 1열, 풀폭 큰 버튼 위아래 배치 (좁은 화면에서도 wrap 없음) */}
         {qr && (
-          <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-3">
+          <div className="mt-4 flex flex-col gap-2">
             <button
               type="button"
               onClick={handleDownloadPng}
