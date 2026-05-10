@@ -10,12 +10,11 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import {
-  Check, Copy, Download, Heart, History as HistoryIcon,
+  Check, Copy, Download, History as HistoryIcon,
   MessageSquare, Share2, Sparkles,
 } from "lucide-react";
 import { useClipboard } from "@/hooks/useClipboard";
 import { useShare } from "@/hooks/useShare";
-import { useFavorite } from "@/hooks/useFavorite";
 import { useDownload } from "@/hooks/useDownload";
 import { useToolHistory } from "@/hooks/useToolHistory";
 import { useToolEvent } from "@/hooks/useToolEvent";
@@ -57,7 +56,6 @@ export default function ToolActions({
   const t = useTranslations("common");
   const { copy, copied } = useClipboard();
   const { share } = useShare(toolSlug);
-  const { isFavorite, toggle: toggleFavorite } = useFavorite(toolSlug);
   const { download } = useDownload();
   const { track } = useToolEvent(toolSlug);
   const { history } = useToolHistory<unknown>(toolSlug);
@@ -128,13 +126,7 @@ export default function ToolActions({
           {t("share")}
         </button>
 
-        <button type="button" onClick={toggleFavorite} aria-pressed={isFavorite}
-          aria-label={isFavorite ? t("unfavoriteTooltip") : t("favoriteTooltip")}
-          title={isFavorite ? t("unfavoriteTooltip") : t("favoriteTooltip")}
-          className={cn(BTN, isFavorite ? ACTIVE : IDLE)}>
-          <Heart className={cn(ICON, isFavorite && "fill-current")} aria-hidden="true" />
-          {isFavorite ? t("favorited") : t("favorite")}
-        </button>
+        {/* Favorite 버튼은 ToolHeader 의 FavoriteToggle 로 이동 (중복 제거) */}
 
         {enableHistory && (
           <button type="button" onClick={() => setHistoryOpen(true)}

@@ -72,7 +72,7 @@ export default function ToolPageLayout({ tool, children }: ToolPageLayoutProps) 
           toolTitle={seo.title}
           ariaLabel={t("common.breadcrumbLabel")}
         />
-        <ToolHeader title={seo.title} description={seo.description} />
+        <ToolHeader title={seo.title} description={seo.description} toolSlug={tool.slug} />
         <ToolAdSlot enabled={monetization?.ads} placement="top" />
         <ToolShell>
           <ToolErrorBoundary toolSlug={tool.slug} locale={locale}>

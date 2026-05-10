@@ -2,11 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Download, Copy, Check } from "lucide-react";
+import { Download, Copy, Check, FileImage } from "lucide-react";
 import { process, type QrResult } from "./logic";
 
 const PLACEHOLDER = "https://example.com";
 const DEFAULT_VALUE = "https://toolhub.tools";
+
+const PRIMARY_BTN =
+  "inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 disabled:cursor-not-allowed disabled:opacity-60";
+const OUTLINE_BTN =
+  "inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-card px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 disabled:cursor-not-allowed disabled:opacity-60";
 
 export default function QrCodeGeneratorTool() {
   const t = useTranslations("common");
@@ -14,16 +19,16 @@ export default function QrCodeGeneratorTool() {
   const [qr, setQr] = useState<QrResult | null>(() => process(DEFAULT_VALUE));
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
-  const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
+  const [svgUrl, setSvgUrl] = useState<string | null>(null);
 
   useEffect(() => {
     if (!qr) {
-      setDownloadUrl(null);
+      setSvgUrl(null);
       return;
     }
     const blob = new Blob([qr.svg], { type: "image/svg+xml" });
     const url = URL.createObjectURL(blob);
-    setDownloadUrl(url);
+    setSvgUrl(url);
     return () => {
       URL.revokeObjectURL(url);
     };
@@ -43,6 +48,28 @@ export default function QrCodeGeneratorTool() {
     } catch (err) {
       setError(err instanceof Error ? err.message : "QR 생성에 실패했습니다");
       setQr(null);
+    }
+  };
+
+  const handleDownloadPng = async () => {
+    if (!qr) return;
+    setError(null);
+    try {
+      const pngBlob = await svgToPngBlob(qr.svg, qr.pixelSize);
+      if (!pngBlob) throw new Error("PNG 변환 실패");
+      const url = URL.createObjectURL(pngBlob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "qrcode.png";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      // microtask 후에 revoke (일부 브라우저가 즉시 revoke 시 실패)
+      window.setTimeout(() => URL.revokeObjectURL(url), 0);
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "PNG 다운로드에 실패했습니다",
+      );
     }
   };
 
@@ -90,7 +117,7 @@ export default function QrCodeGeneratorTool() {
         <button
           type="button"
           onClick={handleGenerate}
-          className="w-full rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
+          className={PRIMARY_BTN}
         >
           QR 코드 생성하기
         </button>
@@ -101,40 +128,9 @@ export default function QrCodeGeneratorTool() {
 
       {/* 결과 영역 */}
       <div>
-        <div className="mb-2 flex items-center justify-between">
-          <h3 className="text-sm font-medium text-foreground">{t("result")}</h3>
-          {qr && (
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={handleCopyImage}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-              >
-                {copied ? (
-                  <>
-                    <Check className="h-3.5 w-3.5" />
-                    복사됨
-                  </>
-                ) : (
-                  <>
-                    <Copy className="h-3.5 w-3.5" />
-                    이미지 복사
-                  </>
-                )}
-              </button>
-              {downloadUrl && (
-                <a
-                  href={downloadUrl}
-                  download="qrcode.svg"
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                >
-                  <Download className="h-3.5 w-3.5" />
-                  SVG 다운로드
-                </a>
-              )}
-            </div>
-          )}
-        </div>
+        <h3 className="mb-2 text-sm font-medium text-foreground">
+          {t("result")}
+        </h3>
         <div className="flex min-h-[20rem] items-center justify-center rounded-xl border border-border bg-card p-4">
           {qr ? (
             <div
@@ -147,13 +143,53 @@ export default function QrCodeGeneratorTool() {
             </span>
           )}
         </div>
+
+        {/* 액션 버튼들 — 결과 하단 풀폭 큰 버튼 */}
+        {qr && (
+          <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-3">
+            <button
+              type="button"
+              onClick={handleDownloadPng}
+              className={PRIMARY_BTN}
+            >
+              <Download className="h-4 w-4" aria-hidden="true" />
+              PNG 다운로드
+            </button>
+            <a
+              href={svgUrl ?? "#"}
+              download="qrcode.svg"
+              className={OUTLINE_BTN}
+              aria-disabled={!svgUrl}
+            >
+              <FileImage className="h-4 w-4" aria-hidden="true" />
+              SVG 다운로드
+            </a>
+            <button
+              type="button"
+              onClick={handleCopyImage}
+              className={OUTLINE_BTN}
+            >
+              {copied ? (
+                <>
+                  <Check className="h-4 w-4" aria-hidden="true" />
+                  복사됨
+                </>
+              ) : (
+                <>
+                  <Copy className="h-4 w-4" aria-hidden="true" />
+                  이미지 복사
+                </>
+              )}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
 /**
- * SVG 문자열을 canvas 경유 PNG Blob 으로 변환. 클립보드 복사용.
+ * SVG 문자열을 canvas 경유 PNG Blob 으로 변환. 클립보드 복사 + PNG 다운로드용.
  * 브라우저 전용 (window/Image/canvas 사용).
  */
 async function svgToPngBlob(
