@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { type ToolConfig, type InputFieldConfig } from "@/config/types";
 import CopyButton from "@/components/tools/CopyButton";
@@ -8,9 +8,14 @@ import CopyButton from "@/components/tools/CopyButton";
 interface FormToResultProps {
   tool: ToolConfig;
   process: (values: Record<string, string | number>) => Record<string, string | number>;
+  /**
+   * realtime=true: 입력이 바뀔 때마다 즉시 process 호출 → 결과 자동 갱신.
+   * 단위 변환처럼 가벼운 계산에 적합. 기본값은 false (버튼 클릭 방식).
+   */
+  realtime?: boolean;
 }
 
-export default function FormToResult({ tool, process }: FormToResultProps) {
+export default function FormToResult({ tool, process, realtime = false }: FormToResultProps) {
   const t = useTranslations("common");
   const fields = tool.formFields || [];
 
@@ -20,7 +25,13 @@ export default function FormToResult({ tool, process }: FormToResultProps) {
   });
 
   const [values, setValues] = useState(defaultValues);
-  const [result, setResult] = useState<Record<string, string | number> | null>(null);
+  const [result, setResult] = useState<Record<string, string | number> | null>(
+    realtime ? process(defaultValues) : null
+  );
+
+  useEffect(() => {
+    if (realtime) setResult(process(values));
+  }, [values, realtime, process]);
 
   const handleChange = (name: string, value: string | number) => {
     setValues((prev) => ({ ...prev, [name]: value }));
@@ -89,12 +100,14 @@ export default function FormToResult({ tool, process }: FormToResultProps) {
             )}
           </div>
         ))}
-        <button
-          type="submit"
-          className="w-full rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
-        >
-          {t("calculate")}
-        </button>
+        {!realtime && (
+          <button
+            type="submit"
+            className="w-full rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
+          >
+            {t("calculate")}
+          </button>
+        )}
       </form>
 
       {/* Result */}

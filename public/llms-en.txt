@@ -2,7 +2,7 @@
 
 > Free online tools for text, code, calculation, conversion, image, and PDF processing. All tools run entirely in your browser; your data is never sent to any server. Korean/English supported. No sign-up required.
 
-> Total: 34 tools across 6 categories. Updated: 2026-05-09
+> Total: 34 tools across 6 categories. Updated: 2026-05-10
 
 ## Tools
 
@@ -122,6 +122,6 @@
 
 ### Productivity
 
-- [QR Code Generator - Free Online QR Maker (SVG/PNG)](https://toolhub.example/en/tools/productivity/qr-code-generator): QR Code Generator is a free online tool that turns URLs, text, phone numbers, and emails into downloadable SVG/PNG QR codes instantly. Tweak error correction level, size, and colors entirely in your browser.
-  - Key features: Converts URLs, plain text, phone numbers, and emails into a QR instantly · Pick from four error correction levels (L/M/Q/H — tolerates 7~30% damage) · Customize foreground and background colors to match your brand
-  - Use cases: Adding URL QR to business cards & flyers · Sharing Wi-Fi or event URLs
+- [QR Code Generator - Free Online QR Maker](https://toolhub.example/en/tools/productivity/qr-code-generator): QR Code Generator turns any URL or text into a QR code with a single click. Download the result as SVG or copy it to your clipboard as an image to paste straight into messaging apps. Fully client-side, no signup.
+  - Key features: Encodes URLs, plain text, phone numbers, and emails into a QR instantly · Copy as image to paste straight into KakaoTalk, Slack, email, etc. · Download as SVG — stays crisp at any size, perfect for print
+  - Use cases: Share QR via messengers instantly · Add URL QR to business cards & flyers

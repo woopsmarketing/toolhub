@@ -2,7 +2,7 @@
 
 > Free online tools for text, code, calculation, conversion, image, and PDF processing. All tools run entirely in your browser; your data is never sent to any server. Korean/English supported. No sign-up required.
 
-> Generated: 2026-05-09 · 34 tools · 6 categories
+> Generated: 2026-05-10 · 34 tools · 6 categories
 
 ## Tools
 
@@ -1518,49 +1518,48 @@ UUIDs are used for database primary keys, API request IDs, session tokens, file 
 
 ## Productivity
 
-### QR Code Generator - Free Online QR Maker (SVG/PNG)
+### QR Code Generator - Free Online QR Maker
 
 URL: https://toolhub.example/en/tools/productivity/qr-code-generator
 
-QR Code Generator is a free online tool that turns URLs, text, phone numbers, and emails into downloadable SVG/PNG QR codes instantly. Tweak error correction level, size, and colors entirely in your browser.
+QR Code Generator turns any URL or text into a QR code with a single click. Download the result as SVG or copy it to your clipboard as an image to paste straight into messaging apps. Fully client-side, no signup.
 
 **Key features**
 
-- Converts URLs, plain text, phone numbers, and emails into a QR instantly
-- Pick from four error correction levels (L/M/Q/H — tolerates 7~30% damage)
-- Customize foreground and background colors to match your brand
-- Download as SVG or PNG (SVG recommended for print)
+- Encodes URLs, plain text, phone numbers, and emails into a QR instantly
+- Copy as image to paste straight into KakaoTalk, Slack, email, etc.
+- Download as SVG — stays crisp at any size, perfect for print
+- Supports all UTF-8 characters including Korean and emojis
 - Inputs never leave the browser — fully client-side rendering
 
 **How to use**
 
-1. Enter the URL or text you want to encode into the input field.
-2. Choose the size and error correction level, then click "Generate".
-3. Preview the QR code and click the download button to save it as SVG.
+1. Paste a URL or any text into the input area.
+2. Click "QR 코드 생성하기" and the QR code appears on the right.
+3. Copy the image to your clipboard or download it as an SVG file.
 
 **Use cases**
 
-- **Adding URL QR to business cards & flyers** — Encode your homepage or portfolio URL into a QR for print materials so people can scan with their phone.
-- **Sharing Wi-Fi or event URLs** — Quickly share Wi-Fi info or event page URLs at cafes and exhibitions without typing.
+- **Share QR via messengers instantly** — Click the image copy button to put the PNG on your clipboard, then paste it into KakaoTalk, Slack, or email in one shot.
+- **Add URL QR to business cards & flyers** — Download the QR as SVG and place it on print materials so people can scan with their phone.
 
 **FAQ**
 
 - Q: Are my inputs sent to a server?
   A: No, QR Code Generator never transmits your input. All QR encoding runs entirely inside your browser.
-- Q: What is the difference between error correction levels (L/M/Q/H)?
-  A: Error correction level controls how much physical damage a QR can tolerate. L=7%, M=15%, Q=25%, H=30%. Higher levels add more cells to the QR matrix. M or Q is generally recommended for printing and stickers.
-- Q: Should I download SVG or PNG?
-  A: For print or any size scaling, choose SVG (vector) — it stays crisp at any resolution. Pick PNG only when you need a bitmap for web or social media uploads.
+- Q: What format does the image copy button use?
+  A: It converts the QR to a PNG bitmap and copies it to the clipboard. You can paste it straight into KakaoTalk, Slack, email, or any app that accepts image paste. (Requires the browser ClipboardItem API — supported by recent Chrome, Edge, and Safari.)
 - Q: Can I encode Korean characters or emojis?
   A: Yes, QR Code Generator uses UTF-8 so it handles every Unicode string, including Korean, Chinese, Japanese characters, and emojis.
+- Q: What if the QR fails to scan?
+  A: QR codes are sensitive to damage and glare. Print with enough white margin. When scanning from a screen, brighten it and keep the camera roughly 10× the QR width away for best recognition.
 
 **Guide: QR Code Generator Guide**
 
-QR Code Generator turns arbitrary strings — URLs, plain text, contact info — into standard QR codes (ISO/IEC 18004). Common scenarios include attaching a URL to a business card or flyer and sharing Wi-Fi or event URLs at cafes and exhibitions.
+QR Code Generator turns arbitrary strings — URLs, plain text, contact info — into standard QR codes (ISO/IEC 18004). It is most useful when attaching a URL to print materials, or when you want to share a QR image through messengers in one tap.
 
-The tool offers three knobs:
-1) Error correction level (L/M/Q/H) — tolerates 7~30% damage. Use M or Q for print.
-2) Colors — pick foreground and background to match your brand.
-3) Output format — SVG (vector, recommended for print) or PNG (web uploads).
+Usage is intentionally minimal: type the content → click the "QR 코드 생성하기" button → the QR appears on the right. Two actions are available:
+• Copy image: puts the PNG on your clipboard → paste into KakaoTalk / Slack / email.
+• Download SVG: vector file that stays crisp at any size, perfect for print.
 
 All encoding happens in your browser, so your URLs and text never leave the device.

@@ -5,5 +5,5 @@ import { config } from "./config";
 import { process } from "./logic";
 
 export default function TemperatureConverterTool() {
-  return <FormToResult tool={config} process={process} />;
+  return <FormToResult tool={config} process={process} realtime />;
 }
