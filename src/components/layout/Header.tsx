@@ -6,8 +6,8 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { Search, Menu, X, Globe, Wrench } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
+import AuthButton from "@/components/auth/AuthButton";
 
 export default function Header() {
   const t = useTranslations("common");
@@ -88,6 +88,9 @@ export default function Header() {
           <div className="ml-2">
             <ThemeToggle />
           </div>
+          <div className="ml-2">
+            <AuthButton />
+          </div>
         </nav>
 
         {/* Mobile menu button */}
@@ -157,6 +160,9 @@ export default function Header() {
             </button>
             <div className="px-3 py-2.5">
               <ThemeToggle />
+            </div>
+            <div className="px-3 py-2.5">
+              <AuthButton />
             </div>
           </nav>
         </div>
